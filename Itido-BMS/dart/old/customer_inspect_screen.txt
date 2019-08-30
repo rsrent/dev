@@ -1,0 +1,171 @@
+// import 'package:bms_dart/accident_report_list_bloc.dart';
+import 'package:bms_dart/blocs.dart';
+// import 'package:bms_dart/contract_list_bloc.dart';
+// import 'package:bms_dart/absence_list_bloc.dart';
+// import 'package:bms_dart/customer_list_bloc.dart';
+import 'package:bms_dart/location_list_bloc.dart';
+import 'package:bms_dart/models.dart';
+// import 'package:bms_dart/work_contract_list_bloc.dart';
+// import 'package:bms_dart/work_list_bloc.dart';
+// import 'package:bms_flutter_admin/src/widgets/absence_list_admin.dart';
+// import 'package:bms_flutter_admin/src/widgets/accident_report_list_admin.dart';
+// import 'package:bms_flutter_admin/src/widgets/contract_list_admin.dart';
+// import 'package:bms_flutter_admin/src/widgets/location_list_admin.dart';
+// import 'package:bms_flutter_admin/src/widgets/log_list_admin.dart';
+// import 'package:bms_flutter_admin/src/widgets/work_contract_list_admin.dart';
+// import 'package:bms_flutter_admin/src/widgets/work_list_admin.dart';
+// import 'package:dart_packages/streamer.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+// import 'absence_update_screen.dart';
+// import 'contract_create_screen.dart';
+// import 'contract_update_screen.dart';
+// import 'package:bms_flutter/src/components/animated_stream_builder.dart';
+import 'package:bms_flutter/widgets.dart';
+import 'package:bms_flutter/translations.dart';
+
+// import 'location_create_update_screen_2.dart';
+import 'location_inspect_screen.dart';
+
+import 'package:bms_flutter/src/widgets/location/widgets.dart';
+
+class CustomerInspectScreen extends StatefulWidget {
+  static void show(BuildContext context, int customerId, {int startIndex}) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return CustomerInspectScreen(
+              customerId: customerId, startIndex: startIndex);
+        },
+      ),
+    );
+  }
+
+  final int customerId;
+  final int startIndex;
+
+  const CustomerInspectScreen({
+    Key key,
+    @required this.customerId,
+    this.startIndex,
+  }) : super(key: key);
+
+  @override
+  _CustomerInspectScreenState createState() => _CustomerInspectScreenState();
+}
+
+class _CustomerInspectScreenState extends State<CustomerInspectScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      builder: (context) => CustomerInspectBloc(widget.customerId)
+        ..dispatch(CustomerInspectEventFetch()),
+      child: Builder(
+        builder: (context) {
+          var bloc = BlocProvider.of<CustomerInspectBloc>(context);
+          return AnimatedBlocBuilder(
+            bloc: bloc,
+            builder: (context, state) {
+              if (state is LoadedCustomerInspectState) {
+                return _build(context, state.customer);
+              } else if (state is ErrorCustomerInspectState) {
+                return ErrorLoadingScreen(
+                  info: Translations.of(context).infoErrorLoading,
+                  onRetre: () => bloc.dispatch(CustomerInspectEventFetch()),
+                );
+              } else {
+                return LoadingScreen();
+              }
+            },
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _build(BuildContext context, Customer customer) {
+    return InspectScreen(
+      backgroundColor: Colors.white,
+      startIndex: widget.startIndex,
+      title: customer.displayName,
+      child: ListView(
+        padding: EdgeInsets.only(bottom: 200, left: 24, right: 24, top: 24),
+        children: <Widget>[
+          CircleAvatar(
+            radius: 60,
+          ),
+          ListTile(
+            leading: Icon(Icons.edit),
+            title: Text('Rediger'),
+          ),
+          Divider(),
+          if (customer.disabled)
+            ListTile(
+              leading: Icon(Icons.clear),
+              title: Text('Ikke aktiv'),
+              subtitle: Text('Tryk for at aktivere'),
+            ),
+          if (!customer.disabled)
+            ListTile(
+              leading: Icon(Icons.check),
+              title: Text('Aktiv'),
+              subtitle: Text('Tryk for at deaktivere'),
+            ),
+          Divider(color: Colors.white),
+          ListTile(
+            title: Text('Navn'),
+            subtitle: Text(customer.name),
+          ),
+          ListTile(
+            title: Text('Kommentar'),
+            subtitle: Text(customer.comment),
+          ),
+          if (customer.keyAccountManager != null)
+            ListTile(
+              title: Text('KeyAccountManager'),
+              subtitle: Text(customer.keyAccountManager.displayName),
+            ),
+        ],
+      ),
+      items: [
+        InspectScreenItem(
+            icon: Icon(Icons.work),
+            child: LocationListScreen(
+              blocBuilder: (context) => LocationListBloc(
+                  () => LocationListFetchOfCustomer(customerId: customer.id)),
+              onSelect: (location) =>
+                  LocationInspectScreen.show(context, location.id),
+              floatingActionButton: FloatingActionButton(
+                heroTag: null,
+                child: Icon(Icons.add),
+                onPressed: () {
+                  print('customer.id: ${customer.id}');
+                  LocationCreateUpdateScreen.show(
+                    context,
+                    customerId: customer.id,
+                  );
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(
+                  //     builder: (context) => LocationCreateUpdateScreen(
+                  //       customerId: customer.id,
+                  //     ),
+                  //   ),
+                  // );
+                },
+              ),
+            )
+            // child: LocationListOfCustomer(
+            //   customerId: customer.id,
+            // ),
+            ),
+        InspectScreenItem(
+          icon: Icon(Icons.bug_report),
+          child: Container(),
+        ),
+      ],
+    );
+  }
+}

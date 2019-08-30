@@ -1,0 +1,187 @@
+import 'dart:async';
+import 'package:bms_dart/models.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show SynchronousFuture;
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
+
+class Translations {
+  Translations(this.locale);
+
+  final Locale locale;
+
+  static Translations of(BuildContext context) {
+    return Localizations.of<Translations>(context, Translations);
+  }
+
+  static Map<String, Map<String, String>> _vals = {
+    'en': {
+      'logout': 'LOG OUT',
+      'accept': 'Accept',
+      'decline': 'Decline',
+      'pending': 'Pending',
+      'buttonUsers': 'USERS',
+      'buttonClients': 'CLIENTS',
+      'buttonLocations': 'LOCATIONS',
+      'buttonAgreements': 'AGREEMENTS',
+      'buttonAbsenseReasons': 'ABSENCE REASONS',
+      'buttonConversations': 'CONVERSATIONS',
+      'buttonPosts': 'POSTS',
+      'infoNoMessages': 'No messages',
+      'tabButtonUsers': 'Users',
+      'tabButtonLocations': 'Locations',
+      'tabButtonWork': 'Work',
+      'tabButtonAbsence': 'Absence',
+      'tabButtonContracts': 'Contracts',
+      'errorLoading': 'Oops something went wrong!',
+      'noAgreements': 'No agreements',
+      'noNotis': 'No notifications',
+      'noConversations': 'No conversations',
+      'noMessages': 'No messages',
+      'noAbsenceReasons': 'No absence reasons',
+      'noAbsences': 'No absence',
+      'noAbsences': 'No work',
+      'noContracts': 'No contracts',
+      'noCustomers': 'No customers',
+      'noLocations': 'No locations',
+      'noPosts': 'No posts',
+      'noUsers': 'No users',
+      'infoCreationFailed': 'Creation failed',
+      'infoUpdateFailed': 'Update failed',
+      'postConditionCardTitle': 'Receiver must',
+      '${PostConditionType.HasRole.toString()}': 'Have role',
+      '${PostConditionType.AtLocation.toString()}':
+          'Have connection to location',
+      '${PostConditionType.AtAnyLocationUnderCustomer.toString()}':
+          'Have connection to location under customer',
+      'postConditionCardTypeHint': 'Select condition',
+      'postConditionCardValueLabel': 'The condtion value',
+      'postConditionCardValueHint': 'Click to select value',
+    },
+    'da': {
+      'logout': 'LOG UD',
+      'accept': 'Accepter',
+      'decline': 'Afvis',
+      'pending': 'Afventer',
+      'buttonUsers': 'BRUGERE',
+      'buttonClients': 'KUNDER',
+      'buttonLocations': 'LOKATIONER',
+      'buttonAgreements': 'OVERENSKOMSTER',
+      'buttonAbsenseReasons': 'FRAVÆRSGRUNDE',
+      'buttonConversations': 'SAMTALER',
+      'buttonPosts': 'POSTS',
+      'infoNoMessages': 'Ingen beskeder',
+      'tabButtonUsers': 'Brugere',
+      'tabButtonLocations': 'Lokationer',
+      'tabButtonWork': 'Vagter',
+      'tabButtonAbsence': 'Fravær',
+      'tabButtonContracts': 'Kontrakter',
+      'errorLoading': 'Hov, noget gik galt!',
+      'noAgreements': 'Ingen overenskomster',
+      'noNotis': 'Ingen notifikationer',
+      'noConversations': 'Ingen samtaler',
+      'noCustomers': 'Ingen kunder',
+      'noLocations': 'Ingen lokationer',
+      'noMessages': 'Ingen beskeder',
+      'noAbsenceReasons': 'Ingen fraværsgrunde',
+      'noAbsences': 'Intet fravær',
+      'noWorks': 'Ingen vagter',
+      'noContracts': 'Ingen kontrakter',
+      'noPosts': 'Ingen posts',
+      'noUsers': 'Ingen brugere',
+      'infoCreationFailed': 'Oprettelse fejlede',
+      'infoUpdateFailed': 'Opdatering fejlede',
+      '${PostConditionType.HasRole.toString()}': 'Have rolle',
+      '${PostConditionType.AtLocation.toString()}': 'Være knyttet til lokation',
+      '${PostConditionType.AtAnyLocationUnderCustomer.toString()}':
+          'Være knyttet til lokation under kunde',
+      'postConditionCardTitle': 'Modtager skal',
+      'postConditionCardTypeHint': 'Vælge krav',
+      'postConditionCardValueLabel': 'Kravets værdi',
+      'postConditionCardValueHint': 'Klik for at vælge',
+    },
+  };
+
+  Map<String, String> get _dictionary => _vals[locale.languageCode];
+
+  String get logout => _dictionary['logout'];
+  String get accept => _dictionary['accept'];
+  String get deline => _dictionary['deline'];
+  String get pending => _dictionary['pending'];
+
+  String get buttonUsers => _dictionary['buttonUsers'];
+  String get buttonClients => _dictionary['buttonClients'];
+  String get buttonLocations => _dictionary['buttonLocations'];
+  String get buttonAgreements => _dictionary['buttonAgreements'];
+  String get buttonAbsenseReasons => _dictionary['buttonAbsenseReasons'];
+  String get buttonConversations => _dictionary['buttonConversations'];
+  String get buttonPosts => _dictionary['buttonPosts'];
+
+  String get infoNoMessages => _dictionary['infoNoMessages'];
+  String get tabButtonUsers => _dictionary['tabButtonUsers'];
+  String get tabButtonLocations => _dictionary['tabButtonLocations'];
+  String get tabButtonWork => _dictionary['tabButtonWork'];
+  String get tabButtonAbsence => _dictionary['tabButtonAbsence'];
+  String get tabButtonContracts => _dictionary['tabButtonContracts'];
+
+  String get errorLoading => _dictionary['errorLoading'];
+  String get noAgreements => _dictionary['noAgreements'];
+  String get noNotis => _dictionary['noNotis'];
+  String get noCustomers => _dictionary['noCustomers'];
+  String get noLocations => _dictionary['noLocations'];
+  String get noConversations => _dictionary['noConversations'];
+  String get noMessages => _dictionary['noMessages'];
+  String get noAbsenceReasons => _dictionary['noAbsenceReasons'];
+  String get noAbsences => _dictionary['noAbsences'];
+  String get noWorks => _dictionary['noWorks'];
+  String get noContracts => _dictionary['noContracts'];
+  String get noPosts => _dictionary['noPosts'];
+  String get noUsers => _dictionary['noUsers'];
+  String get infoCreationFailed => _dictionary['infoCreationFailed'];
+  String get infoUpdateFailed => _dictionary['infoUpdateFailed'];
+  String get postConditionCardTitle => _dictionary['postConditionCardTitle'];
+  String postConditionTypeString(PostConditionType postConditionType) =>
+      _dictionary['${postConditionType.toString()}'];
+  String get postConditionCardValueLabel =>
+      _dictionary['postConditionCardValueLabel'];
+  String get postConditionCardValueHint =>
+      _dictionary['postConditionCardValueHint'];
+  String get postConditionCardTypeHint =>
+      _dictionary['postConditionCardTypeHint'];
+
+  String get optionCreateWork => _dictionary['optionCreateWork'];
+  String get optionCreateWorkContract =>
+      _dictionary['optionCreateWorkContract'];
+
+  String dateString(DateTime dateTime) => dateTime != null
+      ? DateFormat.yMMMd(locale.languageCode).format(dateTime)
+      : '-';
+
+  String timeString(DateTime dateTime) => dateTime != null
+      ? DateFormat.Hm(locale.languageCode).format(dateTime)
+      : '-';
+
+  String dateTimeString(DateTime dateTime) => dateTime != null
+      ? '${dateString(dateTime)} ${timeString(dateTime)}'
+      : '-';
+}
+
+class BmsLocalizationsDelegate extends LocalizationsDelegate<Translations> {
+  final Locale newLocale;
+  const BmsLocalizationsDelegate({this.newLocale});
+
+  @override
+  bool isSupported(Locale locale) {
+    return ['en', 'da'].contains(locale.languageCode);
+  }
+
+  @override
+  Future<Translations> load(Locale locale) {
+    return SynchronousFuture<Translations>(Translations(newLocale ?? locale));
+  }
+
+  @override
+  bool shouldReload(BmsLocalizationsDelegate old) {
+    return true;
+  }
+}

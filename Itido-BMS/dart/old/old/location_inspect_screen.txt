@@ -1,0 +1,259 @@
+import 'package:bms_dart/blocs.dart';
+import 'package:bms_dart/work_contract_list_bloc.dart';
+import 'package:bms_dart/work_list_bloc.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_flutter/widgets.dart';
+import 'package:bms_flutter_admin/src/widgets/user_list_admin.dart';
+import 'package:bms_flutter_admin/src/widgets/work_contract_list.dart';
+import 'package:dart_packages/streamer.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../widgets/work_list.dart';
+
+import 'work_contract_create_screen.dart';
+import 'work_create_screen.dart';
+
+import 'package:bms_flutter/translations.dart';
+
+import 'user_inspect_screen.dart';
+
+import 'package:flutter_packages/calendar_2.dart' as calendar;
+
+class LocationInspectScreen extends StatefulWidget {
+  static void showLocationInspectScreen(BuildContext context, Location location,
+      {int startIndex}) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return LocationInspectScreen(location: location);
+        },
+      ),
+    );
+  }
+
+  final Location location;
+
+  const LocationInspectScreen({Key key, this.location}) : super(key: key);
+
+  @override
+  _LocationInspectScreenState createState() => _LocationInspectScreenState();
+}
+
+class _LocationInspectScreenState extends State<LocationInspectScreen> {
+  Streamer<int> currentTab = Streamer(seedValue: 0);
+  final PageStorageBucket bucket = PageStorageBucket();
+
+  DateTime showWorkFromDate = DateTime.now().subtract(Duration(days: 2));
+  DateTime showWorkToDate = DateTime.now().add(Duration(days: 30));
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProviderTree(
+      blocProviders: [
+        BlocProvider<WorkListBloc>(
+          builder: (context) => refreshWork(WorkListBloc()),
+        ),
+        BlocProvider<WorkContractListBloc>(
+          builder: (context) => WorkContractListBloc()
+            ..dispatch(
+              WorkContractListFetchOfLocation(
+                locationId: widget.location.id,
+              ),
+            ),
+        ),
+        BlocProvider<UserListBloc>(
+          builder: (context) {
+            return UserListBloc(
+                () => FetchAllOfLocation(locationId: widget.location.id));
+            // ..dispatch(FetchAllOfLocation(locationId: widget.location.id));
+          },
+        ),
+      ],
+      child: Builder(builder: (context) {
+        return Scaffold(
+          body: DefaultTabController(
+            length: 3,
+            child: NestedScrollView(
+              headerSliverBuilder: (BuildContext context, bool boxIsScrolled) {
+                return [
+                  SliverAppBar(
+                    pinned: true,
+                    expandedHeight: 260,
+                    flexibleSpace: FlexibleSpaceBar(
+                      title: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        height: 60,
+                        //color: Colors.red,
+                        child: Center(
+                          child: Text(
+                            widget.location.displayName,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      ),
+                      titlePadding: EdgeInsets.only(bottom: 46),
+                      centerTitle: true,
+                      collapseMode: CollapseMode.parallax,
+                    ),
+                    bottom: TabBar(
+                      tabs: <Widget>[
+                        Tab(text: Translations.of(context).buttonWork),
+                        Tab(text: Translations.of(context).buttonWorkContracts),
+                        Tab(text: Translations.of(context).buttonUsers),
+                      ],
+                      onTap: currentTab.update,
+                    ),
+                    actions: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.calendar_today),
+                        onPressed: () {},
+                      )
+                    ],
+                  ),
+                ];
+              },
+              body: PageStorage(
+                bucket: bucket,
+                child: TabBarView(
+                  children: [
+                    AdminWorkList(
+                      showLocation: false,
+                      onRefresh: (bloc) => refreshWork(bloc),
+                      headerBuilder: (context) {
+                        return Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Text(
+                            '${Translations.of(context).dateString(showWorkFromDate)} - ${Translations.of(context).dateString(showWorkToDate)}',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    AdminWorkContractList(
+                      showLocation: false,
+                      onRefresh: (bloc) => bloc.dispatch(
+                        WorkContractListFetchOfLocation(
+                          locationId: widget.location.id,
+                        ),
+                      ),
+                    ),
+                    UserListAdmin.getListOfLocationUserss(
+                        context, widget.location.id)
+                    // BlocList<UserListBloc>(
+                    //   child: UserList(
+                    //     onSelect: (user) {
+                    //       UserInspectScreen.showUserInspectScreen(
+                    //           context, user.id);
+                    //     },
+                    //   ),
+                    //   onRefresh: (bloc) => bloc.dispatch(
+                    //       FetchAllOfLocation(locationId: widget.location.id)),
+                    // ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          floatingActionButton: StreamBuilder(
+            stream: currentTab.stream,
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (currentTab.value == 0) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    FloatingActionButton(
+                      heroTag: null,
+                      mini: true,
+                      child: Icon(Icons.date_range),
+                      onPressed: () async {
+                        var dates = await calendar
+                            .pushCalendarScreenAsRangePicker(context,
+                                firstSelected: showWorkFromDate,
+                                lastSelected: showWorkToDate);
+                        if (dates != null) {
+                          showWorkFromDate = dates.first;
+                          showWorkToDate = dates.second;
+                          var bloc = BlocProvider.of<WorkListBloc>(context);
+                          refreshWork(bloc);
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    FloatingActionButton(
+                      child: Icon(Icons.add),
+                      onPressed: () {
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Container(
+                                height: 200,
+                                child: ListView(
+                                  children: <Widget>[
+                                    ListTile(
+                                      title: Text(Translations.of(context)
+                                          .optionCreateWork),
+                                      leading: Icon(Icons.add),
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                WorkCreateScreen(
+                                              locationId: widget.location.id,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    ListTile(
+                                      title: Text(Translations.of(context)
+                                          .optionCreateWorkContract),
+                                      leading: Icon(Icons.add),
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                WorkContractCreateScreen(
+                                              locationId: widget.location.id,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              );
+                            });
+                      },
+                    ),
+                  ],
+                );
+              }
+              if (currentTab.value == 1) {}
+
+              return Container();
+            },
+          ),
+        );
+      }),
+    );
+  }
+
+  WorkListBloc refreshWork(WorkListBloc bloc) {
+    bloc.dispatch(WorkListFetchOfLocation(
+      locationId: widget.location.id,
+      from: showWorkFromDate,
+      to: showWorkToDate,
+    ));
+    return bloc;
+  }
+}

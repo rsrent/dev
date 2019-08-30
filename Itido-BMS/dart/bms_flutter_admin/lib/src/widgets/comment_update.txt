@@ -1,0 +1,63 @@
+import 'package:bms_dart/models.dart';
+import 'package:bms_flutter/components.dart';
+import 'package:flutter/material.dart';
+import 'package:bms_dart/comment_create_update_bloc.dart';
+
+class CommentUpdate extends StatefulWidget {
+  final Comment comment;
+
+  const CommentUpdate({Key key, @required this.comment}) : super(key: key);
+  @override
+  _CommentUpdateState createState() => _CommentUpdateState(this.comment);
+}
+
+class _CommentUpdateState extends State<CommentUpdate> {
+  TextEditingController _titleController;
+  TextEditingController _bodyController;
+
+  _CommentUpdateState(Comment comment) {
+    _titleController = TextEditingController(text: );
+    _bodyController = TextEditingController(text: );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    BlocProvider(
+      builder: (context) => CommentCreateUpdateBloc(),
+      child: Container(),
+    )
+
+
+    return Scaffold(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(labelText: 'Titel'),
+              ),
+              Space(
+                height: 8,
+              ),
+              TextField(
+                decoration: InputDecoration(labelText: 'Kommentar'),
+              ),
+              Space(height: 40),
+              RaisedButton(
+                child: Text("Update"),
+                onPressed: () {
+                  print('Update');
+                },
+              ),
+              Space(height: 40)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

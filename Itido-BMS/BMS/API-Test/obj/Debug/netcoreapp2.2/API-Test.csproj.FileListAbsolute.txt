@@ -1,0 +1,17 @@
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/bin/Debug/netcoreapp2.2/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/bin/Debug/netcoreapp2.2/xunit.runner.reporters.netcoreapp10.dll
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/bin/Debug/netcoreapp2.2/xunit.runner.utility.netcoreapp10.dll
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/bin/Debug/netcoreapp2.2/API-Test.deps.json
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/bin/Debug/netcoreapp2.2/API-Test.runtimeconfig.json
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/bin/Debug/netcoreapp2.2/API-Test.runtimeconfig.dev.json
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/bin/Debug/netcoreapp2.2/API-Test.dll
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/bin/Debug/netcoreapp2.2/API-Test.pdb
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/bin/Debug/netcoreapp2.2/API.dll
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/bin/Debug/netcoreapp2.2/API.pdb
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/obj/Debug/netcoreapp2.2/API-Test.csprojAssemblyReference.cache
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/obj/Debug/netcoreapp2.2/API-Test.csproj.CoreCompileInputs.cache
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/obj/Debug/netcoreapp2.2/API-Test.AssemblyInfoInputs.cache
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/obj/Debug/netcoreapp2.2/API-Test.AssemblyInfo.cs
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/obj/Debug/netcoreapp2.2/API-Test.csproj.CopyComplete
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/obj/Debug/netcoreapp2.2/API-Test.dll
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API-Test/obj/Debug/netcoreapp2.2/API-Test.pdb

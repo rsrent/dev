@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{2BE6A9B4-64FB-4BD7-B08F-6BB1234C0797}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Rent/Controllers/LogController.cs">
+    <Files>
+      <File FileName="Rent/Controllers/LogController.cs" Line="81" Column="179" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Rent" expanded="True">
+            <Node name="Rent" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="LogController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../Documents/Projects/KlipWorksApp/KlipWorksApp/Models/PhotoAssetsHandler.cs" line="122" offsetX="703" offsetY="1815" expression="assetPlaceholder" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <DisabledProjects>
+    <String>Test/Test.csproj</String>
+  </DisabledProjects>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.ItemProperties.Rent PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/tobiasbang/Projects/RentAppProject/RentApp-iOS/ViewControllers/CleaningPlanViews/CleaningPlanTasksTableVC.cs" line="65" column="1" />
+      <Breakpoint file="/Users/tobiasbang/Projects/RentAppProject/RentApp-iOS/ViewControllers/CreateViews/CleaningTask/FloorAreaPickerViewController.cs" line="56" column="1" />
+      <Breakpoint file="/Users/tobiasbang/Projects/RentAppProject/RentApp-iOS/ViewControllers/CreateViews/AddCustomerVC.cs" line="70" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

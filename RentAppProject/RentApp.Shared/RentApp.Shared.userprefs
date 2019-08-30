@@ -1,0 +1,11 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../Documents/Projects/KlipWorksApp/KlipWorksApp/Models/PhotoAssetsHandler.cs" line="122" offsetX="703" offsetY="1815" expression="assetPlaceholder" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MultiItemStartupConfigurations />
+</Properties>

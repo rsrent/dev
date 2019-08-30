@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{362B3F5D-8832-447D-862D-E59AEF4FD05B}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ModuleLibraryiOS</RootNamespace>
+    <AssemblyName>ModuleLibraryiOS</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <IOSDebuggerPort>28029</IOSDebuggerPort>
+    <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <MtouchLink></MtouchLink>
+    <MtouchHttpClientHandler></MtouchHttpClientHandler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchHttpClientHandler></MtouchHttpClientHandler>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Data" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Square.SocketRocket">
+      <HintPath>..\..\RentAppProject\packages\Square.SocketRocket.0.5.1\lib\Xamarin.iOS\Square.SocketRocket.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage.Abstractions">
+      <HintPath>..\..\RentAppProject\packages\PCLStorage.1.0.2\lib\portable-Xamarin.iOS+Xamarin.Mac\PCLStorage.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage">
+      <HintPath>..\..\RentAppProject\packages\PCLStorage.1.0.2\lib\portable-Xamarin.iOS+Xamarin.Mac\PCLStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.Data.Edm">
+      <HintPath>..\..\RentAppProject\packages\Microsoft.Data.Edm.5.8.4\lib\netstandard1.1\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle">
+      <HintPath>..\..\RentAppProject\packages\MimeKit.2.2.0\lib\xamarinios\BouncyCastle.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKit">
+      <HintPath>..\..\RentAppProject\packages\MimeKit.2.2.0\lib\xamarinios\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit">
+      <HintPath>..\..\RentAppProject\packages\MailKit.2.2.0\lib\xamarinios\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\RentAppProject\packages\Newtonsoft.Json.12.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.Windows.Core">
+      <HintPath>..\..\RentAppProject\packages\PInvoke.Windows.Core.0.5.184\lib\netstandard2.0\PInvoke.Windows.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.Kernel32">
+      <HintPath>..\..\RentAppProject\packages\PInvoke.Kernel32.0.5.184\lib\netstandard2.0\PInvoke.Kernel32.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.BCrypt">
+      <HintPath>..\..\RentAppProject\packages\PInvoke.BCrypt.0.5.184\lib\portable-net45+win8+wpa81\PInvoke.BCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.NCrypt">
+      <HintPath>..\..\RentAppProject\packages\PInvoke.NCrypt.0.5.184\lib\netstandard2.0\PInvoke.NCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Permissions">
+      <HintPath>..\..\RentAppProject\packages\Plugin.Permissions.3.0.0.12\lib\xamarinios10\Plugin.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial">
+      <HintPath>..\..\RentAppProject\packages\System.Spatial.5.8.4\lib\netstandard1.1\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData">
+      <HintPath>..\..\RentAppProject\packages\Microsoft.Data.OData.5.8.4\lib\netstandard1.1\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+      <HintPath>..\..\RentAppProject\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.Json">
+      <HintPath>..\..\RentAppProject\packages\Carbon.Json.1.9.0\lib\netstandard2.0\Carbon.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.Storage">
+      <HintPath>..\..\RentAppProject\packages\Carbon.Storage.1.19.0\lib\netstandard2.0\Carbon.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Validation">
+      <HintPath>..\..\RentAppProject\packages\Validation.2.4.22\lib\netstandard1.3\Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLCrypto">
+      <HintPath>..\..\RentAppProject\packages\PCLCrypto.2.0.147\lib\xamarinios10\PCLCrypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\..\RentAppProject\packages\WindowsAzure.Storage.9.3.3\lib\netstandard1.3\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Geolocator">
+      <HintPath>..\..\RentAppProject\packages\Xam.Plugin.Geolocator.4.5.0.6\lib\xamarinios10\Plugin.Geolocator.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>..\..\RentAppProject\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\..\RentAppProject\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>..\..\RentAppProject\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Alert\" />
+    <Folder Include="Camera\" />
+    <Folder Include="Chat\" />
+    <Folder Include="Design\" />
+    <Folder Include="Geo\" />
+    <Folder Include="Input\" />
+    <Folder Include="Login\" />
+    <Folder Include="Map\" />
+    <Folder Include="Notifications\" />
+    <Folder Include="PhotoAssets\" />
+    <Folder Include="Profile\" />
+    <Folder Include="Search\" />
+    <Folder Include="Services\" />
+    <Folder Include="Table\" />
+    <Folder Include="ViewControllerInstanciater\" />
+    <Folder Include="Web\" />
+    <Folder Include="Storage\" />
+    <Folder Include="Navigation\" />
+    <Folder Include="Image\" />
+    <Folder Include="Date\" />
+    <Folder Include="Email\" />
+    <Folder Include="PageController\" />
+    <Folder Include="Keyboard\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MyClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Alert\Alert.cs" />
+    <Compile Include="Alert\LoadingOverlay.cs" />
+    <Compile Include="Camera\CameraContainerViewController.cs" />
+    <Compile Include="Camera\CameraContainerViewController.designer.cs">
+      <DependentUpon>..\..\..\ChatApp\ChatApp\Chat\CameraContainerViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Camera\CameraController.cs" />
+    <Compile Include="Camera\CameraController.designer.cs">
+      <DependentUpon>..\..\..\ChatApp\ChatApp\Camera\CameraController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Camera\MediaFunctions.cs" />
+    <Compile Include="Chat\ChatTableViewController.cs" />
+    <Compile Include="Chat\ChatTableViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Chat\ChatTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\ChatViewController.cs" />
+    <Compile Include="Chat\ConnectDTO.cs" />
+    <Compile Include="Chat\Conversation.cs" />
+    <Compile Include="Chat\Message.cs" />
+    <Compile Include="Chat\MessageCell.cs" />
+    <Compile Include="Chat\MessageCell.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Chat\MessageCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\MessageFactory.cs" />
+    <Compile Include="Chat\MessageMediaView.cs" />
+    <Compile Include="Chat\MessageMediaView.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Chat\MessageMediaView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\MessageRequestView.cs" />
+    <Compile Include="Chat\MessageRequestView.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Chat\MessageRequestView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\MessageTextView.cs" />
+    <Compile Include="Chat\MessageTextView.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Chat\MessageTextView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\MessageViewControllerView.cs" />
+    <Compile Include="Chat\MessageViewControllerView.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Chat\MessageViewControllerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\Profile.cs" />
+    <Compile Include="Chat\UITextViewPlaceholder.cs" />
+    <Compile Include="Chat\UITextViewPlaceholder.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Chat\UITextViewPlaceholder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\ViewController.designer.cs">
+      <DependentUpon>..\..\..\ChatApp\ChatApp\Chat\ChatViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\DesignGuide.cs" />
+    <Compile Include="Geo\Geo.cs" />
+    <Compile Include="Input\DatePickerController.cs" />
+    <Compile Include="Input\DatePickerViewController.cs" />
+    <Compile Include="Input\DatePickerViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Input\DatePickerViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Input\PickerController.cs" />
+    <Compile Include="Input\PickerViewController.cs" />
+    <Compile Include="Input\PickerViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Input\PickerViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Input\TextInputController.cs" />
+    <Compile Include="Input\TextInputViewController.cs" />
+    <Compile Include="Input\TextInputViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Input\TextInputViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\CreateViewController.cs" />
+    <Compile Include="Login\CreateViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Login\CreateViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginViewController.cs" />
+    <Compile Include="Login\LoginViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Login\LoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\Address.cs" />
+    <Compile Include="Map\MapAnnotation.cs" />
+    <Compile Include="Map\MapViewController.cs" />
+    <Compile Include="Map\MapViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Map\MapViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\MKMapViewController.cs" />
+    <Compile Include="Map\MKMapViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Map\MKMapViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\Notifications.cs" />
+    <Compile Include="PhotoAssets\PhotoAssetsHandler.cs" />
+    <Compile Include="Profile\ProfileViewController.cs" />
+    <Compile Include="Profile\ProfileViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Profile\ProfileViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SearchCell.cs" />
+    <Compile Include="Search\SearchCell.designer.cs">
+      <DependentUpon>..\..\..\ChatApp\ChatApp\Search\SearchCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SearchType.cs" />
+    <Compile Include="Search\SearchViewController.cs" />
+    <Compile Include="Search\SearchViewController.designer.cs">
+      <DependentUpon>..\..\..\ChatApp\ChatApp\Search\SearchViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Mail.cs" />
+    <Compile Include="Services\SocketConnection.cs" />
+    <Compile Include="Table\Cells\MediaCell.cs" />
+    <Compile Include="Table\Cells\MediaCell.designer.cs">
+      <DependentUpon>..\..\..\ModuleLibrary.iOS\Table\Cells\MediaCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Table\Cells\RequestCell.cs" />
+    <Compile Include="Table\Cells\RequestCell.designer.cs">
+      <DependentUpon>..\..\..\ModuleLibrary.iOS\Table\Cells\RequestCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Table\Cells\RoundImageTitleDescriptionCell.cs" />
+    <Compile Include="Table\Cells\RoundImageTitleDescriptionCell.designer.cs">
+      <DependentUpon>..\..\..\ModuleLibrary.iOS\Table\Cells\RoundImageTitleDescriptionCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Table\Cells\TextCell.cs" />
+    <Compile Include="Table\Cells\TextCell.designer.cs">
+      <DependentUpon>..\..\..\ModuleLibrary.iOS\Table\Cells\TextCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Table\TableAndSourceController.cs" />
+    <Compile Include="Table\TableAndSourceGroupedController.cs" />
+    <Compile Include="Table\TableController.cs" />
+    <Compile Include="Table\TableFunctions.cs" />
+    <Compile Include="Table\TableGroupedController.cs" />
+    <Compile Include="Table\TableGroupedViewController.cs" />
+    <Compile Include="Table\TableGroupedViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Table\TableGroupedViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Table\TableViewController.cs" />
+    <Compile Include="Table\TableViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Table\TableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllerInstanciater\Instanciate.cs" />
+    <Compile Include="ViewControllerInstanciater\IStartable.cs" />
+    <Compile Include="ViewControllerInstanciater\IStarter.cs" />
+    <Compile Include="ViewControllerInstanciater\Starter.cs" />
+    <Compile Include="Web\WebViewController.cs" />
+    <Compile Include="Web\WebViewController.designer.cs">
+      <DependentUpon>..\..\ModuleLibrary.iOS\Web\WebViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Storage\AzureStorage.cs" />
+    <Compile Include="Services\SaveLoad.cs" />
+    <Compile Include="Input\PickerModel.cs" />
+    <Compile Include="Table\TableTest.cs" />
+    <Compile Include="Navigation\Navigation.cs" />
+    <Compile Include="Storage\AmazonStorage.cs" />
+    <Compile Include="Storage\AmazonCredentials.cs" />
+    <Compile Include="Storage\IStorage.cs" />
+    <Compile Include="Storage\ContainerType.cs" />
+    <Compile Include="Image\Image.cs" />
+    <Compile Include="Storage\ILocalStorage.cs" />
+    <Compile Include="Storage\LocalStorage.cs" />
+    <Compile Include="Storage\ILocalStorageSettings.cs" />
+    <Compile Include="Date\Dates.cs" />
+    <Compile Include="Email\Email.cs" />
+    <Compile Include="Search\Search.cs" />
+    <Compile Include="Chat\SpecialChatFunction.cs" />
+    <Compile Include="Chat\ChatVCController.cs" />
+    <Compile Include="Chat\IChatViewController.cs" />
+    <Compile Include="Chat\ChatFunctionsHelper.cs" />
+    <Compile Include="PageController\PageController.cs" />
+    <Compile Include="PageController\IContentViewController.cs" />
+    <Compile Include="Keyboard\Extensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Camera\Camera.storyboard" />
+    <InterfaceDefinition Include="Chat\Chat.storyboard" />
+    <InterfaceDefinition Include="Chat\MessageCell.xib" />
+    <InterfaceDefinition Include="Chat\MessageMediaView.xib" />
+    <InterfaceDefinition Include="Chat\MessageRequestView.xib" />
+    <InterfaceDefinition Include="Chat\MessageTextView.xib" />
+    <InterfaceDefinition Include="Chat\MessageViewControllerView.xib" />
+    <InterfaceDefinition Include="Input\Input.storyboard" />
+    <InterfaceDefinition Include="Login\Login.storyboard" />
+    <InterfaceDefinition Include="Map\Map.storyboard" />
+    <InterfaceDefinition Include="Profile\Profile.storyboard" />
+    <InterfaceDefinition Include="Search\Search.storyboard" />
+    <InterfaceDefinition Include="Search\SearchCell.xib" />
+    <InterfaceDefinition Include="Table\Cells\MediaCell.xib" />
+    <InterfaceDefinition Include="Table\Cells\RequestCell.xib" />
+    <InterfaceDefinition Include="Table\Cells\RoundImageTitleDescriptionCell.xib" />
+    <InterfaceDefinition Include="Table\Cells\TextCell.xib" />
+    <InterfaceDefinition Include="Table\Table.storyboard" />
+    <InterfaceDefinition Include="Web\Web.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rayTracerI.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModuleLibrary.Shared\ModuleLibrary.Shared.csproj">
+      <Project>{1E1742FD-BC09-4F83-96BA-EE47774070BE}</Project>
+      <Name>ModuleLibrary.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Import Project="..\..\RentAppProject\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\RentAppProject\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
+</Project>

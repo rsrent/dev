@@ -1,0 +1,61 @@
+import 'package:bms_dart/models.dart';
+import 'package:bms_dart/repositories.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_packages/calendar_widget_2.dart' as calendar;
+import 'package:flutter/foundation.dart';
+import 'dart:async';
+import 'package:dart_packages/date_time_operations.dart' as dtOps;
+
+typedef Future<Map<int, Set<Color>>> WorkForMonth(int year, int month);
+
+class Calendar extends StatelessWidget {
+  final WorkForMonth monthSource;
+
+  Calendar({Key key, @required this.monthSource}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Vagter')),
+      body: calendar.CalendarWidget(
+        monthColorsFuture: (y, m) => monthSource(y, m),
+        dateSelected: (d) => _dateSelected(context, d),
+      ),
+    );
+  }
+
+  _dateSelected(BuildContext context, DateTime date) {
+    // return Navigator.of(context).push(
+    //   MaterialPageRoute(
+    //     builder: (context) => ShiftsList(
+    //           from: date,
+    //           to: date.add(Duration(days: 1)),
+    //           source: shiftSource,
+    //         ),
+    //   ),
+    // );
+  }
+}
+
+Widget calendarTest() {
+  return Calendar(
+    monthSource: (y, m) async {
+      var works = await repositoryProvider.workRepository().fetchWorks(
+          from: DateTime(y, m, 1), to: DateTime(y, dtOps.daysInMonthInt(m, y)));
+      Map<int, Set<Color>> map = {};
+
+      for (int d = 1; d <= dtOps.daysInMonthInt(m, y); d++) {
+        var date = DateTime(y, m, d);
+        var _worksOnDay = works.where((w) => dtOps.isSameDate(w.date, date));
+        Set<Color> colorSet = {};
+        if (_worksOnDay.any((w) => w.isTaken && !w.isLate))
+          colorSet.add(Colors.green);
+        if (_worksOnDay.any((w) => !w.isTaken || w.isLate))
+          colorSet.add(Colors.red);
+
+        map[d] = colorSet;
+      }
+      return map;
+    },
+  );
+}

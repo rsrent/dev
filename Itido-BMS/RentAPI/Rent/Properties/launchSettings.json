@@ -1,0 +1,28 @@
+﻿{
+  "ConnectionStrings": {
+    //"DefaultConnection": "Data Source=rent20170925043224dbserver.database.windows.net;Initial Catalog=Rent20170925043224_db;Integrated Security=False;User ID=sqlserver;Password=Kaffekopgulren123;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+    "DefaultConnection": "Server=tcp:rent.database.windows.net,1433;Initial Catalog=MainRentDB;Persist Security Info=False;User ID=rent;Password=lrR!EH61l@$@XD09EjV;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+    "DevelopmentConnection": "Server=tcp:rent.database.windows.net,1433;Initial Catalog=DevelopmentRentDB;Persist Security Info=False;User ID=rent;Password=lrR!EH61l@$@XD09EjV;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  },
+  "Logging": {
+    "IncludeScopes": false,
+    "Debug": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    },
+    "Console": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    }
+  },
+  "ida:AppID": "appid",
+  "ida:AppPassword": "",
+  "ida:RedirectUri": "",
+  "ida:AppScopes": "User.Read Calendars.Read Calendars.ReadWrite",
+  "SymmetricKey": {
+    "Key": "N09GNDd#Vlgpz3CoV0VlNJzEK6YZtzIPB$!n%1$AYzLzIis!OG1qBzrpt5OwgsI*"
+  },
+  "COMPlus_ReadyToRunExcludeList": "System.Security.Cryptography.X509Certificates"
+}

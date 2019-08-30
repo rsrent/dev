@@ -1,0 +1,79 @@
+import 'package:bms_dart/models.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http show Client;
+import 'dart:convert';
+import 'dart:async';
+import 'package:bms_dart/repositories.dart';
+
+import 'client_faker.dart';
+
+class WorkContractFakeApi extends WorkContractSource {
+  ClientFaker _faker = ClientFaker<WorkContract>(
+    generator: (i) => WorkContract(
+      fromDate: DateTime.now(),
+      toDate: DateTime.now(),
+    )..id = i,
+    updateId: (val, i) => val.id = i,
+    valueToUpdate: (other, t) => other.id == t.id,
+  );
+
+  @override
+  void dispose() {}
+
+  @override
+  Future<int> createWorkContract(WorkContract contract, int locationId) =>
+      _faker.add(contract);
+
+  @override
+  Future<bool> updateWorkContract(WorkContract contract) =>
+      _faker.update(contract);
+
+  @override
+  Future<List<WorkContract>> fetchWorkContracts({DateTime from, DateTime to}) =>
+      _faker.getMany();
+
+  @override
+  Future<bool> addContract(int workContractId, int contractId) async {
+    await _faker.delayer();
+    return true;
+  }
+
+  @override
+  Future<List<WorkContract>> fetchWorkContractsOfProjectItem(int locationId) =>
+      _faker.getMany();
+
+  @override
+  Future<List<WorkContract>> fetchWorkContractsOfUser(int userId) =>
+      _faker.getMany();
+
+  @override
+  Future<bool> removeContract(int workContractId) async {
+    await _faker.delayer();
+    return true;
+  }
+
+  @override
+  Future<WorkContract> fetch(int workContractId) => _faker.getOne((wc) => true);
+
+  // @override
+  // Future<List<Absence>> fetchAbsencesOfUser(int userId) => _faker.getMany();
+
+  // @override
+  // Future<int> createAbsence(Absence absence, bool isRequest) async {
+  //   absence.canRespondToApprovalState = true;
+  //   absence.approvalState =
+  //       isRequest ? ApprovalState.Pending : ApprovalState.Approved;
+  //   absence.description = 'Lort hihi';
+  //   await _faker.add(absence);
+  //   return absence.id;
+  // }
+
+  // @override
+  // Future<bool> updateAbsence(Absence absence) => _faker.update(absence);
+
+  // @override
+  // Future<bool> replyToAbsence(int absenceId, bool isApproved) async {
+  //   await _faker.delayer();
+  //   return true;
+  // }
+}

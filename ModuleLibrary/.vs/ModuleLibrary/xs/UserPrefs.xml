@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{A35B2799-40A9-4488-8120-8E04B381EB27}|Default">
+  <MonoDevelop.Ide.ItemProperties.ModuleLibraryAndroid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ModuleLibrary.API/ControllerExecutor.cs">
+    <Files>
+      <File FileName="ModuleLibrary.API/ControllerExecutor.cs" Line="142" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/tobiasbang/Projects/ModuleLibrary/WebAPI/ModuleLibraryWebAPI/Startup.cs" relfile="WebAPI/ModuleLibraryWebAPI/Startup.cs" line="106" column="1" />
+      <Breakpoint file="/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.iOS/Services/SocketConnection.cs" relfile="ModuleLibrary.iOS/Services/SocketConnection.cs" line="34" column="1" />
+      <Breakpoint file="/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.iOS/Services/SocketConnection.cs" relfile="ModuleLibrary.iOS/Services/SocketConnection.cs" line="30" column="1" />
+      <Breakpoint file="/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.iOS/Services/SocketConnection.cs" relfile="ModuleLibrary.iOS/Services/SocketConnection.cs" line="19" column="1" />
+      <Breakpoint file="/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.iOS/Services/SocketConnection.cs" relfile="ModuleLibrary.iOS/Services/SocketConnection.cs" line="24" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.ModuleLibraryWebAPI PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

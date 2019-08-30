@@ -1,0 +1,11 @@
+/Users/tobiasbang/Projects/RentAppProject/Testing/bin/Release/netcoreapp2.0/Testing.deps.json
+/Users/tobiasbang/Projects/RentAppProject/Testing/bin/Release/netcoreapp2.0/Testing.runtimeconfig.json
+/Users/tobiasbang/Projects/RentAppProject/Testing/bin/Release/netcoreapp2.0/Testing.runtimeconfig.dev.json
+/Users/tobiasbang/Projects/RentAppProject/Testing/bin/Release/netcoreapp2.0/Testing.dll
+/Users/tobiasbang/Projects/RentAppProject/Testing/bin/Release/netcoreapp2.0/Testing.pdb
+/Users/tobiasbang/Projects/RentAppProject/Testing/obj/Release/netcoreapp2.0/Testing.csprojResolveAssemblyReference.cache
+/Users/tobiasbang/Projects/RentAppProject/Testing/obj/Release/netcoreapp2.0/Testing.csproj.CoreCompileInputs.cache
+/Users/tobiasbang/Projects/RentAppProject/Testing/obj/Release/netcoreapp2.0/Testing.AssemblyInfoInputs.cache
+/Users/tobiasbang/Projects/RentAppProject/Testing/obj/Release/netcoreapp2.0/Testing.AssemblyInfo.cs
+/Users/tobiasbang/Projects/RentAppProject/Testing/obj/Release/netcoreapp2.0/Testing.dll
+/Users/tobiasbang/Projects/RentAppProject/Testing/obj/Release/netcoreapp2.0/Testing.pdb

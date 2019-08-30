@@ -1,0 +1,1312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="37cf276d-04ce-4a55-9b50-71c69358037d" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/Rent/Migrations/20180808155716_morework_update.Designer.cs" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Rent/Migrations/20180808155716_morework_update.cs" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Rent/Migrations/20180808160514_next_quality_report.Designer.cs" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Rent/Migrations/20180808160514_next_quality_report.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/Controllers/DashboardController.cs" afterPath="$PROJECT_DIR$/Rent/Controllers/DashboardController.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/Controllers/MoreWorkController.cs" afterPath="$PROJECT_DIR$/Rent/Controllers/MoreWorkController.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/Data/RentContext.cs" afterPath="$PROJECT_DIR$/Rent/Data/RentContext.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/Migrations/RentContextModelSnapshot.cs" afterPath="$PROJECT_DIR$/Rent/Migrations/RentContextModelSnapshot.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/Models/Important/Location.cs" afterPath="$PROJECT_DIR$/Rent/Models/Important/Location.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/Models/Important/MoreWork.cs" afterPath="$PROJECT_DIR$/Rent/Models/Important/MoreWork.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/Models/Important/QualityReport.cs" afterPath="$PROJECT_DIR$/Rent/Models/Important/QualityReport.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/Rent.csproj" afterPath="$PROJECT_DIR$/Rent/Rent.csproj" />
+      <change beforePath="$PROJECT_DIR$/Rent/Repositories/CleaningTaskRepository.cs" afterPath="$PROJECT_DIR$/Rent/Repositories/CleaningTaskRepository.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/Repositories/DashboardRepository.cs" afterPath="$PROJECT_DIR$/Rent/Repositories/DashboardRepository.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/Repositories/NotificationRepository.cs" afterPath="$PROJECT_DIR$/Rent/Repositories/NotificationRepository.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/Repositories/QualityReportRepository.cs" afterPath="$PROJECT_DIR$/Rent/Repositories/QualityReportRepository.cs" />
+      <change beforePath="$PROJECT_DIR$/Rent/wwwroot/asset-manifest.json" afterPath="$PROJECT_DIR$/Rent/wwwroot/asset-manifest.json" />
+      <change beforePath="$PROJECT_DIR$/Rent/wwwroot/index.html" afterPath="$PROJECT_DIR$/Rent/wwwroot/index.html" />
+      <change beforePath="$PROJECT_DIR$/Rent/wwwroot/service-worker.js" afterPath="$PROJECT_DIR$/Rent/wwwroot/service-worker.js" />
+      <change beforePath="$PROJECT_DIR$/Rent/wwwroot/static/js/main.5efc041c.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Rent/wwwroot/static/js/main.5efc041c.js.map" afterPath="" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="DashboardRepository.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Rent/Repositories/DashboardRepository.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="358" column="22" lean-forward="false" selection-start-line="358" selection-start-column="22" selection-end-line="358" selection-end-column="22" />
+              <folding>
+                <marker date="1533834822543" expanded="true" signature="6:344" ph="..." />
+                <marker date="1533834822543" expanded="true" signature="373:21694" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="412:21692" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="642:760" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="808:998" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="903:988" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="1086:1211" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="1281:3749" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="1562:3737" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="3807:6351" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="4060:6339" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="6457:8481" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="6789:8469" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="8594:9922" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="9475:9910" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="10025:10816" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="10409:10804" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="10920:11262" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="11149:11250" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="11280:11532" ph="/// Return data for the relevant locations ... " />
+                <marker date="1533834822543" expanded="true" signature="11603:11823" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="11841:12072" ph="/// Returns locations ... " />
+                <marker date="1533834822543" expanded="true" signature="12161:12391" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="12409:12655" ph="/// Returns locations without a plan ... " />
+                <marker date="1533834822543" expanded="true" signature="12755:13057" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="13075:13320" ph="/// Returns locations without staff ... " />
+                <marker date="1533834822543" expanded="true" signature="13421:13746" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="13764:13978" ph="/// Retruns locations without a service leader ... " />
+                <marker date="1533834822543" expanded="true" signature="14075:14288" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="14306:14579" ph="/// Returns tasks ... " />
+                <marker date="1533834822543" expanded="true" signature="14680:15024" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="15042:15314" ph="/// Returns logs ... " />
+                <marker date="1533834822543" expanded="true" signature="15414:15763" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="15773:16048" ph="/// Return morework ... " />
+                <marker date="1533834822543" expanded="true" signature="16152:16499" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="16544:17091" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="17162:18641" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="17427:18630" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="18701:19619" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="19498:19608" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="19689:20623" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="20502:20612" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="20702:21686" ph="{...}" />
+                <marker date="1533834822543" expanded="true" signature="20926:21675" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DashboardController.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Rent/Controllers/DashboardController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="771">
+              <caret line="65" column="39" lean-forward="false" selection-start-line="65" selection-start-column="39" selection-end-line="65" selection-end-column="39" />
+              <folding>
+                <marker date="1533827912090" expanded="false" signature="6:184" ph="..." />
+                <marker date="1533827912090" expanded="true" signature="212:6918" ph="{...}" />
+                <marker date="1533827912090" expanded="true" signature="357:6916" ph="{...}" />
+                <marker date="1533827912090" expanded="true" signature="507:583" ph="{...}" />
+                <marker date="1533827912090" expanded="true" signature="3239:6910" ph="/* [HttpGet(&quot;Data/Customer/{id}&quot;)] ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Startup.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Rent/Startup.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="103" column="16" lean-forward="false" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
+              <folding>
+                <marker date="1533812791358" expanded="false" signature="6:1102" ph="..." />
+                <marker date="1533812791358" expanded="true" signature="1118:9645" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="1145:8743" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="1270:1364" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="1643:7610" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="5219:5963" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="5355:5944" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="6015:6158" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="6316:6417" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="6490:6598" ph="/* services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1); ... */" />
+                <marker date="1533812791358" expanded="true" signature="6683:6959" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="6770:6942" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="7012:7166" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="7479:7598" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="7832:8737" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="7917:8035" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="8052:8111" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="8256:8526" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="8304:8512" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="8779:9643" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="9044:9165" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="9261:9637" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="9410:9597" ph="{...}" />
+                <marker date="1533812791358" expanded="true" signature="9501:9583" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ID}</find>
+      <find>IsValidLogin</find>
+      <find>ID</find>
+      <find>User.DTO.Basic</find>
+      <find>Models.User.DTO.Basic</find>
+      <find>.Select(u =&gt; u.ToList())</find>
+      <find>u.ToList()</find>
+      <find>.DB</find>
+      <find>ct.</find>
+      <find>c.</find>
+      <find>lu.</find>
+      <find>u.</find>
+      <find>GetForCustomerUser</find>
+      <find>PropCondition condition</find>
+      <find>SelectTask</find>
+      <find>c.Locations</find>
+      <find>g.</find>
+      <find>int userId = 0</find>
+      <find>int? locationId = null</find>
+      <find>!= 0 &amp;&amp;</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>Id</replace>
+      <replace>new User.DTO</replace>
+      <replace>User.ToList(u)</replace>
+      <replace>g</replace>
+      <replace>u.LocationUsers.</replace>
+      <replace>int customerId = 0, int userId = 0</replace>
+      <replace>int locationId</replace>
+      <replace>== 0 ||</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/QualityReportContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/LocationUserContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/LocationContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/UserContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/Context.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/CleaningTaskContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/UserRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/RatingRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/PermissionRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/CleaningTaskRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/NotificationRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/LoginRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/QualityReportRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/DocumentRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/TokenRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/LocationRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/ChatRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Chat/ChatMessageHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Data/RentContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Data/DbInitializer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/DTOs/ConversationDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/DTOs/QualityReportWithFloorsDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/CustomerRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/DTOs/UserTokenDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/DTOs/UserLoginCreateDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/DTOs/UserPermissionsDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/UserPermissionContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/TemplatePermissionContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/PermissionContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/RoleContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/Exceptions/NothingUpdatedException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/DTOs/CleaningPlanAreaDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/LoginContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/DTOs/PermissionTemplateDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/IPermissionRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Event/Work.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/Exceptions/UsernameTakenException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Event/Event.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/Exceptions/UsernameTooShortException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/DTOs/LocationDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Event/EventParticipant.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/CustomerContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/Exceptions/NotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Merger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180801132851_latestQRP_added_to_location.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/ProtectedObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/IDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180723165719_locationHour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/QualityReportItemContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/ContextPoint/ContextDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/PropCondition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Repositories/DashboardRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/DashboardController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Filter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180730213434_cleaningTask_lastCleaned.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180809110711_locationuser_locationindex.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180809093845_location_first_quality_report_time.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180614134030_smul_changi.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180410075935_morework.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180319151225_AddedRemovableBoolToFolders.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180410153428_employeeNumberAndTitle.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180411082714_AddedPrivateDocumentFolderToCustomer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180302144424_AddedProjectNumberToLocation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180318163930_LiveUpdate1_2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/General/Floor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/User.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/LocationHour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/LocationLog.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180410102825_locationUserUpdated.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/Customer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/MoreWork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/LocationEconomy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/QualityReportItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/CleaningTaskCompleted.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/LocationUser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180320165903_renameOfConversationBoolOpen.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/UserPermissions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/CleaningTask.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/Location.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180319182407_AddedIntervalOfServiceLeaderMeetingToLocation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/QualityReport.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180302103129_Initial.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Models/Important/Login.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/SymmetricKey.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/LocationController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/LoginsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/BreadCrumbsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/PlanFloorAreaController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/RatingController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/MoreWorkController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/CleaningTaskController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180714141024_AddedLocationCleaingPlanDocument.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/QualityReportsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/UpdatePasswordsSchedule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/HourController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/LogController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/DocumentController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/EconomyController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/RoleController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180808155716_morework_update.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/UsersController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/ControllerExecutor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Migrations/20180808160514_next_quality_report.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Test/Program.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/ConversationController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/CustomersController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/PermissionController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Rent/Controllers/CompletedTaskController.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Rent/Models/UserPermissions.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/RoleController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/RatingController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/QualityReportsController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/MoreWorkController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/LocationController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/HourController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/EconomyController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/DocumentController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/ConversationController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/CleaningTaskController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Location.cs" />
+        <option value="$PROJECT_DIR$/Rent/Repositories/PermissionRepository.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Important/Login.cs" />
+        <option value="$PROJECT_DIR$/Rent/ContextPoint/Context.cs" />
+        <option value="$PROJECT_DIR$/Rent/Repositories/Dashboard.cs" />
+        <option value="$PROJECT_DIR$/Rent/Data/RentContext.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/Dashboard.cs" />
+        <option value="$PROJECT_DIR$/Rent/Migrations/20180730213434_cleaningTask_lastCleaned.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Important/LocationUser.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Important/QualityReport.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Important/QualityReportItem.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/IDto.cs" />
+        <option value="$PROJECT_DIR$/Rent/Repositories/PropCondition.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Filter.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/CompletedTaskController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Repositories/CustomerRepository.cs" />
+        <option value="$PROJECT_DIR$/Rent/Repositories/LocationRepository.cs" />
+        <option value="$PROJECT_DIR$/Rent/Repositories/LoginRepository.cs" />
+        <option value="$PROJECT_DIR$/Rent/Repositories/UserRepository.cs" />
+        <option value="$PROJECT_DIR$/Rent/Repositories/QualityReportRepository.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Important/CleaningTaskCompleted.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Important/CleaningTask.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Important/User.cs" />
+        <option value="$PROJECT_DIR$/Rent/ContextPoint/ContextDto.cs" />
+        <option value="$PROJECT_DIR$/Rent/ContextPoint/CleaningTaskContext.cs" />
+        <option value="$PROJECT_DIR$/Rent/ContextPoint/QualityReportContext.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Important/Customer.cs" />
+        <option value="$PROJECT_DIR$/Rent/ContextPoint/UserContext.cs" />
+        <option value="$PROJECT_DIR$/Rent/ContextPoint/LocationContext.cs" />
+        <option value="$PROJECT_DIR$/Rent/Migrations/20180723165719_locationHour.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/CustomersController.cs" />
+        <option value="$PROJECT_DIR$/Rent/ContextPoint/CustomerContext.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Merger.cs" />
+        <option value="$PROJECT_DIR$/Rent/Repositories/CleaningTaskRepository.cs" />
+        <option value="$PROJECT_DIR$/Rent/Models/Important/Location.cs" />
+        <option value="$PROJECT_DIR$/Rent/Migrations/20180809093845_location_first_quality_report_time.cs" />
+        <option value="$PROJECT_DIR$/Rent/Startup.cs" />
+        <option value="$PROJECT_DIR$/Rent/Migrations/20180809110711_locationuser_locationindex.cs" />
+        <option value="$PROJECT_DIR$/Rent/Controllers/DashboardController.cs" />
+        <option value="$PROJECT_DIR$/Rent/Repositories/DashboardRepository.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
+    <option name="width" value="983" />
+    <option name="height" value="952" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="ContextPoint" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Controllers" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="DTOs" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Models" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Models" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Enums" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Models" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Event" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Models" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="General" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Models" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Important" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Models" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Message" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Properties" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Rent (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Rent" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Repositories" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Rent/bin/Debug/netcoreapp2.1/Rent.dll" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Rent" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <envs>
+        <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
+        <env name="ASPNETCORE_URLS" value="http://localhost:5000" />
+      </envs>
+      <option name="USE_MONO" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Rent/Rent.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.1" />
+      <browser url="http://localhost:5000" />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="37cf276d-04ce-4a55-9b50-71c69358037d" name="Default" comment="" />
+      <created>1531667617996</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1531667617996</updated>
+      <workItem from="1531667621606" duration="164000" />
+      <workItem from="1531667806144" duration="2009000" />
+      <workItem from="1531670639029" duration="32545000" />
+      <workItem from="1531758868291" duration="312000" />
+      <workItem from="1531759530296" duration="3420000" />
+      <workItem from="1531808228931" duration="14235000" />
+      <workItem from="1531845534952" duration="745000" />
+      <workItem from="1531848218500" duration="2174000" />
+      <workItem from="1531999260727" duration="3839000" />
+      <workItem from="1532005340221" duration="1403000" />
+      <workItem from="1532446993499" duration="13401000" />
+      <workItem from="1532959366480" duration="16635000" />
+      <workItem from="1533027531624" duration="14254000" />
+      <workItem from="1533114682306" duration="973000" />
+      <workItem from="1533183410417" duration="2057000" />
+      <workItem from="1533277166354" duration="950000" />
+      <workItem from="1533771416544" duration="23381000" />
+    </task>
+    <task id="LOCAL-00001" summary="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;Rent/DTOs/LocationDTO.cs&#10;#&#9;Rent/Models/Location.cs&#10;#&#9;Rent/Rent.csproj&#10;#&#9;Rent/Repositories/LocationRepository.cs">
+      <created>1531668393437</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1531668393437</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;Rent/DTOs/LocationDTO.cs&#10;#&#9;Rent/Models/Location.cs&#10;#&#9;Rent/Rent.csproj&#10;#&#9;Rent/Repositories/LocationRepository.cs">
+      <created>1531668472051</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1531668472051</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;Rent/DTOs/LocationDTO.cs&#10;#&#9;Rent/Models/Location.cs&#10;#&#9;Rent/Rent.csproj&#10;#&#9;Rent/Repositories/LocationRepository.cs">
+      <created>1531669348502</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1531669348502</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;Rent/DTOs/LocationDTO.cs&#10;#&#9;Rent/Models/Location.cs&#10;#&#9;Rent/Rent.csproj&#10;#&#9;Rent/Repositories/LocationRepository.cs">
+      <created>1531669541682</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1531669541682</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;Rent/DTOs/LocationDTO.cs&#10;#&#9;Rent/Models/Location.cs&#10;#&#9;Rent/Rent.csproj&#10;#&#9;Rent/Repositories/LocationRepository.cs">
+      <created>1531751427089</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1531751427089</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="132497000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19751553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28541666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21561338" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17843866" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;Rent/DTOs/LocationDTO.cs&#10;#&#9;Rent/Models/Location.cs&#10;#&#9;Rent/Rent.csproj&#10;#&#9;Rent/Repositories/LocationRepository.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;Rent/DTOs/LocationDTO.cs&#10;#&#9;Rent/Models/Location.cs&#10;#&#9;Rent/Rent.csproj&#10;#&#9;Rent/Repositories/LocationRepository.cs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Rent/ContextPoint/CleaningTaskContext.cs</url>
+          <line>32</line>
+          <properties documentPath="$PROJECT_DIR$/Rent/ContextPoint/CleaningTaskContext.cs" initialLine="32">
+            <startOffsets>
+              <startOffset value="1195" />
+            </startOffsets>
+            <endOffsets>
+              <endOffset value="1246" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/UserPermissionContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/QualityReportItemContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/QualityReportContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Repositories/QualityReportRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="716">
+          <caret line="128" column="12" lean-forward="false" selection-start-line="128" selection-start-column="12" selection-end-line="130" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Repositories/RatingRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Controllers/QualityReportsController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="28" column="58" lean-forward="false" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/TemplatePermissionContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/RoleContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/Context.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="138" column="49" lean-forward="false" selection-start-line="138" selection-start-column="49" selection-end-line="138" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/CleaningTaskContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="33" column="40" lean-forward="false" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+          <folding>
+            <marker date="1533037629862" expanded="false" signature="6:225" ph="..." />
+            <marker date="1533037629862" expanded="true" signature="254:1978" ph="{...}" />
+            <marker date="1533037629862" expanded="true" signature="320:1976" ph="{...}" />
+            <marker date="1533037629862" expanded="true" signature="736:1410" ph="{...}" />
+            <marker date="1533037629862" expanded="true" signature="912:1301" ph="{...}" />
+            <marker date="1533037629862" expanded="true" signature="1534:1970" ph="{...}" />
+            <marker date="1533037629862" expanded="true" signature="1790:1960" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Models/IDto.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/ContextDto.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="65" column="8" lean-forward="false" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180730213434_cleaningTask_lastCleaned.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Models/Important/Customer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="48" column="29" lean-forward="false" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Repositories/CustomerRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="94" column="40" lean-forward="true" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/CustomerContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="47" column="9" lean-forward="false" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/UserContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="48" column="1" lean-forward="false" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/LoginContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Models/Merger.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Models/Important/User.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="31" column="27" lean-forward="false" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Repositories/LoginRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="72" column="33" lean-forward="false" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Controllers/CustomersController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="63" column="1" lean-forward="false" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/ContextPoint/LocationContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Controllers/CleaningTaskController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="131" column="77" lean-forward="false" selection-start-line="131" selection-start-column="77" selection-end-line="131" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Repositories/CleaningTaskRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2355">
+          <caret line="165" column="13" lean-forward="false" selection-start-line="165" selection-start-column="13" selection-end-line="165" selection-end-column="13" />
+          <folding>
+            <marker date="1533277441175" expanded="false" signature="6:211" ph="..." />
+            <marker date="1533277441175" expanded="true" signature="240:8419" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="282:8417" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="828:1104" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="1171:1314" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="1324:3611" ph="/* public List&lt;CleaningPlanDTO&gt; PlansForLocation(int locationID, int userID) { ... */" />
+            <marker date="1533277441175" expanded="true" signature="3695:4134" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="3839:4122" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="4218:4362" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="4453:4608" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="4670:4832" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="4906:5174" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="5247:5514" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="5600:5892" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="5910:6995" ph="/* public List&lt;CleaningPlanAreaDTO&gt; TaskFromFloor(int requester, int locationID, int planID, int floorID) ... */" />
+            <marker date="1533277441175" expanded="true" signature="7094:8057" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="7205:7603" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="7661:8008" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="8114:8411" ph="{...}" />
+            <marker date="1533277441175" expanded="true" signature="8204:8253" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Controllers/PlanFloorAreaController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="86" column="41" lean-forward="false" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
+          <folding>
+            <marker date="1521729213603" expanded="false" signature="6:201" ph="..." />
+            <marker date="1521729213603" expanded="true" signature="343:3925" ph="{...}" />
+            <marker date="1521729213603" expanded="true" signature="467:3923" ph="{...}" />
+            <marker date="1521729213603" expanded="true" signature="581:633" ph="{...}" />
+            <marker date="1521729213603" expanded="true" signature="743:925" ph="{...}" />
+            <marker date="1521729213603" expanded="true" signature="1019:1212" ph="{...}" />
+            <marker date="1521729213603" expanded="true" signature="1310:1490" ph="{...}" />
+            <marker date="1521729213603" expanded="true" signature="1555:1661" ph="{...}" />
+            <marker date="1521729213603" expanded="true" signature="1728:2276" ph="{...}" />
+            <marker date="1521729213603" expanded="true" signature="1801:2235" ph="/* var floors = ... */" />
+            <marker date="1521729213603" expanded="true" signature="2388:3107" ph="{...}" />
+            <marker date="1521729213603" expanded="true" signature="2526:3066" ph="/* var areas = ... */" />
+            <marker date="1521729213603" expanded="true" signature="3213:3349" ph="{...}" />
+            <marker date="1521729213603" expanded="true" signature="3500:3917" ph="{...}" />
+            <marker date="1521729213603" expanded="true" signature="3623:3697" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Repositories/LocationRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-897">
+          <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
+          <folding>
+            <marker date="1533033552862" expanded="false" signature="6:211" ph="..." />
+            <marker date="1533033552862" expanded="true" signature="278:9171" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="852:1147" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="1237:3338" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="1303:2335" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="2405:2580" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="2954:3040" ph="/* _context.Location.Add(newLocation); ... */" />
+            <marker date="1533033552862" expanded="true" signature="3426:3743" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="3846:3974" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="4082:4228" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="4362:4648" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="4493:4636" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="4726:4865" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="4924:5101" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="5185:5756" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="5838:6113" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="6199:6511" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="6573:6681" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="6747:6875" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="6940:7069" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="7131:7599" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="7219:7587" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="7691:7872" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="7882:9165" ph="IDisposable Support" />
+            <marker date="1533033552862" expanded="true" signature="8038:8488" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="8080:8478" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="8125:8271" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="8289:8425" ph="/* TODO: free unmanaged resources (unmanaged objects) and override a finalizer below. ... */" />
+            <marker date="1533033552862" expanded="true" signature="8498:8848" ph="/* TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources. ... */" />
+            <marker date="1533033552862" expanded="true" signature="8878:9146" ph="{...}" />
+            <marker date="1533033552862" expanded="true" signature="9019:9136" ph="/* TODO: uncomment the following line if the finalizer is overridden above. ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180801132851_latestQRP_added_to_location.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="221" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="221" />
+          <folding>
+            <marker date="1533130347153" expanded="true" signature="74:1668" ph="{...}" />
+            <marker date="1533130347153" expanded="true" signature="141:1666" ph="{...}" />
+            <marker date="1533130347153" expanded="true" signature="217:1152" ph="{...}" />
+            <marker date="1533130347153" expanded="true" signature="1225:1660" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Models/Important/CleaningTask.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="17" column="37" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="37" />
+          <folding>
+            <marker date="1533035694934" expanded="false" signature="6:143" ph="..." />
+            <marker date="1533035694934" expanded="true" signature="166:3455" ph="{...}" />
+            <marker date="1533035694934" expanded="true" signature="205:3340" ph="{...}" />
+            <marker date="1533035694934" expanded="true" signature="1239:2223" ph="{...}" />
+            <marker date="1533035694934" expanded="true" signature="1490:1722" ph="{...}" />
+            <marker date="1533035694934" expanded="true" signature="1921:2202" ph="{...}" />
+            <marker date="1533035694934" expanded="true" signature="2271:2717" ph="{...}" />
+            <marker date="1533035694934" expanded="true" signature="2317:2706" ph="{...}" />
+            <marker date="1533035694934" expanded="true" signature="2811:3334" ph="{...}" />
+            <marker date="1533035694934" expanded="true" signature="2933:3243" ph="{...}" />
+            <marker date="1533035694934" expanded="true" signature="3260:3324" ph="{...}" />
+            <marker date="1533035694934" expanded="true" signature="3381:3402" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Models/Important/Location.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="53" column="41" lean-forward="false" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
+          <folding>
+            <marker date="1533804375590" expanded="false" signature="6:143" ph="..." />
+            <marker date="1533804375590" expanded="true" signature="166:3880" ph="{...}" />
+            <marker date="1533804375590" expanded="true" signature="201:3878" ph="{...}" />
+            <marker date="1533804375590" expanded="true" signature="2711:3503" ph="{...}" />
+            <marker date="1533804375590" expanded="true" signature="2770:3482" ph="{...}" />
+            <marker date="1533804375590" expanded="true" signature="3543:3872" ph="{...}" />
+            <marker date="1533804375590" expanded="true" signature="3589:3861" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Models/Important/QualityReport.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding>
+            <marker date="1533744270253" expanded="false" signature="6:72" ph="..." />
+            <marker date="1533744270253" expanded="true" signature="95:961" ph="{...}" />
+            <marker date="1533744270253" expanded="true" signature="135:959" ph="{...}" />
+            <marker date="1533744270253" expanded="true" signature="731:953" ph="{...}" />
+            <marker date="1533744270253" expanded="true" signature="777:942" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180809093845_location_first_quality_report_time.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+          <folding>
+            <marker date="1533807666424" expanded="false" signature="6:61" ph="..." />
+            <marker date="1533807666424" expanded="true" signature="88:884" ph="{...}" />
+            <marker date="1533807666424" expanded="true" signature="162:882" ph="{...}" />
+            <marker date="1533807666424" expanded="true" signature="238:658" ph="{...}" />
+            <marker date="1533807666424" expanded="true" signature="731:876" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180808160514_next_quality_report.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1533744314236" expanded="false" signature="6:61" ph="..." />
+            <marker date="1533744314236" expanded="true" signature="88:621" ph="{...}" />
+            <marker date="1533744314236" expanded="true" signature="147:619" ph="{...}" />
+            <marker date="1533744314236" expanded="true" signature="223:402" ph="{...}" />
+            <marker date="1533744314236" expanded="true" signature="475:613" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180808155716_morework_update.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-87">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1533743836292" expanded="true" signature="74:2815" ph="{...}" />
+            <marker date="1533743836292" expanded="true" signature="129:2813" ph="{...}" />
+            <marker date="1533743836292" expanded="true" signature="205:1802" ph="{...}" />
+            <marker date="1533743836292" expanded="true" signature="1875:2807" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180320165903_renameOfConversationBoolOpen.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1521622663560" expanded="false" signature="6:95" ph="..." />
+            <marker date="1521622663560" expanded="true" signature="122:697" ph="{...}" />
+            <marker date="1521622663560" expanded="true" signature="190:695" ph="{...}" />
+            <marker date="1521622663560" expanded="true" signature="266:447" ph="{...}" />
+            <marker date="1521622663560" expanded="true" signature="520:689" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180319182407_AddedIntervalOfServiceLeaderMeetingToLocation.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1521647462931" expanded="false" signature="6:95" ph="..." />
+            <marker date="1521647462931" expanded="true" signature="122:740" ph="{...}" />
+            <marker date="1521647462931" expanded="true" signature="207:738" ph="{...}" />
+            <marker date="1521647462931" expanded="true" signature="283:506" ph="{...}" />
+            <marker date="1521647462931" expanded="true" signature="579:732" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180319151225_AddedRemovableBoolToFolders.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1521481390073" expanded="false" signature="6:95" ph="..." />
+            <marker date="1521481390073" expanded="true" signature="122:697" ph="{...}" />
+            <marker date="1521481390073" expanded="true" signature="189:695" ph="{...}" />
+            <marker date="1521481390073" expanded="true" signature="265:478" ph="{...}" />
+            <marker date="1521481390073" expanded="true" signature="551:689" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180318163930_LiveUpdate1_2.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1521469313066" expanded="true" signature="6:95" ph="..." />
+            <marker date="1521469313066" expanded="true" signature="122:1709" ph="{...}" />
+            <marker date="1521469313066" expanded="true" signature="175:1707" ph="{...}" />
+            <marker date="1521469313066" expanded="true" signature="251:1607" ph="{...}" />
+            <marker date="1521469313066" expanded="true" signature="1680:1701" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180302144424_AddedProjectNumberToLocation.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1520256168844" expanded="false" signature="6:95" ph="..." />
+            <marker date="1520256168844" expanded="true" signature="122:655" ph="{...}" />
+            <marker date="1520256168844" expanded="true" signature="190:653" ph="{...}" />
+            <marker date="1520256168844" expanded="true" signature="266:438" ph="{...}" />
+            <marker date="1520256168844" expanded="true" signature="511:647" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180302103129_Initial.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180410075935_morework.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1523347175216" expanded="true" signature="6:141" ph="..." />
+            <marker date="1523347175216" expanded="true" signature="168:2563" ph="{...}" />
+            <marker date="1523347175216" expanded="true" signature="216:2561" ph="{...}" />
+            <marker date="1523347175216" expanded="true" signature="292:2203" ph="{...}" />
+            <marker date="1523347175216" expanded="true" signature="580:1054" ph="{...}" />
+            <marker date="1523347175216" expanded="true" signature="1093:1196" ph="{...}" />
+            <marker date="1523347175216" expanded="true" signature="1330:2052" ph="{...}" />
+            <marker date="1523347175216" expanded="true" signature="2091:2191" ph="{...}" />
+            <marker date="1523347175216" expanded="true" signature="2276:2555" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180614134030_smul_changi.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1528983630206" expanded="true" signature="74:933" ph="{...}" />
+            <marker date="1528983630206" expanded="true" signature="125:931" ph="{...}" />
+            <marker date="1528983630206" expanded="true" signature="201:525" ph="{...}" />
+            <marker date="1528983630206" expanded="true" signature="598:925" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180714141024_AddedLocationCleaingPlanDocument.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180723165719_locationHour.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="12" lean-forward="false" selection-start-line="38" selection-start-column="12" selection-end-line="40" selection-end-column="35" />
+          <folding>
+            <marker date="1533042289883" expanded="true" signature="74:1712" ph="{...}" />
+            <marker date="1533042289883" expanded="true" signature="126:1710" ph="{...}" />
+            <marker date="1533042289883" expanded="true" signature="202:1027" ph="{...}" />
+            <marker date="1533042289883" expanded="true" signature="1100:1704" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180809110711_locationuser_locationindex.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <marker date="1533812951299" expanded="true" signature="74:641" ph="{...}" />
+            <marker date="1533812951299" expanded="true" signature="140:639" ph="{...}" />
+            <marker date="1533812951299" expanded="true" signature="216:408" ph="{...}" />
+            <marker date="1533812951299" expanded="true" signature="481:633" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180411082714_AddedPrivateDocumentFolderToCustomer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="18" selection-end-column="51" />
+          <folding>
+            <marker date="1523440355986" expanded="false" signature="6:95" ph="..." />
+            <marker date="1523440355986" expanded="true" signature="122:1521" ph="{...}" />
+            <marker date="1523440355986" expanded="true" signature="198:1519" ph="{...}" />
+            <marker date="1523440355986" expanded="true" signature="274:998" ph="{...}" />
+            <marker date="1523440355986" expanded="true" signature="1071:1513" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180410153428_employeeNumberAndTitle.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1523374468690" expanded="false" signature="6:95" ph="..." />
+            <marker date="1523374468690" expanded="true" signature="122:643" ph="{...}" />
+            <marker date="1523374468690" expanded="true" signature="184:641" ph="{...}" />
+            <marker date="1523374468690" expanded="true" signature="260:429" ph="{...}" />
+            <marker date="1523374468690" expanded="true" signature="502:635" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Migrations/20180410102825_locationUserUpdated.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1523356105745" expanded="true" signature="6:95" ph="..." />
+            <marker date="1523356105745" expanded="true" signature="122:1522" ph="{...}" />
+            <marker date="1523356105745" expanded="true" signature="181:1520" ph="{...}" />
+            <marker date="1523356105745" expanded="true" signature="257:937" ph="{...}" />
+            <marker date="1523356105745" expanded="true" signature="1010:1514" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Repositories/DashboardRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="358" column="22" lean-forward="false" selection-start-line="358" selection-start-column="22" selection-end-line="358" selection-end-column="22" />
+          <folding>
+            <marker date="1533834822543" expanded="true" signature="6:344" ph="..." />
+            <marker date="1533834822543" expanded="true" signature="373:21694" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="412:21692" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="642:760" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="808:998" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="903:988" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="1086:1211" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="1281:3749" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="1562:3737" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="3807:6351" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="4060:6339" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="6457:8481" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="6789:8469" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="8594:9922" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="9475:9910" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="10025:10816" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="10409:10804" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="10920:11262" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="11149:11250" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="11280:11532" ph="/// Return data for the relevant locations ... " />
+            <marker date="1533834822543" expanded="true" signature="11603:11823" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="11841:12072" ph="/// Returns locations ... " />
+            <marker date="1533834822543" expanded="true" signature="12161:12391" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="12409:12655" ph="/// Returns locations without a plan ... " />
+            <marker date="1533834822543" expanded="true" signature="12755:13057" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="13075:13320" ph="/// Returns locations without staff ... " />
+            <marker date="1533834822543" expanded="true" signature="13421:13746" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="13764:13978" ph="/// Retruns locations without a service leader ... " />
+            <marker date="1533834822543" expanded="true" signature="14075:14288" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="14306:14579" ph="/// Returns tasks ... " />
+            <marker date="1533834822543" expanded="true" signature="14680:15024" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="15042:15314" ph="/// Returns logs ... " />
+            <marker date="1533834822543" expanded="true" signature="15414:15763" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="15773:16048" ph="/// Return morework ... " />
+            <marker date="1533834822543" expanded="true" signature="16152:16499" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="16544:17091" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="17162:18641" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="17427:18630" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="18701:19619" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="19498:19608" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="19689:20623" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="20502:20612" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="20702:21686" ph="{...}" />
+            <marker date="1533834822543" expanded="true" signature="20926:21675" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Controllers/DashboardController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="771">
+          <caret line="65" column="39" lean-forward="false" selection-start-line="65" selection-start-column="39" selection-end-line="65" selection-end-column="39" />
+          <folding>
+            <marker date="1533827912090" expanded="false" signature="6:184" ph="..." />
+            <marker date="1533827912090" expanded="true" signature="212:6918" ph="{...}" />
+            <marker date="1533827912090" expanded="true" signature="357:6916" ph="{...}" />
+            <marker date="1533827912090" expanded="true" signature="507:583" ph="{...}" />
+            <marker date="1533827912090" expanded="true" signature="3239:6910" ph="/* [HttpGet(&quot;Data/Customer/{id}&quot;)] ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rent/Startup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="103" column="16" lean-forward="false" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
+          <folding>
+            <marker date="1533812791358" expanded="false" signature="6:1102" ph="..." />
+            <marker date="1533812791358" expanded="true" signature="1118:9645" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="1145:8743" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="1270:1364" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="1643:7610" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="5219:5963" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="5355:5944" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="6015:6158" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="6316:6417" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="6490:6598" ph="/* services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1); ... */" />
+            <marker date="1533812791358" expanded="true" signature="6683:6959" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="6770:6942" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="7012:7166" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="7479:7598" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="7832:8737" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="7917:8035" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="8052:8111" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="8256:8526" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="8304:8512" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="8779:9643" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="9044:9165" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="9261:9637" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="9410:9597" ph="{...}" />
+            <marker date="1533812791358" expanded="true" signature="9501:9583" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

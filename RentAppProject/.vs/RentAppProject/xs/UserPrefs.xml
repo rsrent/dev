@@ -1,0 +1,41 @@
+﻿<Properties StartupConfiguration="{464BA2D9-12FA-419D-B4A1-E93B57E479AC}|Default">
+  <MonoDevelop.Ide.ItemProperties.RentApp.iOS automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.ItemProperties.RentApp.Android PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="RentAppProject" expanded="True">
+            <Node name="ModuleLibrary.Shared" expanded="True">
+              <Node name="Storage" expanded="True" />
+            </Node>
+            <Node name="Rent.Shared" expanded="True">
+              <Node name="Models" expanded="True">
+                <Node name="Document" expanded="True" />
+              </Node>
+              <Node name="Repositories" expanded="True">
+                <Node name="DocumentRepository.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="RentApp.iOS" expanded="True">
+              <Node name="Documents" expanded="True" />
+              <Node name="Repository" expanded="True" />
+              <Node name="ViewControllers" expanded="True" />
+            </Node>
+            <Node name="RentApp.Shared" expanded="True">
+              <Node name="Repositories" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibraryShared/Services/Extensions.cs" line="52" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

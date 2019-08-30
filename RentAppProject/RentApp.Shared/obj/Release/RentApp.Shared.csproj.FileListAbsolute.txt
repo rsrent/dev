@@ -1,0 +1,2 @@
+/Users/tobiasbang/Projects/RentAppProject/RentApp.Shared/obj/Release/RentApp.Shared.csprojResolveAssemblyReference.cache
+/Users/tobiasbang/Projects/RentAppProject/RentApp.Shared/obj/Release/RentApp.Shared.csproj.CoreCompileInputs.cache

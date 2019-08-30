@@ -1,0 +1,29 @@
+
+.page-container {
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1000px;
+}
+
+form div {
+  padding-top: 10px;
+}
+
+.submit-button {
+  width: 100%;
+}
+
+.submit-div {
+  margin: auto;
+  width: 200px;
+}
+
+.back-button {
+  border-color: white;
+  background-color: white;
+}
+
+.back-icon {
+  height: 40px;
+}

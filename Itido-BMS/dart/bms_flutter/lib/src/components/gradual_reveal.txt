@@ -1,0 +1,171 @@
+import 'package:flutter/material.dart';
+
+class GradualRevealer extends StatelessWidget {
+  final RevealType revealType;
+  final RevealOptions reveal;
+  //final Widget background;
+  final Widget child;
+
+  GradualRevealer({
+    @required this.revealType,
+    @required this.reveal,
+    @required this.child,
+    //this.background,
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildScrollAnimator();
+    /*if (background == null) {
+    } else {
+      return Stack(
+        children: <Widget>[
+          background,
+          _buildScrollAnimator(),
+        ],
+      );
+    } */
+  }
+
+  Widget _buildScrollAnimator() {
+    return ScrollAnimator(
+      builder: (context, revealValue) {
+        return _buildChild(context, revealValue);
+      },
+      reveal: reveal,
+    );
+  }
+
+  Widget _buildChild(BuildContext context, double revealValue) {
+    switch (revealType) {
+      case RevealType.Instant:
+        return _buildFadeIn(revealValue > 0 ? 1 : 0);
+      case RevealType.FadeIn:
+        return _buildFadeIn(revealValue);
+      case RevealType.SlideInFromRight:
+        return _buildSlideInFromRight(context, revealValue);
+      case RevealType.SlideInFromLeft:
+        return _buildSlideInFromLeft(context, revealValue);
+      case RevealType.VerticalClipInTop:
+        return _buildVerticalClipInTop(revealValue);
+      case RevealType.VerticalClipInCenter:
+        return _buildVerticalClipInCenter(revealValue);
+      case RevealType.VerticalClipInBottom:
+        return _buildVerticalClipInBottom(revealValue);
+      case RevealType.HorizontalClipInLeft:
+        return _buildHorizontalClipInLeft(revealValue);
+      case RevealType.HorizontalClipInCenter:
+        return _buildHorizontalClipInCenter(revealValue);
+      case RevealType.HorizontalClipInRight:
+        return _buildHorizontalClipInRight(revealValue);
+    }
+    return child;
+  }
+
+  Widget _buildFadeIn(double revealValue) {
+    return Opacity(
+      opacity: revealValue,
+      child: child,
+    );
+  }
+
+  Widget _buildSlideInFromRight(BuildContext context, double revealValue) {
+    var width = MediaQuery.of(context).size.width;
+    return Transform.translate(
+      offset: Offset((1 - revealValue) * width, 0),
+      child: child,
+    );
+  }
+
+  Widget _buildSlideInFromLeft(BuildContext context, double revealValue) {
+    var width = MediaQuery.of(context).size.width;
+    return Transform.translate(
+      offset: Offset(-width + (revealValue * width), 0),
+      child: child,
+    );
+  }
+
+  Widget _buildVerticalClipInTop(double revealValue) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: ClipRect(
+        child: Align(
+          heightFactor: revealValue,
+          child: child,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildVerticalClipInCenter(double revealValue) {
+    return Align(
+      child: ClipRect(
+        child: Align(
+          heightFactor: revealValue,
+          child: child,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildVerticalClipInBottom(double revealValue) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: ClipRect(
+        child: Align(
+          heightFactor: revealValue,
+          child: child,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHorizontalClipInLeft(double revealValue) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: ClipRect(
+        child: Align(
+          widthFactor: revealValue,
+          child: child,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHorizontalClipInCenter(double revealValue) {
+    return Align(
+      child: ClipRect(
+        child: Align(
+          widthFactor: revealValue,
+          child: child,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHorizontalClipInRight(double revealValue) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: ClipRect(
+        child: Align(
+          widthFactor: revealValue,
+          child: child,
+        ),
+      ),
+    );
+  }
+}
+
+enum RevealType {
+  Instant,
+  FadeIn,
+  SlideInFromRight,
+  SlideInFromLeft,
+  VerticalClipInCenter,
+  VerticalClipInTop,
+  VerticalClipInBottom,
+  HorizontalClipInCenter,
+  HorizontalClipInLeft,
+  HorizontalClipInRight,
+}

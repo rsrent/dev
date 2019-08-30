@@ -1,0 +1,854 @@
+
+
+/*
+* STUFF FOR THE BMS PROJECT
+* STUFF FOR THE BMS PROJECT
+* STUFF FOR THE BMS PROJECT
+* STUFF FOR THE BMS PROJECT
+*  STUFF FOR THE BMS PROJECT
+*/
+
+
+/* Returns all projects above project */
+DROP FUNCTION AllProjectsAboveIncluding;
+CREATE FUNCTION  AllProjectsAboveIncluding (@ProjectID int)
+RETURNS TABLE AS
+ RETURN
+   WITH Tree ([ID], [ParentID]) AS (
+     SELECT
+       [ID],
+       [ParentID]
+     FROM Project
+     WHERE [ID] = @ProjectID
+     UNION ALL
+         SELECT
+           Parent.[ID],
+           Parent.[ParentID]
+         FROM Project AS Parent
+         INNER JOIN Tree AS Child
+           ON Child.[ParentID] = Parent.[ID]
+   )
+   SELECT
+     [ID],
+     [ParentID]
+   FROM Tree;
+/* TEST */
+SELECT * FROM AllProjectsAboveIncluding(2823);
+
+
+
+/* Returns all projects below project */
+DROP FUNCTION AllProjectsBelowExcluding;
+CREATE FUNCTION  AllProjectsBelowExcluding (@ProjectID int)
+RETURNS TABLE AS
+ RETURN
+   WITH Tree ([ID], [ParentID]) AS (
+     SELECT
+       [ID],
+       [ParentID]
+     FROM Project
+     WHERE [ParentID] = @ProjectID
+     UNION ALL
+         SELECT
+           Children.[ID],
+           Children.[ParentID]
+         FROM Project AS Children
+         INNER JOIN Tree AS Parent
+           ON Parent.[ID] = Children.[ParentID]
+   )
+   SELECT
+     [ID],
+     [ParentID]
+   FROM Tree;
+/* TEST */
+SELECT * FROM AllProjectsBelowExcluding(2823);
+
+
+/* Returns all project items associated with list of projects */
+DROP FUNCTION ProjectsItemForProjects;
+CREATE FUNCTION ProjectsItemForProjects (@Projects ProjectList READONLY)
+RETURNS TABLE AS
+ RETURN
+   SELECT *
+     FROM ProjectItem WHERE ProjectItem.ProjectID IN
+       (SELECT P.ID FROM @Projects P);
+
+
+/* Returns all project items that a given project can see above */
+DROP PROCEDURE [dbo].[AllProjectItemsForProjectAbove];
+CREATE PROCEDURE [dbo].[AllProjectItemsForProjectAbove]
+   @ProjectID int
+AS
+BEGIN
+ DECLARE @ProjectList AS ProjectList
+ INSERT INTO @ProjectList(ID,ParentID) (SELECT * FROM AllProjectsAboveIncluding (@ProjectID))
+ SELECT * FROM ProjectsItemForProjects (@ProjectList)
+END
+/* TEST */
+EXECUTE AllProjectItemsForProjectAbove 2823
+
+
+/* Return all project items that a given project can see below*/
+DROP PROCEDURE [dbo].[AllProjectItemsForProjectBelow];
+CREATE PROCEDURE [dbo].[AllProjectItemsForProjectBelow]
+   @ProjectID int
+AS
+BEGIN
+ DECLARE @ProjectList AS ProjectList
+ INSERT INTO @ProjectList(ID,ParentID) (SELECT * FROM AllProjectsBelowIncluding (@ProjectID))
+ SELECT * FROM ProjectsItemForProjects (@ProjectList)
+END
+/* TEST */
+EXECUTE AllProjectItemsForProjectBelow 2823
+
+
+/* All projects from a project ID */
+DROP FUNCTION AllProjectsForProjectID;
+CREATE FUNCTION AllProjectsForProjectID (@ProjectID int)
+    RETURNS TABLE AS
+        RETURN
+            (SELECT * FROM AllProjectsAboveIncluding (@ProjectID) UNION SELECT * FROM AllProjectsBelowExcluding (@ProjectID));
+/* TEST */
+SELECT * FROM  AllProjectsForProjectID(2823);
+
+
+
+/* Return all project items that a given project can see*/
+DROP PROCEDURE [dbo].[AllProjectItemsForProject];
+CREATE PROCEDURE [dbo].[AllProjectItemsForProject]
+   @ProjectID int
+AS
+BEGIN
+ DECLARE @ProjectList AS ProjectList
+ INSERT INTO @ProjectList(ID,ParentID) (SELECT * FROM AllProjectsForProjectID (@ProjectID))
+ SELECT * FROM ProjectsItemForProjects (@ProjectList)
+END
+/* TEST */
+
+
+CREATE FUNCTION AllProjectsFromUserIDAboveIncluding (@UserID int)
+    RETURNS TABLE AS
+    RETURN
+        WITH Tree ([ID], [ParentID]) AS (
+            SELECT
+            DISTINCT P.[ID],
+            P.[ParentID]
+            FROM Project P, ProjectUser PU
+            WHERE (PU.UserID = @UserID AND PU.ProjectID = P.ID)
+             UNION ALL
+            SELECT
+             Parent.[ID],
+             Parent.[ParentID]
+         FROM Project Parent
+         INNER JOIN Tree AS Child
+           ON Child.[ParentID] = Parent.[ID]
+        )
+         SELECT
+     DISTINCT *
+   FROM Tree;
+SELECT * FROM AllProjectsFromUserIDAboveIncluding(177);
+
+
+DROP FUNCTION AllProjectsFromUserIDBelowExcluding;
+ CREATE FUNCTION AllProjectsFromUserIDBelowExcluding (@UserID int)
+    RETURNS TABLE AS
+    RETURN
+        WITH Tree ([ID], [ParentID]) AS (
+            SELECT
+            DISTINCT P.[ID],
+            P.[ParentID]
+            FROM Project P, ProjectUser PU
+            WHERE (PU.UserID = @UserID AND PU.ProjectID = P.ParentID)
+             UNION ALL
+            SELECT
+             Children.[ID],
+             Children.[ParentID]
+         FROM Project Children
+         INNER JOIN Tree AS Parent
+           ON Parent.[ID] = Children.[ParentID]
+        )
+         SELECT
+     DISTINCT *
+   FROM Tree;
+SELECT * FROM AllProjectsFromUserIDBelowExcluding(177);
+
+SELECT * FROM ProjectUser WHERE UserID = 177;
+
+DROP FUNCTION AllProjectsForUserID;
+CREATE FUNCTION AllProjectsForUserID (@UserID int)
+    RETURNS TABLE AS
+        RETURN
+       (SELECT * FROM AllProjectsFromUserIDAboveIncluding (@UserID) UNION SELECT * FROM AllProjectsFromUserIDBelowExcluding (@UserID));
+/* TEST */
+SELECT * FROM ProjectItem WHERE ProjectItem.ProjectID IN (SELECT ID FROM AllProjectsForUserID(177)) AND ProjectItem.ProjectItemType = 1 AND ;
+
+
+SELECT * FROM AllProjectsForUserID(2);
+
+SELECT * FROM [User] CROSS APPLY AllProjectsForUserID (ID);
+
+
+/* Helper function */
+DROP FUNCTION GetProjectRole;
+CREATE FUNCTION GetProjectRole (@UserID int)
+RETURNS TABLE AS
+    RETURN
+    (SELECT ID,Name, HasAllPermissions FROM dbo.ProjectRole WHERE ID IN (SELECT ProjectRoleID FROM [User] WHERE ID = @UserID))
+
+/*TEST*/
+SELECT * FROM GetProjectRole(177)
+
+
+
+/*
+*
+*
+*Procedure to get all project items visible to user
+*
+*
+*/
+DROP PROCEDURE [GetProjectItemsOfUserRead];
+CREATE PROCEDURE [dbo].[GetProjectItemsOfUserRead]
+   @ProjectItemType int,
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectRole As int,
+     @HasAllPermissions As bit;
+     SET @ProjectRole = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM ProjectItem WHERE ProjectItemType = @ProjectItemType;
+    ELSE
+        SELECT PI.ID, PI. ProjectID, PI.ProjectItemType FROM ProjectItem PI, ProjectItemAccess PIA, (SELECT * FROM AllProjectsForUserID (@UserId)) UserProjects WHERE PI.ID = PIA.ProjectItemID AND PIA.[Read] = 1 And UserProjects.ID = PI.ProjectID AND PI.ProjectItemType = @ProjectItemType
+END
+EXECUTE GetProjectItemsOfUserRead 9, 2
+
+DROP PROCEDURE [GetProjectItemsOfUserWrite];
+CREATE PROCEDURE [dbo].[GetProjectItemsOfUserWrite]
+   @ProjectItemType int,
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectRole As int,
+     @HasAllPermissions As bit;
+     SET @ProjectRole = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM ProjectItem WHERE ProjectItemType = @ProjectItemType;
+    ELSE
+        SELECT PI.ID, PI. ProjectID, PI.ProjectItemType FROM ProjectItem PI, ProjectItemAccess PIA, (SELECT * FROM AllProjectsForUserID (@UserId)) UserProjects WHERE PI.ID = PIA.ProjectItemID AND PIA.[Write] = 1 And UserProjects.ID = PI.ProjectID AND PI.ProjectItemType = @ProjectItemType
+END
+EXECUTE GetProjectItemsOfUserWrite 9, 2
+
+
+SELECT * FROM ProjectUser WHERE UserID = 177;
+SELECT * FROM ProjectItem WHERE ProjectID IN (SELECT ProjectID FROM ProjectUser WHERE UserID = 177);
+/*SELECT * FROM ProjectItem WHERE ProjectItemType = @ProjectItemType AND (@HasAllPermissions = 1 OR (ProjectID IN (SELECT ID FROM AllProjectsForUserID (@UserId))) AND (ID in (SELECT ProjectItemID FROM ProjectItemAccess WHERE ProjectRoleID = @ProjectRole AND [Read] = 1)))*/
+/*SELECT * FROM ProjectItem WHERE ProjectItemType = @ProjectItemType AND (@HasAllPermissions = 1 OR (ProjectID IN (SELECT ID FROM AllProjectsForUserID (@UserId))) AND (1 = ANY (SELECT [Read] FROM ProjectItemAccess WHERE ProjectItemID = ID AND ProjectRoleID = @ProjectRole)))*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*
+* STUFF FOR THE BMS PROJECT By Tobias
+  * STUFF FOR THE BMS PROJECT By Tobias
+  * STUFF FOR THE BMS PROJECT By Tobias
+  * STUFF FOR THE BMS PROJECT By Tobias
+  *  STUFF FOR THE BMS PROJECTBy Tobias  
+  */
+
+
+/* Returns all projects above project */
+DROP FUNCTION AllProjectsAboveIncluding;
+CREATE FUNCTION  AllProjectsAboveIncluding (@ProjectID int)
+RETURNS TABLE AS
+ RETURN
+   WITH Tree ([ID], [ParentID]) AS (
+     SELECT
+       [ID],
+       [ParentID]
+     FROM Project
+     WHERE [ID] = @ProjectID
+     UNION ALL
+         SELECT
+           Parent.[ID],
+           Parent.[ParentID]
+         FROM Project AS Parent
+         INNER JOIN Tree AS Child
+           ON Child.[ParentID] = Parent.[ID]
+   )
+   SELECT
+     [ID],
+     [ParentID]
+   FROM Tree;
+/* TEST */
+SELECT * FROM AllProjectsAboveIncluding(2823);
+
+
+
+/* Returns all projects below project */
+DROP FUNCTION AllProjectsBelowExcluding;
+CREATE FUNCTION  AllProjectsBelowExcluding (@ProjectID int)
+RETURNS TABLE AS
+ RETURN
+   WITH Tree ([ID], [ParentID]) AS (
+     SELECT
+       [ID],
+       [ParentID]
+     FROM Project
+     WHERE [ParentID] = @ProjectID
+     UNION ALL
+         SELECT
+           Children.[ID],
+           Children.[ParentID]
+         FROM Project AS Children
+         INNER JOIN Tree AS Parent
+           ON Parent.[ID] = Children.[ParentID]
+   )
+   SELECT
+     [ID],
+     [ParentID]
+   FROM Tree;
+/* TEST */
+SELECT * FROM AllProjectsBelowExcluding(2823);
+
+
+/* Returns all project items associated with list of projects */
+DROP FUNCTION ProjectsItemForProjects;
+CREATE FUNCTION ProjectsItemForProjects (@Projects ProjectList READONLY)
+RETURNS TABLE AS
+ RETURN
+   SELECT *
+     FROM ProjectItem WHERE ProjectItem.ProjectID IN
+       (SELECT P.ID FROM @Projects P);
+
+
+/* Returns all project items that a given project can see above */
+DROP PROCEDURE [dbo].[AllProjectItemsForProjectAbove];
+CREATE PROCEDURE [dbo].[AllProjectItemsForProjectAbove]
+   @ProjectID int
+AS
+BEGIN
+ DECLARE @ProjectList AS ProjectList
+ INSERT INTO @ProjectList(ID,ParentID) (SELECT * FROM AllProjectsAboveIncluding (@ProjectID))
+ SELECT * FROM ProjectsItemForProjects (@ProjectList)
+END
+/* TEST */
+EXECUTE AllProjectItemsForProjectAbove 2823
+
+
+/* Return all project items that a given project can see below*/
+DROP PROCEDURE [dbo].[AllProjectItemsForProjectBelow];
+CREATE PROCEDURE [dbo].[AllProjectItemsForProjectBelow]
+   @ProjectID int
+AS
+BEGIN
+ DECLARE @ProjectList AS ProjectList
+ INSERT INTO @ProjectList(ID,ParentID) (SELECT * FROM AllProjectsBelowIncluding (@ProjectID))
+ SELECT * FROM ProjectsItemForProjects (@ProjectList)
+END
+/* TEST */
+EXECUTE AllProjectItemsForProjectBelow 2823
+
+
+/* All projects from a project ID */
+DROP FUNCTION AllProjectsForProjectID;
+CREATE FUNCTION AllProjectsForProjectID (@ProjectID int)
+    RETURNS TABLE AS
+        RETURN
+            (SELECT * FROM AllProjectsAboveIncluding (@ProjectID) UNION SELECT * FROM AllProjectsBelowExcluding (@ProjectID));
+/* TEST */
+SELECT * FROM  AllProjectsForProjectID(2823);
+
+
+
+/* Return all project items that a given project can see*/
+DROP PROCEDURE [dbo].[AllProjectItemsForProject];
+CREATE PROCEDURE [dbo].[AllProjectItemsForProject]
+   @ProjectID int
+AS
+BEGIN
+ DECLARE @ProjectList AS ProjectList
+ INSERT INTO @ProjectList(ID,ParentID) (SELECT * FROM AllProjectsForProjectID (@ProjectID))
+ SELECT * FROM ProjectsItemForProjects (@ProjectList)
+END
+/* TEST */
+
+
+CREATE FUNCTION AllProjectsFromUserIDAboveIncluding (@UserID int)
+    RETURNS TABLE AS
+    RETURN
+        WITH Tree ([ID], [ParentID]) AS (
+            SELECT
+            DISTINCT P.[ID],
+            P.[ParentID]
+            FROM Project P, ProjectUser PU
+            WHERE (PU.UserID = @UserID AND PU.ProjectID = P.ID)
+             UNION ALL
+            SELECT
+             Parent.[ID],
+             Parent.[ParentID]
+         FROM Project Parent
+         INNER JOIN Tree AS Child
+           ON Child.[ParentID] = Parent.[ID]
+        )
+         SELECT
+     DISTINCT *
+   FROM Tree;
+SELECT * FROM AllProjectsFromUserIDAboveIncluding(177);
+
+
+DROP FUNCTION AllProjectsFromUserIDBelowExcluding;
+ CREATE FUNCTION AllProjectsFromUserIDBelowExcluding (@UserID int)
+    RETURNS TABLE AS
+    RETURN
+        WITH Tree ([ID], [ParentID]) AS (
+            SELECT
+            DISTINCT P.[ID],
+            P.[ParentID]
+            FROM Project P, ProjectUser PU
+            WHERE (PU.UserID = @UserID AND PU.ProjectID = P.ParentID)
+             UNION ALL
+            SELECT
+             Children.[ID],
+             Children.[ParentID]
+         FROM Project Children
+         INNER JOIN Tree AS Parent
+           ON Parent.[ID] = Children.[ParentID]
+        )
+         SELECT
+     DISTINCT *
+   FROM Tree;
+SELECT * FROM AllProjectsFromUserIDBelowExcluding(177);
+
+SELECT * FROM ProjectUser WHERE UserID = 177;
+
+DROP FUNCTION AllProjectsForUserID;
+CREATE FUNCTION AllProjectsForUserID (@UserID int)
+    RETURNS TABLE AS
+        RETURN
+       (SELECT * FROM AllProjectsFromUserIDAboveIncluding (@UserID) UNION SELECT * FROM AllProjectsFromUserIDBelowExcluding (@UserID));
+/* TEST */
+/* SELECT * FROM ProjectItem WHERE ProjectItem.ProjectID IN (SELECT ID FROM AllProjectsForUserID(177)) AND ProjectItem.ProjectItemType = 1 AND ; */
+
+
+SELECT * FROM AllProjectsForUserID(2);
+
+SELECT * FROM [User] CROSS APPLY AllProjectsForUserID (ID);
+
+
+/* Helper function */
+DROP FUNCTION GetProjectRole;
+CREATE FUNCTION GetProjectRole (@UserID int)
+RETURNS TABLE AS
+    RETURN
+    (SELECT PR.ID, PR.Name, PR.HasAllPermissions FROM dbo.ProjectRole PR, [User] U WHERE PR.ID = U.ProjectRoleID AND U.ID = @UserID)
+
+/*TEST*/
+SELECT * FROM GetProjectRole(177)
+
+/*
+*
+* Procedure to get all project items visible to user
+*
+*/
+  /* GET ALL PROJECT-ITEMS OF THE GIVEN TYPE WHICH THE USER CAN READ */
+DROP PROCEDURE [GetProjectItemsOfUserRead];
+CREATE PROCEDURE [dbo].[GetProjectItemsOfUserRead]
+   @ProjectItemType int,
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectRole As int,
+     @HasAllPermissions As bit;
+     SET @ProjectRole = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM ProjectItem WHERE ProjectItemType = @ProjectItemType;
+    ELSE
+        SELECT PI.* FROM ProjectItem PI, ProjectItemAccess PIA, (SELECT * FROM AllProjectsForUserID (@UserId)) UserProjects WHERE PI.ID = PIA.ProjectItemID AND PIA.ProjectRoleID = @ProjectRole AND PIA.[Read] = 1 And UserProjects.ID = PI.ProjectID AND PI.ProjectItemType = @ProjectItemType
+END
+EXECUTE GetProjectItemsOfUserRead 9, 2
+
+
+  /* GET ALL PROJECT-ITEMS OF THE GIVEN TYPE WHICH THE USER CAN WRITE */
+DROP PROCEDURE [GetProjectItemsOfUserWrite];
+CREATE PROCEDURE [dbo].[GetProjectItemsOfUserWrite]
+   @ProjectItemType int,
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectRole As int,
+     @HasAllPermissions As bit;
+     SET @ProjectRole = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM ProjectItem WHERE ProjectItemType = @ProjectItemType;
+    ELSE
+        SELECT PI.* FROM ProjectItem PI, ProjectItemAccess PIA, (SELECT * FROM AllProjectsForUserID (@UserId)) UserProjects WHERE PI.ID = PIA.ProjectItemID AND PIA.ProjectRoleID = @ProjectRole AND PIA.[Write] = 1 And UserProjects.ID = PI.ProjectID AND PI.ProjectItemType = @ProjectItemType
+END
+EXECUTE GetProjectItemsOfUserWrite 9, 2
+
+
+  /* CHECK IF USER CAN READ PROJECT-ITEM */
+  /*
+DROP PROCEDURE [CanUserReadProjectItem];
+CREATE PROCEDURE [dbo].[CanUserReadProjectItem]
+   @UserID int,
+   @ProjectItemID int
+AS
+BEGIN
+    DECLARE
+     @ProjectRole As int,
+     @HasAllPermissions As bit;
+     SET @ProjectRole = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM ProjectItem WHERE ID = @ProjectItemID;
+    ELSE
+        SELECT PI.ID, PI. ProjectID, PI.ProjectItemType FROM ProjectItem PI, ProjectItemAccess PIA, (SELECT * FROM AllProjectsForUserID (@UserId)) UP WHERE PI.ID = @ProjectItemID AND PIA.ProjectItemID = @ProjectItemID AND PIA.ProjectRoleID = @ProjectRole AND PIA.[Read] = 1 And UP.ID = PI.ProjectID
+END
+EXECUTE CanUserReadProjectItem 2, 13900
+*/
+
+  /* RETURNS THE USERS ACCESS TO A PROJECT ITEM  */
+DROP PROCEDURE [GetUsersProjectItemAccess];
+CREATE PROCEDURE [dbo].[GetUsersProjectItemAccess]
+   @UserID int,
+   @ProjectItemID int
+AS
+BEGIN
+    DECLARE
+     @ProjectRole As int,
+     @HasAllPermissions As bit;
+     SET @ProjectRole = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT @ProjectItemID as ProjectItemID, @ProjectRole as ProjectRoleID, CAST(1 AS BIT) as [Read], CAST(1 AS BIT) as [Write] FROM ProjectItem WHERE ID = @ProjectItemID;
+    ELSE
+        SELECT PIA.* FROM ProjectItem PI, ProjectItemAccess PIA, (SELECT * FROM AllProjectsForUserID (@UserId)) UP WHERE PI.ID = @ProjectItemID AND PIA.ProjectItemID = @ProjectItemID AND PIA.ProjectRoleID = @ProjectRole AND UP.ID = PI.ProjectID
+END
+EXECUTE GetUsersProjectItemAccess 2, 13904
+
+
+
+
+  /*
+DROP PROCEDURE [UpdateProjectItemUsersFromProjectItemID];
+CREATE PROCEDURE [dbo].[UpdateProjectItemUsersFromProjectItemID]
+   @ProjectItemID int
+AS
+BEGIN
+    DECLARE @ProjectID AS int;
+     DECLARE @NewProjectItemUserList AS ProjectItemUserList;
+     DECLARE @OldProjectItemUserList AS ProjectItemUserList;
+     DECLARE @AddProjectItemUserList AS ProjectItemUserList;
+     DECLARE @RemoveProjectItemUserList AS ProjectItemUserList;
+    SET @ProjectID = (SELECT ProjectID FROM ProjectItem WHERE ID = @ProjectItemID);
+    INSERT INTO @NewProjectItemUserList(ProjectItemID,UserID,[Read],[Write]) (SELECT DISTINCT @ProjectItemID as ProjectItemID, U.ID AS UserID, PIA.[Read], PIA.Write FROM [User] U, AllProjectsForProjectID(@ProjectID) P, ProjectUser PU, ProjectItemAccess PIA WHERE U.ID = PU.UserID AND PU.ProjectID = P.ID AND PIA.ProjectItemID = @ProjectItemID AND PIA.ProjectRoleID = U.ProjectRoleID)
+    INSERT INTO @OldProjectItemUserList(ProjectItemID,UserID,[Read],[Write]) (SELECT * FROM ProjectItemUser WHERE ProjectItemUser.ProjectItemID = @ProjectItemID)
+    INSERT INTO @AddProjectItemUserList(ProjectItemID,UserID,[Read],[Write]) (SELECT NP.* FROM @NewProjectItemUserList AS NP LEFT JOIN @OldProjectItemUserList AS OP ON NP.UserID = OP.UserID AND NP.ProjectItemID = OP.ProjectItemID AND NP.[Read] = OP.[Read] AND NP.Write = OP.Write WHERE OP.ProjectItemID IS NULL);
+    INSERT INTO @RemoveProjectItemUserList(ProjectItemID,UserID,[Read],[Write]) (SELECT OP.* FROM @OldProjectItemUserList AS OP LEFT JOIN @NewProjectItemUserList AS NP ON NP.UserID = OP.UserID AND NP.ProjectItemID = OP.ProjectItemID AND NP.[Read] = OP.[Read] AND NP.Write = OP.Write WHERE NP.ProjectItemID IS NULL);
+    DELETE ProjectItemUser FROM ProjectItemUser PIU INNER JOIN @RemoveProjectItemUserList PIU2 ON PIU.UserID = PIU2.UserID AND PIU.ProjectItemID = PIU2.ProjectItemID;
+    INSERT INTO ProjectItemUser SELECT * FROM @AddProjectItemUserList;
+    SELECT * FROM @AddProjectItemUserList;
+END
+
+  EXECUTE UpdateProjectItemUsersFromProjectItemID 13900
+  */
+
+DROP PROCEDURE [UpdateProjectItemUsersFromProjectID];
+CREATE PROCEDURE [dbo].[UpdateProjectItemUsersFromProjectID]
+   @ProjectID int
+AS
+BEGIN
+
+    DELETE ProjectItemUser FROM ProjectItemUser PIU WHERE PIU.ProjectItemID IN (SELECT PI.ID FROM ProjectItem PI WHERE PI.ProjectID = @ProjectID)
+    INSERT INTO ProjectItemUser SELECT DISTINCT PI.ID as ProjectItemID, U.ID AS UserID, PIA.[Read], PIA.Write FROM [User] U, AllProjectsForProjectID(@ProjectID) P, ProjectUser PU, ProjectItemAccess PIA, ProjectItem PI WHERE P.ID = PU.ProjectID AND PU.UserID = U.ID AND PIA.ProjectItemID = PI.ID AND PIA.ProjectRoleID = U.ProjectRoleID AND PI.ProjectID = @ProjectID AND (PIA.[Read] = 1 OR PIA.Write = 1);
+    SELECT TOP 1 * FROM ProjectItemUser WHERE ProjectItemUser.ProjectItemID IN (SELECT ID FROM ProjectItem WHERE ProjectID = @ProjectID);
+
+END
+
+  EXECUTE UpdateProjectItemUsersFromProjectID 4185
+
+CREATE TYPE ProjectItemUserList AS TABLE ( [ProjectItemID] int NOT NULL, [UserID] int NOT NULL, [Read] bit NOT NULL, [Write] bit NOT NULL);
+
+DROP PROCEDURE [UpdateProjectItemUsersFromProjectItemID];
+CREATE PROCEDURE [dbo].[UpdateProjectItemUsersFromProjectItemID]
+   @ProjectItemID int
+AS
+BEGIN
+  DECLARE @ProjectID AS int;
+  SET @ProjectID = (SELECT ProjectID FROM ProjectItem WHERE ID = @ProjectItemID);
+  /*
+    DECLARE @ProjectID AS int;
+     DECLARE @NewProjectItemUserList AS ProjectItemUserList;
+     DECLARE @OldProjectItemUserList AS ProjectItemUserList;
+     DECLARE @AddProjectItemUserList AS ProjectItemUserList;
+     DECLARE @RemoveProjectItemUserList AS ProjectItemUserList;
+    SET @ProjectID = (SELECT ProjectID FROM ProjectItem WHERE ID = @ProjectItemID);
+    INSERT INTO @NewProjectItemUserList(ProjectItemID,UserID,[Read],[Write]) (SELECT DISTINCT @ProjectItemID as ProjectItemID, U.ID AS UserID, PIA.[Read], PIA.Write FROM [User] U, AllProjectsForProjectID(@ProjectID) P, ProjectUser PU, ProjectItemAccess PIA WHERE U.ID = PU.UserID AND PU.ProjectID = P.ID AND PIA.ProjectItemID = @ProjectItemID AND PIA.ProjectRoleID = U.ProjectRoleID)
+    INSERT INTO @OldProjectItemUserList(ProjectItemID,UserID,[Read],[Write]) (SELECT * FROM ProjectItemUser WHERE ProjectItemUser.ProjectItemID = @ProjectItemID)
+    INSERT INTO @AddProjectItemUserList(ProjectItemID,UserID,[Read],[Write]) (SELECT NP.* FROM @NewProjectItemUserList AS NP LEFT JOIN @OldProjectItemUserList AS OP ON NP.UserID = OP.UserID AND NP.ProjectItemID = OP.ProjectItemID AND NP.[Read] = OP.[Read] AND NP.Write = OP.Write WHERE OP.ProjectItemID IS NULL);
+    INSERT INTO @RemoveProjectItemUserList(ProjectItemID,UserID,[Read],[Write]) (SELECT OP.* FROM @OldProjectItemUserList AS OP LEFT JOIN @NewProjectItemUserList AS NP ON NP.UserID = OP.UserID AND NP.ProjectItemID = OP.ProjectItemID AND NP.[Read] = OP.[Read] AND NP.Write = OP.Write WHERE NP.ProjectItemID IS NULL);
+    DELETE ProjectItemUser FROM ProjectItemUser PIU INNER JOIN @RemoveProjectItemUserList PIU2 ON PIU.UserID = PIU2.UserID AND PIU.ProjectItemID = PIU2.ProjectItemID;
+    INSERT INTO ProjectItemUser SELECT * FROM @AddProjectItemUserList;
+    SELECT * FROM @AddProjectItemUserList;
+    */
+
+
+    DELETE ProjectItemUser FROM ProjectItemUser WHERE ProjectItemUser.ProjectItemID = @ProjectItemID;
+    INSERT INTO ProjectItemUser SELECT DISTINCT @ProjectItemID as ProjectItemID, U.ID AS UserID, PIA.[Read], PIA.Write FROM [User] U, AllProjectsForProjectID(@ProjectID) P, ProjectUser PU, ProjectItemAccess PIA WHERE U.ID = PU.UserID AND PU.ProjectID = P.ID AND PIA.ProjectItemID = @ProjectItemID AND PIA.ProjectRoleID = U.ProjectRoleID AND (PIA.[Read] = 1 OR PIA.Write = 1);
+    SELECT TOP 1 * FROM ProjectItemUser WHERE ProjectItemUser.ProjectItemID = @ProjectItemID;
+END
+
+  EXECUTE UpdateProjectItemUsersFromProjectItemID 13900
+
+
+
+  DROP PROCEDURE [UpdateProjectItemUsersFromUserID];
+CREATE PROCEDURE [dbo].[UpdateProjectItemUsersFromUserID]
+   @UserID int
+AS
+BEGIN
+    DECLARE @ProjectRoleID AS int;
+    DECLARE @HasAllPermissions AS bit;
+
+    SET @ProjectRoleID = (SELECT ID FROM GetProjectRole (@UserID));
+    SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+
+    DELETE ProjectItemUser FROM ProjectItemUser WHERE UserID = @UserID;
+    INSERT INTO ProjectItemUser SELECT DISTINCT PI.ID as ProjectItemID, @UserID AS UserID, PIA.[Read], PIA.Write FROM ProjectItem PI, AllProjectsForUserID(@UserID) P, ProjectItemAccess PIA WHERE PI.ProjectID = P.ID AND PIA.ProjectItemID = PI.ID AND PIA.ProjectRoleID = @ProjectRoleID AND (PIA.[Read] = 1 OR PIA.Write = 1);
+    SELECT TOP 1 * FROM ProjectItemUser WHERE UserID = @UserID;
+END
+
+  EXECUTE UpdateProjectItemUsersFromUserID 2
+  SELECT * FROM ProjectItemUser WHERE ProjectItemID = 13900 AND UserID = 6
+
+  SELECT * FROM AllProjectsForUserID(6)
+  SELECT * FROM ProjectUser WHERE UserID = 6
+
+  SELECT * FROM ProjectItemUser WHERE [Read] = 0 AND [Write] = 0
+
+
+
+  /* GET ALL USERS WHO CAN READ PROJECT ITEM */
+DROP PROCEDURE [UsersWithReadAccessToProjectItem];
+CREATE PROCEDURE [dbo].[UsersWithReadAccessToProjectItem]
+   @ProjectItemID int
+AS
+BEGIN
+    DECLARE
+     @ProjectID AS int;
+    SET @ProjectID = (SELECT ProjectID FROM ProjectItem WHERE ID = @ProjectItemID);
+    SELECT DISTINCT U.* FROM [User] U, AllProjectsForProjectID(@ProjectID) P, ProjectUser PU, ProjectRole PR, ProjectItem PI, ProjectItemAccess PIA WHERE (U.ID = PU.UserID AND PU.ProjectID = P.ID AND P.ID = PI.ProjectID AND PI.ID = PIA.ProjectItemID AND PIA.ProjectRoleID = PR.ID AND PR.ID = U.ProjectRoleID AND (PR.HasAllPermissions = 1 OR PIA.[Read] = 1))
+END
+EXECUTE UsersWithReadAccessToProjectItem 13900
+
+
+  /* GET ALL USERS WHO CAN WRITE PROJECT ITEM */
+DROP PROCEDURE [UsersWithWriteAccessToProjectItem];
+CREATE PROCEDURE [dbo].[UsersWithWriteAccessToProjectItem]
+   @ProjectItemID int
+AS
+BEGIN
+    DECLARE
+     @ProjectID AS int;
+    SET @ProjectID = (SELECT ProjectID FROM ProjectItem WHERE ID = @ProjectItemID);
+    SELECT DISTINCT U.* FROM [User] U, AllProjectsForProjectID(@ProjectID) P, ProjectUser PU, ProjectRole PR, ProjectItem PI, ProjectItemAccess PIA WHERE (U.ID = PU.UserID AND PU.ProjectID = P.ID AND P.ID = PI.ProjectID AND PI.ID = PIA.ProjectItemID AND PIA.ProjectRoleID = PR.ID AND PR.ID = U.ProjectRoleID AND (PR.HasAllPermissions = 1 OR PIA.[Write] = 1))
+END
+EXECUTE UsersWithWriteAccessToProjectItem 13904
+
+
+
+
+
+
+
+
+DROP FUNCTION ReadableProjectItems;
+CREATE FUNCTION ReadableProjectItems (@ProjectItemType int, @UserID int, @ProjectRoleID int)
+RETURNS TABLE AS
+     RETURN SELECT PI.* FROM ProjectItem PI, ProjectItemAccess PIA, (SELECT * FROM AllProjectsForUserID (@UserId)) UserProjects WHERE PI.ID = PIA.ProjectItemID AND PIA.ProjectRoleID = @ProjectRoleID AND PIA.[Read] = 1 And UserProjects.ID = PI.ProjectID AND PI.ProjectItemType = @ProjectItemType
+/*TEST*/
+SELECT * FROM ReadableProjectItems(9,6,4);
+
+DROP FUNCTION WritableProjectItems;
+CREATE FUNCTION WritableProjectItems (@ProjectItemType int, @UserID int, @ProjectRoleID int)
+RETURNS TABLE AS
+     RETURN SELECT PI.* FROM ProjectItem PI, ProjectItemAccess PIA, (SELECT * FROM AllProjectsForUserID (@UserId)) UserProjects WHERE PI.ID = PIA.ProjectItemID AND PIA.ProjectRoleID = @ProjectRoleID AND PIA.[Write] = 1 And UserProjects.ID = PI.ProjectID AND PI.ProjectItemType = @ProjectItemType
+/*TEST*/
+SELECT * FROM WritableProjectItems(9,6,4);
+
+
+
+DROP PROCEDURE [CommentsReadable];
+CREATE PROCEDURE [dbo].[CommentsReadable]
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectItemType AS int,
+     @ProjectRoleID AS int,
+     @HasAllPermissions AS bit;
+     SET @ProjectItemType = 1
+     SET @ProjectRoleID = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM Comment;
+    ELSE
+        SELECT L.* FROM Comment L WHERE L.ProjectItemID IN (SELECT ID FROM ReadableProjectItems(@ProjectItemType, @UserID, @ProjectRoleID))
+END
+
+DROP PROCEDURE [CommentsWritable];
+CREATE PROCEDURE [dbo].[CommentsWritable]
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectItemType AS int,
+     @ProjectRoleID AS int,
+     @HasAllPermissions AS bit;
+     SET @ProjectItemType = 1
+     SET @ProjectRoleID = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM Comment;
+    ELSE
+        SELECT L.* FROM Comment L WHERE L.ProjectItemID IN (SELECT ID FROM WritableProjectItems(@ProjectItemType, @UserID, @ProjectRoleID))
+END
+
+
+DROP PROCEDURE [LogsReadable];
+CREATE PROCEDURE [dbo].[LogsReadable]
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectItemType AS int,
+     @ProjectRoleID AS int,
+     @HasAllPermissions AS bit;
+     SET @ProjectItemType = 4
+     SET @ProjectRoleID = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM LocationLog;
+    ELSE
+        SELECT L.* FROM LocationLog L WHERE L.ProjectItemID IN (SELECT ID FROM ReadableProjectItems(@ProjectItemType, @UserID, @ProjectRoleID))
+END
+
+DROP PROCEDURE [LogsWritable];
+CREATE PROCEDURE [dbo].[LogsWritable]
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectItemType AS int,
+     @ProjectRoleID AS int,
+     @HasAllPermissions AS bit;
+     SET @ProjectItemType = 4
+     SET @ProjectRoleID = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM LocationLog;
+    ELSE
+        SELECT L.* FROM LocationLog L WHERE L.ProjectItemID IN (SELECT ID FROM WritableProjectItems(@ProjectItemType, @UserID, @ProjectRoleID))
+END
+
+
+
+
+DROP PROCEDURE [TasksReadable];
+CREATE PROCEDURE [dbo].[TasksReadable]
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectItemType AS int,
+     @ProjectRoleID AS int,
+     @HasAllPermissions AS bit;
+     SET @ProjectItemType = 5
+     SET @ProjectRoleID = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM CleaningTask;
+    ELSE
+        SELECT L.* FROM CleaningTask L WHERE L.ProjectItemID IN (SELECT ID FROM ReadableProjectItems(@ProjectItemType, @UserID, @ProjectRoleID))
+END
+
+DROP PROCEDURE [TasksWritable];
+CREATE PROCEDURE [dbo].[TasksWritable]
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectItemType AS int,
+     @ProjectRoleID AS int,
+     @HasAllPermissions AS bit;
+     SET @ProjectItemType = 5
+     SET @ProjectRoleID = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM CleaningTask;
+    ELSE
+        SELECT L.* FROM CleaningTask L WHERE L.ProjectItemID IN (SELECT ID FROM WritableProjectItems(@ProjectItemType, @UserID, @ProjectRoleID))
+END
+
+
+
+DROP PROCEDURE [WorkReadable];
+CREATE PROCEDURE [dbo].[WorkReadable]
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectItemType AS int,
+     @ProjectRoleID AS int,
+     @HasAllPermissions AS bit;
+     SET @ProjectItemType = 7
+     SET @ProjectRoleID = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM Work;
+    ELSE
+        SELECT L.* FROM Work L WHERE L.ProjectItemID IN (SELECT ID FROM ReadableProjectItems(@ProjectItemType, @UserID, @ProjectRoleID))
+END
+
+DROP PROCEDURE [WorkWritable];
+CREATE PROCEDURE [dbo].[WorkWritable]
+   @UserID int
+AS
+BEGIN
+    DECLARE
+     @ProjectItemType AS int,
+     @ProjectRoleID AS int,
+     @HasAllPermissions AS bit;
+     SET @ProjectItemType = 7
+     SET @ProjectRoleID = (SELECT ID FROM GetProjectRole (@UserID));
+     SET @HasAllPermissions = (SELECT HasAllPermissions FROM GetProjectRole (@UserID));
+    IF(@HasAllPermissions = 1)
+        SELECT * FROM Work;
+    ELSE
+        SELECT L.* FROM Work L WHERE L.ProjectItemID IN (SELECT ID FROM WritableProjectItems(@ProjectItemType, @UserID, @ProjectRoleID))
+END
+
+
+

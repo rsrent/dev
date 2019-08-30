@@ -1,0 +1,93 @@
+import 'dart:async';
+
+import 'package:bms_dart/location_list_bloc.dart' as prefix0;
+import 'package:bms_flutter/translations.dart';
+
+import 'package:bms_flutter/widgets.dart';
+import 'package:bms_flutter/src/components/searchable_app_bar.dart';
+import 'package:bms_dart/blocs.dart';
+import 'package:bms_dart/models.dart';
+import 'package:flutter/material.dart';
+
+import 'user_inspect_screen.dart';
+
+class UserListScreen extends StatefulWidget {
+  static Future pushUserListScreen(
+    BuildContext context,
+    String title,
+    UserListEvent fetchEvent,
+    Function(User) onSelect,
+  ) async {
+    return Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return UserListScreen(
+            title: title,
+            fetchEvent: fetchEvent,
+            onSelect: onSelect,
+          );
+        },
+      ),
+    );
+  }
+
+  static UserListScreen getUserListAll(BuildContext context) {
+    return UserListScreen(
+      title: Translations.of(context).hintSearchUsers,
+      fetchEvent: FetchAll(),
+      onSelect: (user) {
+        UserInspectScreen.showUserInspectScreen(context, user.id);
+      },
+    );
+  }
+
+  static Future<User> showUserListCanTakeWork(
+      BuildContext context, Work work) async {
+    var user = await pushUserListScreen(
+        context,
+        Translations.of(context).hintFindUserWhoCanTakeWork,
+        FetchAllOfLocation(locationId: work.location.id), (user) {
+      Navigator.of(context).pop(user);
+    });
+
+    if (user is User) return user;
+    return null;
+  }
+
+  final String title;
+  final UserListEvent fetchEvent;
+  final Function(User) onSelect;
+
+  const UserListScreen({
+    Key key,
+    @required this.fetchEvent,
+    @required this.title,
+    this.onSelect,
+  }) : super(key: key);
+  @override
+  _UserListScreenState createState() => _UserListScreenState();
+}
+
+class _UserListScreenState extends State<UserListScreen> {
+  TextEditingController _searchController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListScreen(
+      blocBuilder: (context) => UserListBloc()..dispatch(widget.fetchEvent),
+      onRefresh: (bloc) => bloc.dispatch(widget.fetchEvent),
+      body: UserList(
+        onSelect: widget.onSelect,
+      ),
+      appBarBuilder: (context, UserListBloc bloc) {
+        return SearchableAppBar(
+          controller: _searchController,
+          onChanged: (text) {
+            bloc.dispatch(SearchTextUpdated(searchText: text));
+          },
+          hintText: widget.title,
+        );
+      },
+    );
+  }
+}

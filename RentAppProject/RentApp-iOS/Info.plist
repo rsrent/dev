@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleName</key>
+	<string>RentApp</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.rentrengoering.RentApp</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.48</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MinimumOSVersion</key>
+	<string>11.0</string>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>arm64</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>Permission to use the media library to access library</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Permission to use the photo library to access library</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Permission to use the camera to take pictures and record videos</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Permission to use the microphone to take record videos</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Location is needed for some features</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location is needed for some features</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>http://rentapp.azurewebsites.net/</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>ws://rentapp.azurewebsites.net/</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>http://rentapp-developmentstage.azurewebsites.net/</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>ws://rentapp-developmentstage.azurewebsites.net/</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
+	<key>CFBundleURLSchemes</key>
+	<array>
+		<string>msal865a0401-8f85-45f3-ae3c-30753e6169e1://auth</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.rentrengoering.RentApp</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>msal865a0401-8f85-45f3-ae3c-30753e6169e1</string>
+			</array>
+		</dict>
+	</array>
+	<key>Custom Property</key>
+	<string>Get location of task completed</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon2.appiconset</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Permission to use calendar</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+	<key>Custom Property1</key>
+	<string></string>
+</dict>
+</plist>

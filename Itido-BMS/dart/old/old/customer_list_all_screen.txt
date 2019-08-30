@@ -1,0 +1,40 @@
+import 'package:bms_dart/customer_list_bloc.dart';
+import 'package:bms_flutter/translations.dart';
+import 'package:bms_flutter_admin/src/screens/customer_inspect_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:bms_flutter/widgets.dart';
+import 'package:bms_flutter/src/components/searchable_app_bar.dart';
+
+class CustomerListAllScreen extends StatefulWidget {
+  @override
+  _CustomerListAllScreenState createState() => _CustomerListAllScreenState();
+}
+
+class _CustomerListAllScreenState extends State<CustomerListAllScreen> {
+  TextEditingController _searchController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return BlocListScreen(
+      blocBuilder: (context) =>
+          CustomerListBloc()..dispatch(CustomerListFetch()),
+      onRefresh: (bloc) => bloc.dispatch(CustomerListFetch()),
+      body: CustomerList(
+        onSelect: (customer) {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => CustomerInspectScreen(
+              customer: customer,
+            ),
+          ));
+        },
+      ),
+      appBarBuilder: (context, bloc) => SearchableAppBar(
+        controller: _searchController,
+        onChanged: (text) {
+          print(text);
+          bloc.dispatch(SearchTextUpdated(searchText: text));
+        },
+        hintText: Translations.of(context).hintSearchCustomers,
+      ),
+    );
+  }
+}

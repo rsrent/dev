@@ -1,0 +1,129 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Identity.Client;
+
+using Newtonsoft.Json.Linq;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using ModuleLibraryiOS.Services;
+using ModuleLibraryShared.Services;
+using RentAppProject;
+
+namespace RentApp
+{
+    public class OutlookLoginPage
+    {
+        public OutlookLoginPage()
+        {
+			PCA = new PublicClientApplication(ClientID);
+			PCA.RedirectUri = $"msal{ClientID}://auth";
+
+            if(SaveLoad.LoadText<string>("AuthenticationResultMail", out var m)) {
+                mail = m;
+            }
+
+            if (SaveLoad.LoadText<string>("AuthenticationResultToken", out var t))
+            {
+                token = t;
+            }
+
+            //mail = SaveLoad.LoadText<string>("AuthenticationResultMail");
+            //token = SaveLoad.LoadText<string>("AuthenticationResultToken");
+
+            CreateEvent();
+        }
+
+        async void CreateEvent() {
+			if (mail == null || mail == "" || token == null || token == "")
+				await GetToken();
+
+			CreateOutlookEvent();
+        }
+
+        public static string mail;
+        public static string token;
+
+        public static PublicClientApplication PCA = null;
+        public static string ClientID = "865a0401-8f85-45f3-ae3c-30753e6169e1";
+        public static string PolicySignUpSignIn = "b2c_1_susi";
+        public static UIParent UiParent = null;
+
+        public static string Tenant = "rentapp.onmicrosoft.com";
+
+		public static string AuthorityBase = $"https://login.microsoftonline.com/tfp/{Tenant}/";
+		public static string Authority = $"{AuthorityBase}{PolicySignUpSignIn}";
+		//public static string AuthorityEditProfile = $"{AuthorityBase}{PolicyEditProfile}";
+		//public static string AuthorityPasswordReset = $"{AuthorityBase}{PolicyResetPassword}";
+
+
+
+        async Task GetToken() {
+            //string[] Scopes = { "User.Read", "Calendars.ReadWrite" };
+            string[] Scopes = { "User.Read" };
+			try
+			{
+                AuthenticationResult ar = await PCA.AcquireTokenAsync(Scopes, GetUserByPolicy(PCA.Users, PolicySignUpSignIn));
+
+                SaveLoad.SaveText("AuthenticationResultToken", ar.AccessToken);
+                SaveLoad.SaveText("AuthenticationResultMail", ar.User.DisplayableId);
+                mail = ar.User.DisplayableId;
+                token = ar.AccessToken;
+                //authenticationResult = ar;
+				//AuthenticationResult ar = await PCA.AcquireTokenSilentAsync(Scopes, GetUserByPolicy(PCA.Users, PolicySignUpSignIn), Authority, false);
+				//CreateOutlookEvent(ar.AccessToken);
+
+                //UpdateUserInfo(ar);
+			}
+			catch (Exception ex)
+			{
+			}
+        }
+
+        async void CreateOutlookEvent() {
+            /*await new HttpCall.CallManager().Call(HttpCall.CallType.Post, ServiceProvider.Settings.HttpUri + "Outlook", new OutlookEventDTO
+			{
+                Email = mail, Token = token, Start = DateTime.Now, End = DateTime.Now, Subject = "TEST" 
+            });*/
+        }
+
+		private IUser GetUserByPolicy(IEnumerable<IUser> users, string policy)
+		{
+			foreach (var user in users)
+			{
+				string userIdentifier = Base64UrlDecode(user.Identifier.Split('.')[0]);
+				if (userIdentifier.EndsWith(policy.ToLower())) return user;
+			}
+
+			return null;
+		}
+
+		private string Base64UrlDecode(string s)
+		{
+			s = s.Replace('-', '+').Replace('_', '/');
+			s = s.PadRight(s.Length + (4 - s.Length % 4) % 4, '=');
+			var byteArray = Convert.FromBase64String(s);
+			var decoded = Encoding.UTF8.GetString(byteArray, 0, byteArray.Count());
+			return decoded;
+		}
+
+		public void UpdateUserInfo(AuthenticationResult ar)
+		{
+			JObject user = ParseIdToken(ar.IdToken);
+			//lblName.Text = user["name"]?.ToString();
+			//lblId.Text = user["oid"]?.ToString();
+		}
+
+		JObject ParseIdToken(string idToken)
+		{
+			idToken = idToken.Split('.')[1];
+			idToken = Base64UrlDecode(idToken);
+			return JObject.Parse(idToken);
+		}
+
+
+    }
+}

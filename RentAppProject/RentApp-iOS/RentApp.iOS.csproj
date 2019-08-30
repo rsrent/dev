@@ -1,0 +1,695 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{464BA2D9-12FA-419D-B4A1-E93B57E479AC}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>RentApp</RootNamespace>
+    <AssemblyName>RentApp</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer: Tobias Bang (SSKPRUQV88)</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <IOSDebuggerPort>19939</IOSDebuggerPort>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution: Tobias Bang (EDAB2X9QWU)</CodesignKey>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>Rent Distribution 2018-2019</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer: Tobias Bang (SSKPRUQV88)</CodesignKey>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer: Tobias Bang (SSKPRUQV88)</CodesignKey>
+    <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <IOSDebuggerPort>44203</IOSDebuggerPort>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <MtouchSdkVersion>11.2</MtouchSdkVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Xamarin.Azure.NotificationHubs.iOS">
+      <HintPath>..\packages\Xamarin.Azure.NotificationHubs.iOS.1.2.5.2\lib\Xamarin.iOS10\Xamarin.Azure.NotificationHubs.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.2.1\lib\xamarinios10\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Nager.Date">
+      <HintPath>..\packages\Nager.Date.1.25.3\lib\netstandard2.0\Nager.Date.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\packages\WindowsAzure.Storage.9.3.3\lib\netstandard1.3\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\profile.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\profile.imageset\ic_account_circle_white.png" />
+    <ImageAsset Include="Assets.xcassets\profile.imageset\ic_account_circle_white_2x.png" />
+    <ImageAsset Include="Assets.xcassets\profile.imageset\ic_account_circle_white_3x.png" />
+    <ImageAsset Include="Assets.xcassets\users.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\users.imageset\ic_group_white.png" />
+    <ImageAsset Include="Assets.xcassets\users.imageset\ic_group_white_2x.png" />
+    <ImageAsset Include="Assets.xcassets\users.imageset\ic_group_white_3x.png" />
+    <ImageAsset Include="Assets.xcassets\camera.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\camera.imageset\ic_photo_camera_white_48pt.png" />
+    <ImageAsset Include="Assets.xcassets\camera.imageset\ic_photo_camera_white_48pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\camera.imageset\ic_photo_camera_white_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\customer.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\customer.imageset\ic_business_white.png" />
+    <ImageAsset Include="Assets.xcassets\customer.imageset\ic_business_white_2x.png" />
+    <ImageAsset Include="Assets.xcassets\customer.imageset\ic_business_white_3x.png" />
+    <ImageAsset Include="Assets.xcassets\home.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\home.imageset\ic_home_white.png" />
+    <ImageAsset Include="Assets.xcassets\home.imageset\ic_home_white_2x.png" />
+    <ImageAsset Include="Assets.xcassets\home.imageset\ic_home_white_3x.png" />
+    <ImageAsset Include="Assets.xcassets\location.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\location.imageset\ic_place_white.png" />
+    <ImageAsset Include="Assets.xcassets\location.imageset\ic_place_white_2x.png" />
+    <ImageAsset Include="Assets.xcassets\location.imageset\ic_place_white_3x.png" />
+    <ImageAsset Include="Assets.xcassets\ThemeColor.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ButtonColor.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\FadeTextColor.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\neutral.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\neutral.imageset\ic_sentiment_neutral_white.png" />
+    <ImageAsset Include="Assets.xcassets\neutral.imageset\ic_sentiment_neutral_white_2x.png" />
+    <ImageAsset Include="Assets.xcassets\neutral.imageset\ic_sentiment_neutral_white_3x.png" />
+    <ImageAsset Include="Assets.xcassets\good.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\good.imageset\ic_sentiment_satisfied_white.png" />
+    <ImageAsset Include="Assets.xcassets\good.imageset\ic_sentiment_satisfied_white_2x.png" />
+    <ImageAsset Include="Assets.xcassets\good.imageset\ic_sentiment_satisfied_white_3x.png" />
+    <ImageAsset Include="Assets.xcassets\bad.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\bad.imageset\ic_sentiment_dissatisfied_white.png" />
+    <ImageAsset Include="Assets.xcassets\bad.imageset\ic_sentiment_dissatisfied_white_2x.png" />
+    <ImageAsset Include="Assets.xcassets\bad.imageset\ic_sentiment_dissatisfied_white_3x.png" />
+    <ImageAsset Include="Assets.xcassets\chat.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\chat.imageset\ic_chat_white.png" />
+    <ImageAsset Include="Assets.xcassets\chat.imageset\ic_chat_white_2x.png" />
+    <ImageAsset Include="Assets.xcassets\chat.imageset\ic_chat_white_3x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-57x57%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-57x57%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-72x72%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-72x72%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-83.5x83.5%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-50x50%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-50x50%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ItunesArtwork%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-20x20%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-20x20%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-20x20%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-29x29%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-29x29%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-29x29%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-40x40%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-40x40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-40x40%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-57x57%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-57x57%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-60x60%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-60x60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-60x60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-72x72%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-72x72%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-76x76%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-76x76%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-76x76%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-App-83.5x83.5%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-Small-50x50%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\Icon-Small-50x50%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon2.appiconset\ItunesArtwork%402x.png" />
+    <ImageAsset Include="Assets.xcassets\rent_icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\rent_icon.imageset\Icon-App-20x20%401x.png" />
+    <ImageAsset Include="Assets.xcassets\rent_logo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\rent_logo.imageset\Icon-App-60x60%401x.png" />
+    <ImageAsset Include="Assets.xcassets\rent_logo.imageset\Icon-App-60x60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\rent_logo.imageset\Icon-App-60x60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\rent_icon.imageset\Icon-App-20x20%402x.png" />
+    <ImageAsset Include="Assets.xcassets\rent_icon.imageset\Icon-App-20x20%403x.png" />
+    <ImageAsset Include="Assets.xcassets\GoodColor.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\OkayColor.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\BadColor.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\folder.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\file.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\folder.imageset\ic_folder_white.png" />
+    <ImageAsset Include="Assets.xcassets\folder.imageset\ic_folder_white_2x.png" />
+    <ImageAsset Include="Assets.xcassets\folder.imageset\ic_folder_white_3x.png" />
+    <ImageAsset Include="Assets.xcassets\file.imageset\ic_insert_drive_file_white.png" />
+    <ImageAsset Include="Assets.xcassets\file.imageset\ic_insert_drive_file_white_2x.png" />
+    <ImageAsset Include="Assets.xcassets\file.imageset\ic_insert_drive_file_white_3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="ViewControllers\" />
+    <Folder Include="ViewControllers\Cells\" />
+    <Folder Include="ViewControllers\CreateViews\" />
+    <Folder Include="ViewControllers\CleaningPlanViews\" />
+    <Folder Include="ViewControllers\CleaningPlanViews\Cells\" />
+    <Folder Include="ToRemove\" />
+    <Folder Include="ViewControllers\Menus\" />
+    <Folder Include="ViewControllers\CreateViews\CleaningTask\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Other\" />
+    <Folder Include="ViewControllers\QualityReportViews\" />
+    <Folder Include="ViewControllers\QualityReportViews\Cells\" />
+    <Folder Include="Assets.xcassets\profile.imageset\" />
+    <Folder Include="Assets.xcassets\users.imageset\" />
+    <Folder Include="Assets.xcassets\camera.imageset\" />
+    <Folder Include="Assets.xcassets\camera.imageset\" />
+    <Folder Include="Assets.xcassets\customer.imageset\" />
+    <Folder Include="Assets.xcassets\home.imageset\" />
+    <Folder Include="Assets.xcassets\location.imageset\" />
+    <Folder Include="Assets.xcassets\ThemeColor.colorset\" />
+    <Folder Include="Assets.xcassets\ButtonColor.colorset\" />
+    <Folder Include="Assets.xcassets\FadeTextColor.colorset\" />
+    <Folder Include="Assets.xcassets\neutral.imageset\" />
+    <Folder Include="Assets.xcassets\good.imageset\" />
+    <Folder Include="Assets.xcassets\bad.imageset\" />
+    <Folder Include="Assets.xcassets\chat.imageset\" />
+    <Folder Include="Assets.xcassets\rent_icon.imageset\" />
+    <Folder Include="Assets.xcassets\rent_logo.imageset\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Assets.xcassets\GoodColor.colorset\" />
+    <Folder Include="Assets.xcassets\OkayColor.colorset\" />
+    <Folder Include="Assets.xcassets\BadColor.colorset\" />
+    <Folder Include="Chat\" />
+    <Folder Include="Documents\" />
+    <Folder Include="Permissions\" />
+    <Folder Include="Assets.xcassets\folder.imageset\" />
+    <Folder Include="Assets.xcassets\file.imageset\" />
+    <Folder Include="SimpleInput\" />
+    <Folder Include="User\" />
+    <Folder Include="Task\" />
+    <Folder Include="Economy\" />
+    <Folder Include="Customer\" />
+    <Folder Include="Location\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="Main.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
+    <None Include="LanguagePack.xml" />
+    <None Include="OutlookLoginPage.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="ViewController.cs" />
+    <Compile Include="ViewController.designer.cs">
+      <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesMainMenuViewController.cs" />
+    <Compile Include="SalesMainMenuViewController.designer.cs">
+      <DependentUpon>SalesMainMenuViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CustomersTableVC.cs" />
+    <Compile Include="ViewControllers\CustomersTableVC.designer.cs">
+      <DependentUpon>CustomersTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\Cells\CustomersCell.cs" />
+    <Compile Include="ViewControllers\Cells\CustomersCell.designer.cs">
+      <DependentUpon>CustomersCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\EmployeeTableVC.cs" />
+    <Compile Include="ViewControllers\EmployeeTableVC.designer.cs">
+      <DependentUpon>EmployeeTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\LocationTableVC.cs" />
+    <Compile Include="ViewControllers\LocationTableVC.designer.cs">
+      <DependentUpon>LocationTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CleaningPlanViews\CleaningPlanCompletedTasksTableVC.cs" />
+    <Compile Include="ViewControllers\CleaningPlanViews\CleaningPlanCompletedTasksTableVC.designer.cs">
+      <DependentUpon>CleaningPlanCompletedTasksTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CleaningPlanViews\CleaningPlanFloorsTableVC.cs" />
+    <Compile Include="ViewControllers\CleaningPlanViews\CleaningPlanFloorsTableVC.designer.cs">
+      <DependentUpon>CleaningPlanFloorsTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CleaningPlanViews\CleaningPlansTableVC.cs" />
+    <Compile Include="ViewControllers\CleaningPlanViews\CleaningPlansTableVC.designer.cs">
+      <DependentUpon>CleaningPlansTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CleaningPlanViews\CleaningPlanTasksTableVC.cs" />
+    <Compile Include="ViewControllers\CleaningPlanViews\CleaningPlanTasksTableVC.designer.cs">
+      <DependentUpon>CleaningPlanTasksTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CleaningPlanViews\Cells\CleaningPlanCompletedTasksCell.cs" />
+    <Compile Include="ViewControllers\CleaningPlanViews\Cells\CleaningPlanCompletedTasksCell.designer.cs">
+      <DependentUpon>CleaningPlanCompletedTasksCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CleaningPlanViews\Cells\CleaningPlanFloorsCell.cs" />
+    <Compile Include="ViewControllers\CleaningPlanViews\Cells\CleaningPlanFloorsCell.designer.cs">
+      <DependentUpon>CleaningPlanFloorsCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CleaningPlanViews\Cells\CleaningPlansCell.cs" />
+    <Compile Include="ViewControllers\CleaningPlanViews\Cells\CleaningPlansCell.designer.cs">
+      <DependentUpon>CleaningPlansCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CleaningPlanViews\Cells\CleaningPlanTasksCell.cs" />
+    <Compile Include="ViewControllers\CleaningPlanViews\Cells\CleaningPlanTasksCell.designer.cs">
+      <DependentUpon>CleaningPlanTasksCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CleaningPlanViews\Cells\CleaningPlanTasksCustomerCell.cs" />
+    <Compile Include="ViewControllers\CleaningPlanViews\Cells\CleaningPlanTasksCustomerCell.designer.cs">
+      <DependentUpon>CleaningPlanTasksCustomerCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\EmployeeProfile.cs" />
+    <Compile Include="ViewControllers\EmployeeProfile.designer.cs">
+      <DependentUpon>EmployeeProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\Menus\CustomerMenuVC.cs" />
+    <Compile Include="ViewControllers\Menus\CustomerMenuVC.designer.cs">
+      <DependentUpon>CustomerMenuVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\Menus\LocationMenuVC.cs" />
+    <Compile Include="ViewControllers\Menus\LocationMenuVC.designer.cs">
+      <DependentUpon>LocationMenuVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\Menus\SalesMenuVC.cs" />
+    <Compile Include="ViewControllers\Menus\SalesMenuVC.designer.cs">
+      <DependentUpon>SalesMenuVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\Menus\CleaningAssistentMenuVC.cs" />
+    <Compile Include="ViewControllers\Menus\CleaningAssistentMenuVC.designer.cs">
+      <DependentUpon>CleaningAssistentMenuVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\Menus\ServiceLeaderMenuVC.cs" />
+    <Compile Include="ViewControllers\Menus\ServiceLeaderMenuVC.designer.cs">
+      <DependentUpon>ServiceLeaderMenuVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\FloorAreaPickerViewController.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\FloorAreaPickerViewController.designer.cs">
+      <DependentUpon>FloorAreaPickerViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\FrequencyPickerViewController.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\FrequencyPickerViewController.designer.cs">
+      <DependentUpon>FrequencyPickerViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\FrequencyViewController.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\FrequencyViewController.designer.cs">
+      <DependentUpon>FrequencyViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\NameAreaViewController.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\NameAreaViewController.designer.cs">
+      <DependentUpon>NameAreaViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\OtherAreasPickerViewController.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\OtherAreasPickerViewController.designer.cs">
+      <DependentUpon>OtherAreasPickerViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\OtherAreasTableViewController.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\OtherAreasTableViewController.designer.cs">
+      <DependentUpon>OtherAreasTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\SizeTextInputViewController.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\SizeTextInputViewController.designer.cs">
+      <DependentUpon>SizeTextInputViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\AddCustomerVC.cs" />
+    <Compile Include="ViewControllers\CreateViews\AddCustomerVC.designer.cs">
+      <DependentUpon>AddCustomerVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\AddLocationVC.cs" />
+    <Compile Include="ViewControllers\CreateViews\AddLocationVC.designer.cs">
+      <DependentUpon>AddLocationVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\AddUserVC.cs" />
+    <Compile Include="ViewControllers\CreateViews\AddUserVC.designer.cs">
+      <DependentUpon>AddUserVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\LoginVC.cs" />
+    <Compile Include="ViewControllers\LoginVC.designer.cs">
+      <DependentUpon>LoginVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\AddLoginInformationVC.cs" />
+    <Compile Include="ViewControllers\CreateViews\AddLoginInformationVC.designer.cs">
+      <DependentUpon>AddLoginInformationVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CreateTaskVM.cs" />
+    <Compile Include="ViewModels\UserLoginVM.cs" />
+    <Compile Include="ViewModels\CustomerVM.cs" />
+    <Compile Include="ViewModels\EmployeeTableVM.cs" />
+    <Compile Include="ViewModels\AddressSearchVM.cs" />
+    <Compile Include="ViewModels\QualityReportVM.cs" />
+    <Compile Include="ViewModels\CleaningPlanVM.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\OtherAreasCell.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\OtherAreasCell.designer.cs">
+      <DependentUpon>OtherAreasCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\ErrorMessageHandler.cs" />
+    <Compile Include="Other\iOSIoCContainer.cs" />
+    <Compile Include="ViewControllers\QualityReportViews\QualityReportFloorsTableVC.cs" />
+    <Compile Include="ViewControllers\QualityReportViews\QualityReportFloorsTableVC.designer.cs">
+      <DependentUpon>..\..\QualityReportFloorsTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\QualityReportViews\QualityReportPlansTableVC.cs" />
+    <Compile Include="ViewControllers\QualityReportViews\QualityReportPlansTableVC.designer.cs">
+      <DependentUpon>QualityReportPlansTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\QualityReportViews\QualityReportsTableVC.cs" />
+    <Compile Include="ViewControllers\QualityReportViews\QualityReportsTableVC.designer.cs">
+      <DependentUpon>..\..\QualityReportsTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\QualityReportViews\QualityReportTasksTableVC.cs" />
+    <Compile Include="ViewControllers\QualityReportViews\QualityReportTasksTableVC.designer.cs">
+      <DependentUpon>..\..\QualityReportTasksTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\QualityReportViews\Cells\QualityReportFloorsCell.cs" />
+    <Compile Include="ViewControllers\QualityReportViews\Cells\QualityReportFloorsCell.designer.cs">
+      <DependentUpon>QualityReportFloorsCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\QualityReportViews\Cells\QualityReportPlansCell.cs" />
+    <Compile Include="ViewControllers\QualityReportViews\Cells\QualityReportPlansCell.designer.cs">
+      <DependentUpon>QualityReportPlansCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\QualityReportViews\Cells\QualityReportsCell.cs" />
+    <Compile Include="ViewControllers\QualityReportViews\Cells\QualityReportsCell.designer.cs">
+      <DependentUpon>QualityReportsCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\QualityReportViews\Cells\QualityReportTasksCell.cs" />
+    <Compile Include="ViewControllers\QualityReportViews\Cells\QualityReportTasksCell.designer.cs">
+      <DependentUpon>QualityReportTasksCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\AddressSearchCell.cs" />
+    <Compile Include="ViewControllers\CreateViews\AddressSearchCell.designer.cs">
+      <DependentUpon>AddressSearchCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\AddressSearchVC.cs" />
+    <Compile Include="ViewControllers\CreateViews\AddressSearchVC.designer.cs">
+      <DependentUpon>AddressSearchVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CreateLocationVM.cs" />
+    <Compile Include="ViewModels\CreateUserVM.cs" />
+    <Compile Include="ViewControllers\Menus\HumanResourceMenuVC.cs" />
+    <Compile Include="ViewControllers\Menus\HumanResourceMenuVC.designer.cs">
+      <DependentUpon>HumanResourceMenuVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\SelectRoleVC.cs" />
+    <Compile Include="ViewControllers\CreateViews\SelectRoleVC.designer.cs">
+      <DependentUpon>SelectRoleVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\UserPermissionsTableVC.cs" />
+    <Compile Include="ViewControllers\UserPermissionsTableVC.designer.cs">
+      <DependentUpon>UserPermissionsTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\Cells\UserPermissionCell.cs" />
+    <Compile Include="ViewControllers\Cells\UserPermissionCell.designer.cs">
+      <DependentUpon>UserPermissionCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\Cells\EmployeeCell.cs" />
+    <Compile Include="ViewControllers\Cells\EmployeeCell.designer.cs">
+      <DependentUpon>EmployeeCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\Cells\LocationCell.cs" />
+    <Compile Include="ViewControllers\Cells\LocationCell.designer.cs">
+      <DependentUpon>LocationCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabBarController.cs" />
+    <Compile Include="TabBarController.designer.cs">
+      <DependentUpon>TabBarController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\RootViewModel.cs" />
+    <Compile Include="Other\MyLocalStorageSettings.cs" />
+    <Compile Include="MessageHandler.cs" />
+    <Compile Include="UpdatePasswordVC.cs" />
+    <Compile Include="UpdatePasswordVC.designer.cs">
+      <DependentUpon>UpdatePasswordVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialFunctionsTableVC.cs" />
+    <Compile Include="SpecialFunctionsTableVC.designer.cs">
+      <DependentUpon>SpecialFunctionsTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialFunctionsCell.cs" />
+    <Compile Include="SpecialFunctionsCell.designer.cs">
+      <DependentUpon>SpecialFunctionsCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\iOSImageRepository.cs" />
+    <Compile Include="Chat\CameraChatFunction.cs" />
+    <Compile Include="Chat\RentMessage.cs" />
+    <Compile Include="Chat\ChatVC.cs" />
+    <Compile Include="Chat\ChatCell.cs" />
+    <Compile Include="Chat\ChatCell.designer.cs" />
+    <Compile Include="Chat\ChatFunctions.cs" />
+    <Compile Include="Chat\ChatVC.designer.cs" />
+    <Compile Include="QualityReportDateTimeVC.cs" />
+    <Compile Include="QualityReportDateTimeVC.designer.cs">
+      <DependentUpon>QualityReportDateTimeVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningAreaCell.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningAreaCell.designer.cs">
+      <DependentUpon>CreateCleaningAreaCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningAreasTableVC.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningAreasTableVC.designer.cs">
+      <DependentUpon>CreateCleaningAreasTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningFloorCell.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningFloorCell.designer.cs">
+      <DependentUpon>CreateCleaningFloorCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningFloorsTableVC.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningFloorsTableVC.designer.cs">
+      <DependentUpon>CreateCleaningFloorsTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningPlanCell.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningPlanCell.designer.cs">
+      <DependentUpon>CreateCleaningPlanCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningPlansTableVC.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\CreateCleaningPlansTableVC.designer.cs">
+      <DependentUpon>CreateCleaningPlansTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageVC.cs" />
+    <Compile Include="ImageVC.designer.cs">
+      <DependentUpon>ImageVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\DocumentConverter.cs" />
+    <Compile Include="Repository\StorageRepository.cs" />
+    <Compile Include="Chat\ConversationCell.cs" />
+    <Compile Include="Chat\ConversationCell.designer.cs">
+      <DependentUpon>ConversationCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\ConversationsTableVC.cs" />
+    <Compile Include="Chat\ConversationsTableVC.designer.cs">
+      <DependentUpon>ConversationsTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documents\DocumentCell.cs" />
+    <Compile Include="Documents\DocumentCell.designer.cs">
+      <DependentUpon>DocumentCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documents\DocumentsTableVC.cs" />
+    <Compile Include="Documents\DocumentsTableVC.designer.cs">
+      <DependentUpon>DocumentsTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\MyConversationSocketConnection.cs" />
+    <Compile Include="Documents\PDFVC.cs" />
+    <Compile Include="Documents\PDFVC.designer.cs">
+      <DependentUpon>PDFVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Permissions\PermissionCell.cs" />
+    <Compile Include="Permissions\PermissionCell.designer.cs">
+      <DependentUpon>PermissionCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Permissions\PermissionTableVC.cs" />
+    <Compile Include="Permissions\PermissionTableVC.designer.cs">
+      <DependentUpon>PermissionTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Permissions\RoleCell.cs" />
+    <Compile Include="Permissions\RoleCell.designer.cs">
+      <DependentUpon>RoleCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Permissions\RolesTableVC.cs" />
+    <Compile Include="Permissions\RolesTableVC.designer.cs">
+      <DependentUpon>RolesTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Permissions\TemplatePermissionCell.cs" />
+    <Compile Include="Permissions\TemplatePermissionCell.designer.cs">
+      <DependentUpon>TemplatePermissionCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Permissions\TemplatePermissionsTableVC.cs" />
+    <Compile Include="Permissions\TemplatePermissionsTableVC.designer.cs">
+      <DependentUpon>TemplatePermissionsTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PageViewController.cs" />
+    <Compile Include="PageViewController.designer.cs">
+      <DependentUpon>PageViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QualityReportTasksTestCell.cs" />
+    <Compile Include="QualityReportTasksTestCell.designer.cs">
+      <DependentUpon>QualityReportTasksTestCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\OtherFrequencyViewController.cs" />
+    <Compile Include="ViewControllers\CreateViews\CleaningTask\OtherFrequencyViewController.designer.cs">
+      <DependentUpon>OtherFrequencyViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ImageFixer.cs" />
+    <Compile Include="MoreWorkVC.cs" />
+    <Compile Include="MoreWorkVC.designer.cs">
+      <DependentUpon>MoreWorkVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleInput\SimplePickerVC.cs" />
+    <Compile Include="SimpleInput\SimplePickerVC.designer.cs">
+      <DependentUpon>SimplePickerVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleInput\SimpleDatePickerVC.cs" />
+    <Compile Include="SimpleInput\SimpleDatePickerVC.designer.cs">
+      <DependentUpon>SimpleDatePickerVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleInput\SimpleTableVC.cs" />
+    <Compile Include="SimpleInput\SimpleTableVC.designer.cs">
+      <DependentUpon>SimpleTableVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleInput\SimpleCell.cs" />
+    <Compile Include="SimpleInput\SimpleCell.designer.cs">
+      <DependentUpon>SimpleCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogVC.cs" />
+    <Compile Include="LogVC.designer.cs">
+      <DependentUpon>LogVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleInput\SimpleTextCell.cs" />
+    <Compile Include="SimpleInput\SimpleTextCell.designer.cs">
+      <DependentUpon>SimpleTextCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\UserCreateVC.cs" />
+    <Compile Include="User\UserCreateVC.designer.cs">
+      <DependentUpon>UserCreateVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\TaskCreateVC.cs" />
+    <Compile Include="Task\TaskCreateVC.designer.cs">
+      <DependentUpon>TaskCreateVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Economy\LocationEconomyVC.cs" />
+    <Compile Include="Economy\LocationEconomyVC.designer.cs">
+      <DependentUpon>LocationEconomyVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Economy\LocationHourVC.cs" />
+    <Compile Include="Economy\LocationHourVC.designer.cs">
+      <DependentUpon>LocationHourVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\LocationCreateVC.cs" />
+    <Compile Include="Location\LocationCreateVC.designer.cs">
+      <DependentUpon>LocationCreateVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerCreateVC.cs" />
+    <Compile Include="Customer\CustomerCreateVC.designer.cs">
+      <DependentUpon>CustomerCreateVC.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ModuleLibrary\ModuleLibraryiOS\ModuleLibraryiOS.csproj">
+      <Project>{362B3F5D-8832-447D-862D-E59AEF4FD05B}</Project>
+      <Name>ModuleLibraryiOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rent.Shared\Rent.Shared.csproj">
+      <Project>{B362CF06-2D94-46F4-8561-54E42185FD62}</Project>
+      <Name>Rent.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ModuleLibrary\ModuleLibrary.Shared\ModuleLibrary.Shared.csproj">
+      <Project>{1E1742FD-BC09-4F83-96BA-EE47774070BE}</Project>
+      <Name>ModuleLibrary.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\imagePlaceholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
+</Project>

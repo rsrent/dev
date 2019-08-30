@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+
+Future<String> textFieldDialog(
+  BuildContext context, {
+  @required String title,
+  @required String hint,
+  String startText,
+  String cancelButtonText,
+  String okButtonText,
+}) async {
+  var _textFieldController = TextEditingController(text: startText ?? '');
+  var result = await showDialog<String>(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text(title),
+        content: TextField(
+          controller: _textFieldController,
+          decoration: InputDecoration(hintText: hint),
+        ),
+        actions: <Widget>[
+          FlatButton(
+            child: Text(cancelButtonText ?? 'TILBAGE'),
+            onPressed: () {
+              Navigator.of(context).pop(null);
+            },
+          ),
+          FlatButton(
+            child: Text(okButtonText ?? 'FÆRDIG'),
+            onPressed: () {
+              Navigator.of(context).pop(_textFieldController.text);
+            },
+          ),
+        ],
+      );
+    },
+  );
+  if (result is String)
+    return result;
+  else
+    return null;
+}

@@ -1,0 +1,18 @@
+import 'package:bms_dart/models.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http show Client;
+import 'dart:convert';
+import 'dart:async';
+import 'package:bms_dart/repositories.dart';
+
+import 'client_faker.dart';
+
+class WorkRegistrationFakeApi extends WorkRegistrationSource {
+  @override
+  void dispose() {}
+
+  Future<bool> register(int workId,
+      {int startTimeMins, int endTimeMins}) async {
+    return true;
+  }
+}

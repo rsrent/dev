@@ -1,0 +1,101 @@
+import 'package:bms_dart/blocs.dart';
+import 'package:bms_dart/contract_list_bloc.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_dart/work_list_bloc.dart';
+import 'package:bms_flutter/translations.dart';
+import 'package:flutter/material.dart';
+//import 'package:bms_flutter/src/widgets/work_list.dart' as workList;
+import 'package:bms_flutter/style.dart' as style;
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_packages/date_timer_picker.dart'
+    as dateTimeDurationPicker;
+
+import 'package:bms_flutter/widgets.dart';
+
+class UserWorkList extends StatelessWidget {
+  final Function(WorkListBloc) onRefresh;
+  final bool showUser;
+  final bool showLocation;
+  final WidgetBuilder headerBuilder;
+
+  const UserWorkList({
+    Key key,
+    this.showUser = true,
+    this.showLocation = true,
+    this.onRefresh,
+    this.headerBuilder,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (onRefresh != null) {
+      return BlocList<WorkListBloc>(
+        onRefresh: onRefresh,
+        child: _build(context),
+      );
+    } else {
+      return _build(context);
+    }
+  }
+
+  Widget _build(BuildContext context) {
+    return WorkList(
+      showUser: showUser,
+      showProject: showLocation,
+      onFolderSelect: (work) => _showManagerWorkDrawer(context, work),
+      onSelectTime: (work) => registerWork(context, work),
+      headerBuilder: headerBuilder,
+    );
+  }
+
+  void _showManagerWorkDrawer(BuildContext context, Work work) {
+    //var bloc = BlocProvider.of<WorkListBloc>(context);
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 400,
+          child: WorkListDrawer(),
+        );
+      },
+    );
+  }
+}
+
+class WorkListDrawer extends StatefulWidget {
+  final Work work;
+  final WorkListBloc bloc;
+
+  const WorkListDrawer({Key key, this.work, this.bloc}) : super(key: key);
+  @override
+  _WorkListDrawerState createState() => _WorkListDrawerState();
+}
+
+class _WorkListDrawerState extends State<WorkListDrawer> {
+  @override
+  Widget build(BuildContext context) {
+    var work = widget.work;
+    var bloc = widget.bloc;
+
+    return BlocListener(
+        bloc: bloc,
+        listener: (BuildContext context, state) {
+          setState(() {});
+        },
+        child: ListView(
+          children: <Widget>[
+            IgnorePointer(child: WorkTile(work: work)),
+            ListTile(
+              leading: Icon(Icons.arrow_back),
+              title: Text(
+                Translations.of(context).buttonBack,
+                style: TextStyle(color: style.declineRed),
+              ),
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        ));
+  }
+}

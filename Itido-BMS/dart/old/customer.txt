@@ -1,0 +1,45 @@
+import 'user.dart';
+
+class Customer {
+  int id;
+  String name;
+  String comment;
+  String imageLocation;
+  bool hasStandardFolders;
+  bool canReadLogs;
+
+  bool disabled;
+  User keyAccountManager;
+
+  Customer({
+    this.id,
+    this.name,
+    this.comment,
+    this.imageLocation,
+    this.hasStandardFolders,
+    this.canReadLogs,
+    this.disabled,
+  });
+
+  Customer.fromJson(json)
+      : this.id = json['id'],
+        this.name = json['name'],
+        this.comment = json['comment'],
+        this.imageLocation = json['imageLocation'],
+        this.hasStandardFolders = json['hasStandardFolders'],
+        this.canReadLogs = json['canReadLogs'],
+        this.disabled = json['disabled'],
+        this.keyAccountManager = User.fromJson(json['keyAccountManager']);
+
+  Map<String, dynamic> toMap() => {
+        'id': this.id,
+        'name': this.name,
+        'comment': this.comment,
+        'imageLocation': this.imageLocation,
+        'hasStandardFolders': this.hasStandardFolders,
+        'canReadLogs': this.canReadLogs,
+        'disabled': this.disabled,
+      };
+
+  String get displayName => name ?? ' ';
+}

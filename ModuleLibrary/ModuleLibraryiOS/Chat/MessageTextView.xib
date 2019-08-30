@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="MessageTextView" id="1" customClass="MessageTextView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQk-kU-PgG">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.48627450979999998" green="0.66274509800000003" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KX5-AV-KvN">
+                    <rect key="frame" x="8" y="8" width="375" height="651"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ca8-Kc-sik">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="651"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="dQk-kU-PgG" firstAttribute="top" secondItem="1" secondAttribute="top" id="5jG-RR-Efe"/>
+                <constraint firstItem="KX5-AV-KvN" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="8" id="UX8-OO-1H1"/>
+                <constraint firstAttribute="trailing" secondItem="dQk-kU-PgG" secondAttribute="trailing" id="dD6-hO-c6a"/>
+                <constraint firstAttribute="bottom" secondItem="dQk-kU-PgG" secondAttribute="bottom" id="pPU-14-USY"/>
+                <constraint firstAttribute="bottom" secondItem="KX5-AV-KvN" secondAttribute="bottom" constant="8" id="qBf-i5-pJO"/>
+                <constraint firstItem="dQk-kU-PgG" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="rCC-q1-uec"/>
+                <constraint firstAttribute="trailing" secondItem="KX5-AV-KvN" secondAttribute="trailing" constant="8" id="uFn-4Y-sz0"/>
+                <constraint firstItem="KX5-AV-KvN" firstAttribute="top" secondItem="1" secondAttribute="top" constant="8" id="uOs-IH-6rn"/>
+            </constraints>
+            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+            <connections>
+                <outlet property="BackgroundButton" destination="dQk-kU-PgG" id="name-outlet-dQk-kU-PgG"/>
+                <outlet property="MessageLabel" destination="ca8-Kc-sik" id="name-outlet-ca8-Kc-sik"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

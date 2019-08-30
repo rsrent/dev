@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="MessageRequestView" id="1" customClass="MessageRequestView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVp-cO-2Kg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.48627450979999998" green="0.66274509800000003" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cnv-zx-RVW">
+                    <rect key="frame" x="2" y="8" width="375" height="651"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ef2-GK-Vyh">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peP-ju-abk">
+                                    <rect key="frame" x="0.0" y="12" width="375" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="tcS-hS-jep"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G38-19-2Ri">
+                                    <rect key="frame" x="0.0" y="52" width="375" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="bKC-1Z-fcT"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="8" right="0.0"/>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffz-Nk-hP8">
+                            <rect key="frame" x="0.0" y="80" width="375" height="300"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="300" id="CSL-38-aka"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zkX-mS-QF2">
+                            <rect key="frame" x="0.0" y="380" width="375" height="221"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlY-Is-lG8">
+                                    <rect key="frame" x="0.0" y="12" width="375" height="209"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <edgeInsets key="layoutMargins" top="12" left="0.0" bottom="0.0" right="0.0"/>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6X1-WP-Nx5">
+                            <rect key="frame" x="0.0" y="601" width="375" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uin-xK-Pb5">
+                                    <rect key="frame" x="8" y="16" width="187.5" height="34"/>
+                                    <state key="normal" title="Accept">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                            <integer key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoU-7W-Rtt">
+                                    <rect key="frame" x="185.5" y="16" width="187.5" height="34"/>
+                                    <state key="normal" title="Decline">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                            <integer key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="7f9-0s-uSa"/>
+                                <constraint firstItem="NoU-7W-Rtt" firstAttribute="width" secondItem="Uin-xK-Pb5" secondAttribute="width" id="sIp-Gu-fPo"/>
+                            </constraints>
+                            <edgeInsets key="layoutMargins" top="16" left="8" bottom="0.0" right="8"/>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="6X1-WP-Nx5" secondAttribute="bottom" id="Apj-Sr-XjF"/>
+                        <constraint firstAttribute="trailing" secondItem="ffz-Nk-hP8" secondAttribute="trailing" id="ZeX-UA-Svc"/>
+                        <constraint firstAttribute="trailing" secondItem="6X1-WP-Nx5" secondAttribute="trailing" id="bXq-yV-O7D"/>
+                        <constraint firstItem="6X1-WP-Nx5" firstAttribute="leading" secondItem="cnv-zx-RVW" secondAttribute="leading" id="eC9-A9-BVL"/>
+                        <constraint firstItem="ffz-Nk-hP8" firstAttribute="leading" secondItem="cnv-zx-RVW" secondAttribute="leading" id="tkc-RP-aLc"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="qVp-cO-2Kg" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="10z-P7-ffK"/>
+                <constraint firstAttribute="trailing" secondItem="qVp-cO-2Kg" secondAttribute="trailing" id="2ol-ra-yDr"/>
+                <constraint firstAttribute="bottom" secondItem="cnv-zx-RVW" secondAttribute="bottom" constant="8" id="5WB-oI-si5"/>
+                <constraint firstItem="cnv-zx-RVW" firstAttribute="top" secondItem="1" secondAttribute="top" constant="8" id="9Fh-qi-sxx"/>
+                <constraint firstAttribute="bottom" secondItem="qVp-cO-2Kg" secondAttribute="bottom" id="Aay-T3-qqJ"/>
+                <constraint firstItem="qVp-cO-2Kg" firstAttribute="top" secondItem="1" secondAttribute="top" id="evb-6K-dZi"/>
+                <constraint firstItem="cnv-zx-RVW" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="2" id="pNA-tb-qtx"/>
+                <constraint firstAttribute="trailing" secondItem="cnv-zx-RVW" secondAttribute="trailing" constant="2" id="qob-82-H8g"/>
+            </constraints>
+            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+            <connections>
+                <outlet property="AcceptButton" destination="Uin-xK-Pb5" id="name-outlet-Uin-xK-Pb5"/>
+                <outlet property="ContainerView" destination="ffz-Nk-hP8" id="name-outlet-ffz-Nk-hP8"/>
+                <outlet property="ContentLabel" destination="rlY-Is-lG8" id="name-outlet-rlY-Is-lG8"/>
+                <outlet property="DeclineButton" destination="NoU-7W-Rtt" id="name-outlet-NoU-7W-Rtt"/>
+                <outlet property="TimeLabel" destination="G38-19-2Ri" id="name-outlet-G38-19-2Ri"/>
+                <outlet property="TitleLabel" destination="peP-ju-abk" id="name-outlet-peP-ju-abk"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

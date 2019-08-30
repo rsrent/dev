@@ -1,0 +1,30 @@
+import 'package:bms_dart/models.dart';
+import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
+
+@immutable
+abstract class ContractCreateUpdateEvent extends Equatable {
+  ContractCreateUpdateEvent([List props = const []]) : super(props);
+}
+
+class PrepareCreate extends ContractCreateUpdateEvent {
+  @override
+  String toString() => 'PrepareCreate';
+}
+
+class PrepareUpdate extends ContractCreateUpdateEvent {
+  final Contract contract;
+  PrepareUpdate({@required this.contract}) : super([contract]);
+  @override
+  String toString() => 'PrepareUpdate { contract: $contract }';
+}
+
+class CreateRequested extends ContractCreateUpdateEvent {
+  @override
+  String toString() => 'CreateRequested';
+}
+
+class UpdateRequested extends ContractCreateUpdateEvent {
+  @override
+  String toString() => 'UpdateRequested';
+}

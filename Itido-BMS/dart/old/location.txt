@@ -1,0 +1,62 @@
+import 'user.dart';
+
+class Location {
+  int id;
+  String name;
+  String customerName;
+  String address;
+  String comment;
+  String phone;
+  int projectNumber;
+  String imageLocation;
+  int intervalOfServiceLeaderMeeting;
+  double lat;
+  double lon;
+  bool disabled;
+  User serviceLeader;
+
+  Location({
+    this.id,
+    this.disabled,
+    this.name,
+    this.customerName,
+    this.address,
+  });
+
+  factory Location.fromJson(json) {
+    if (json == null) return null;
+    return Location._fromJson(json);
+  }
+
+  Location._fromJson(json)
+      : this.id = json['id'],
+        this.name = json['name'],
+        this.customerName = json['customerName'],
+        this.address = json['address'],
+        this.comment = json['comment'],
+        this.phone = json['phone'],
+        this.projectNumber = json['projectNumber'],
+        this.imageLocation = json['imageLocation'],
+        this.intervalOfServiceLeaderMeeting =
+            json['intervalOfServiceLeaderMeeting'],
+        this.lat = json['lat'],
+        this.lon = json['lon'],
+        this.disabled = json['disabled'],
+        this.serviceLeader = User.fromJson(json['serviceLeader']);
+
+  Map<String, dynamic> toMap() => {
+        'id': this.id,
+        'name': this.name,
+        'address': this.address,
+        'comment': this.comment,
+        'phone': this.phone,
+        'projectNumber': this.projectNumber,
+        'imageLocation': this.imageLocation,
+        'intervalOfServiceLeaderMeeting': this.intervalOfServiceLeaderMeeting,
+        'lat': this.lat,
+        'lon': this.lon,
+      };
+
+  String get displayName =>
+      '$name${customerName != null ? (' $customerName') : ''}';
+}

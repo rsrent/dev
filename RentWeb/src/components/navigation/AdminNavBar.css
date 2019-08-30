@@ -1,0 +1,16 @@
+.nav-bar {
+  padding-left: 70px;
+  background-color: black;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.nav-bar a:hover {
+  color: White;
+}
+
+.nav-bar div {
+  padding: 10px;
+}

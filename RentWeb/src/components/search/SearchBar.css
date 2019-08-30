@@ -1,0 +1,22 @@
+div.searchBar {
+  padding: 10px;
+}
+
+div.search-div {
+  margin-bottom: 10px;
+}
+
+div.search-div select {
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 40px;
+  width: 100px;
+}
+
+div.search-div h5 {
+  width: 160px;
+}
+
+input {
+  height: 40px;
+}

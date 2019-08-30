@@ -1,0 +1,14 @@
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/bin/Debug/netcoreapp2.2/API.deps.json
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/bin/Debug/netcoreapp2.2/API.runtimeconfig.json
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/bin/Debug/netcoreapp2.2/API.runtimeconfig.dev.json
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/bin/Debug/netcoreapp2.2/API.dll
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/bin/Debug/netcoreapp2.2/API.pdb
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/obj/Debug/netcoreapp2.2/API.csprojAssemblyReference.cache
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/obj/Debug/netcoreapp2.2/API.csproj.CoreCompileInputs.cache
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/obj/Debug/netcoreapp2.2/API.RazorAssemblyInfo.cache
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/obj/Debug/netcoreapp2.2/API.RazorAssemblyInfo.cs
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/obj/Debug/netcoreapp2.2/API.AssemblyInfoInputs.cache
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/obj/Debug/netcoreapp2.2/API.AssemblyInfo.cs
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/obj/Debug/netcoreapp2.2/API.RazorTargetAssemblyInfo.cache
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/obj/Debug/netcoreapp2.2/API.dll
+/Users/tobiasbang/Projects/Itido-BMS/BMS/API/obj/Debug/netcoreapp2.2/API.pdb

@@ -1,0 +1,76 @@
+import 'package:bms_dart/create_update_state_phase.dart';
+import 'package:bms_flutter/src/components/primary_button.dart';
+import 'package:bms_flutter/src/components/primary_button.dart';
+import 'package:bms_flutter/src/widgets/loading_overlay.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_flutter/translations.dart';
+import 'package:bms_flutter/widgets.dart';
+import 'package:dart_packages/streamer.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bms_flutter/src/widgets/work_contract_create_update_form.dart';
+import 'package:bms_dart/work_contract_create_update_bloc.dart';
+import 'package:rxdart/rxdart.dart';
+
+class WorkContractCreateUpdateScreen extends StatelessWidget {
+  final int locationId;
+  final WorkContract workContractToUpdate;
+  final bool isCreate;
+
+  const WorkContractCreateUpdateScreen(
+      {Key key, this.workContractToUpdate, this.locationId})
+      : isCreate = workContractToUpdate == null,
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          isCreate
+              ? Translations.of(context).titleCreateWorkContract
+              : Translations.of(context).titleUpdateWorkContract,
+        ),
+      ),
+      body: BlocProvider(
+        builder: (context) {
+          if (isCreate)
+            return WorkContractCreateUpdateBloc(locationId: locationId)
+              ..dispatch(PrepareCreate());
+          else
+            return WorkContractCreateUpdateBloc(locationId: locationId)
+              ..dispatch(
+                  PrepareUpdate(workContract: this.workContractToUpdate));
+        },
+        child: Builder(
+          builder: (context) {
+            var _bloc = BlocProvider.of<WorkContractCreateUpdateBloc>(context);
+
+            return BlocListener(
+              bloc: _bloc,
+              listener: (context, WorkContractCreateUpdateState state) {
+                if (state.createUpdateStatePhase ==
+                    CreateUpdateStatePhase.Failed) {
+                  showSnackText(
+                      context,
+                      isCreate
+                          ? Translations.of(context).infoCreationFailed
+                          : Translations.of(context).infoUpdateFailed);
+                }
+                if (state.createUpdateStatePhase ==
+                    CreateUpdateStatePhase.Successful) {
+                  showSnackText(
+                      context,
+                      isCreate
+                          ? Translations.of(context).infoCreationSuccessful
+                          : Translations.of(context).infoUpdateSuccessful);
+                }
+              },
+              child: WorkContractCreateUpdateForm(),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,151 @@
+import 'package:bms_dart/blocs.dart';
+import 'package:bms_dart/contract_list_bloc.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_dart/work_contract_list_bloc.dart';
+import 'package:bms_flutter/translations.dart';
+// import 'package:bms_flutter_admin/src/screens/user_list_screen.dart';
+import 'package:bms_flutter_admin/src/screens/work_contract_update_screen.dart';
+import 'package:flutter/material.dart';
+//import 'package:bms_flutter/src/widgets/workContract_list.dart' as workContractList;
+import 'package:bms_flutter/style.dart' as style;
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_packages/date_timer_picker.dart'
+    as dateTimeDurationPicker;
+
+import 'package:bms_flutter/widgets.dart';
+
+import 'select_user_and_contract.dart';
+
+class AdminWorkContractList extends StatelessWidget {
+  
+  final Function(WorkContractListBloc) onRefresh;
+  final bool showUser;
+  final bool showLocation;
+
+  const AdminWorkContractList({
+    Key key,
+    this.showUser = true,
+    this.showLocation = true,
+    this.onRefresh,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (onRefresh != null) {
+      return BlocList<WorkContractListBloc>(
+        onRefresh: onRefresh,
+        child: _build(context),
+      );
+    } else {
+      return _build(context);
+    }
+  }
+
+  Widget _build(BuildContext context) {
+    return WorkContractList(
+      showUser: showUser,
+      showLocation: showLocation,
+      onSelect: (workContract) =>
+          _showManagerWorkContractDrawer(context, workContract),
+    );
+  }
+
+  void _showManagerWorkContractDrawer(
+      BuildContext context, WorkContract workContract) {
+    var bloc = BlocProvider.of<WorkContractListBloc>(context);
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 400,
+          child: WorkContractListDrawer(
+            bloc: bloc,
+            workContract: workContract,
+          ),
+        );
+      },
+    );
+  }
+}
+
+class WorkContractListDrawer extends StatefulWidget {
+  final WorkContract workContract;
+  final WorkContractListBloc bloc;
+
+  const WorkContractListDrawer({Key key, this.workContract, this.bloc})
+      : super(key: key);
+  @override
+  _WorkContractListDrawerState createState() => _WorkContractListDrawerState();
+}
+
+class _WorkContractListDrawerState extends State<WorkContractListDrawer> {
+  @override
+  Widget build(BuildContext context) {
+    var workContract = widget.workContract;
+    var bloc = widget.bloc;
+
+    return BlocListener(
+        bloc: bloc,
+        listener: (BuildContext context, state) {
+          setState(() {});
+        },
+        child: ListView(
+          children: <Widget>[
+            IgnorePointer(child: WorkContractTile(workContract: workContract)),
+            ListTile(
+              title: Text(Translations.of(context).labelComment),
+              subtitle: Text(workContract.note ?? ''),
+            ),
+            ListTile(
+              leading: Icon(Icons.edit),
+              title: Text(Translations.of(context).titleUpdateWork),
+              onTap: () {
+                return Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return WorkContractUpdateScreen(
+                          workContract: workContract);
+                    },
+                  ),
+                );
+              },
+            ),
+            if (workContract.isOwned)
+              ListTile(
+                leading: Icon(Icons.remove_circle),
+                title: Text(Translations.of(context).optionRemoveWorkUser),
+                onTap: () => bloc.dispatch(WorkContractListRemoveUser(
+                    workContractId: workContract.id)),
+              ),
+            if (!workContract.isOwned)
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text(Translations.of(context).optionFindWorkOwner),
+                onTap: () async {
+                  print('workContract.locationId: ${workContract.location.id}');
+                  var userContract = await selectUserContract(context,
+                      FetchAllOfLocation(locationId: workContract.location.id));
+
+                  if (userContract != null) {
+                    bloc.dispatch(WorkContractListAddUserContract(
+                      workContract: workContract,
+                      user: userContract.first,
+                      contract: userContract.second,
+                    ));
+                  }
+                },
+              ),
+            ListTile(
+              leading: Icon(Icons.arrow_back),
+              title: Text(
+                Translations.of(context).buttonBack,
+                style: TextStyle(color: style.declineRed),
+              ),
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        ));
+  }
+}

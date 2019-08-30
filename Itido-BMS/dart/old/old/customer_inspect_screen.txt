@@ -1,0 +1,103 @@
+import 'package:bms_dart/contract_list_bloc.dart';
+import 'package:bms_dart/absence_list_bloc.dart';
+import 'package:bms_dart/location_list_bloc.dart';
+import 'package:bms_dart/models.dart';
+import 'package:dart_packages/streamer.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'absence_update_screen.dart';
+import 'contract_create_screen.dart';
+import 'contract_update_screen.dart';
+import 'package:bms_flutter/src/widgets/contract_list.dart';
+import 'package:bms_flutter/src/widgets/location_list.dart';
+import 'package:bms_flutter/translations.dart';
+
+import 'location_inspect_screen.dart';
+
+class CustomerInspectScreen extends StatefulWidget {
+  final Customer customer;
+
+  const CustomerInspectScreen({Key key, this.customer}) : super(key: key);
+
+  @override
+  _CustomerInspectScreenState createState() => _CustomerInspectScreenState();
+}
+
+class _CustomerInspectScreenState extends State<CustomerInspectScreen> {
+  List<Widget> pages;
+  Streamer<int> currentTab = Streamer(seedValue: 0);
+  final PageStorageBucket bucket = PageStorageBucket();
+
+  @override
+  void initState() {
+    super.initState();
+
+    pages = [
+      BlocProvider(
+        builder: (context) {
+          return LocationListBloc(() =>
+              LocationListFetchOfCustomer(customerId: widget.customer.id));
+        },
+        child: LocationList(
+          onSelect: (location) {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => LocationInspectScreen(
+                locationId: location.id,
+              ),
+            ));
+          },
+        ),
+      ),
+      Container(),
+    ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: DefaultTabController(
+        length: pages.length,
+        child: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool boxIsScrolled) {
+            return [
+              SliverAppBar(
+                pinned: true,
+                expandedHeight: 260,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Padding(
+                    padding: const EdgeInsets.only(bottom: 46.0),
+                    child: Text(widget.customer.name),
+                  ),
+                ),
+                bottom: TabBar(
+                  tabs: <Widget>[
+                    Tab(text: Translations.of(context).buttonLocations),
+                    Tab(text: 'Placeholder'),
+                  ],
+                  onTap: currentTab.update,
+                ),
+              ),
+            ];
+          },
+          body: PageStorage(
+            bucket: bucket,
+            child: TabBarView(
+              children: pages,
+            ),
+          ),
+        ),
+      ),
+      floatingActionButton: StreamBuilder(
+        stream: currentTab.stream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (currentTab.value == 0) {}
+          if (currentTab.value == 1) {}
+
+          return Container();
+        },
+      ),
+    );
+  }
+}

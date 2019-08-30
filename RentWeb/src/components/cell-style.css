@@ -1,0 +1,43 @@
+
+div.cell-div {
+  width: 100%;
+  margin-bottom: 20px;
+  background: #EEEEEE;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 67, 112, 0.19), 0 3px 3px rgba(0, 67, 112, 0.23);
+  box-shadow: 0 5px 10px rgba(0, 67, 112, 0.19), 0 3px 3px rgba(0, 67, 112, 0.23);
+}
+
+div.cell-details {
+  width: 100%;
+}
+
+div.cell-detail {
+  display: flex;
+  align-items: center;
+}
+
+div.cell-detail img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+img.edit-icon {
+  margin-left: 20px;
+}
+
+img.cell-image {
+  height: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+div.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.detail-info {
+  padding-right: 10px;
+  color: #4286f4;
+}

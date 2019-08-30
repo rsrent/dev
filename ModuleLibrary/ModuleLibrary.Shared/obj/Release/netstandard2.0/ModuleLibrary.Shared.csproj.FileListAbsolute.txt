@@ -1,0 +1,9 @@
+/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.Shared/bin/Release/netstandard2.0/ModuleLibrary.Shared.deps.json
+/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.Shared/bin/Release/netstandard2.0/ModuleLibrary.Shared.dll
+/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.Shared/bin/Release/netstandard2.0/ModuleLibrary.Shared.pdb
+/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.Shared/obj/Release/netstandard2.0/ModuleLibrary.Shared.csproj.CoreCompileInputs.cache
+/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.Shared/obj/Release/netstandard2.0/ModuleLibrary.Shared.AssemblyInfoInputs.cache
+/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.Shared/obj/Release/netstandard2.0/ModuleLibrary.Shared.AssemblyInfo.cs
+/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.Shared/obj/Release/netstandard2.0/ModuleLibrary.Shared.dll
+/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.Shared/obj/Release/netstandard2.0/ModuleLibrary.Shared.pdb
+/Users/tobiasbang/Projects/ModuleLibrary/ModuleLibrary.Shared/obj/Release/netstandard2.0/ModuleLibrary.Shared.csprojAssemblyReference.cache

@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+
+Future<String> folderCreateDialog(BuildContext context) async {
+  var _textFieldController = TextEditingController();
+  var result = await showDialog<String>(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Navn på folder'),
+        content: TextField(
+          controller: _textFieldController,
+          decoration: InputDecoration(hintText: "Folders navn..."),
+        ),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('CANCEL'),
+            onPressed: () {
+              Navigator.of(context).pop(null);
+            },
+          ),
+          FlatButton(
+            child: Text('OPRET'),
+            onPressed: () {
+              Navigator.of(context).pop(_textFieldController.text);
+            },
+          ),
+        ],
+      );
+    },
+  );
+  if (result is String)
+    return result;
+  else
+    return null;
+}

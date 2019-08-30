@@ -1,0 +1,64 @@
+[
+  {
+    "floor": {
+      "id": 1,
+      "description": "Stuen",
+      "translationID": null
+    },
+    "areas": [
+      {
+        "area": {
+          "id": 1,
+          "description": "Toilet",
+          "translationID": null
+        },
+        "tasks": [
+          {
+            "id": 1,
+            "planType": 0,
+            "floorID": 1,
+            "areaID": 1,
+            "squareMeters": 8,
+            "locationID": 1,
+            "frequency": "555",
+            "timesOfYear": null,
+            "firstCleaned": null,
+            "comment": "til højre",
+            "floor": {
+              "id": 1,
+              "description": "Stuen",
+              "translationID": null
+            },
+            "area": {
+              "id": 1,
+              "description": "Toilet",
+              "translationID": null
+            }
+          },
+          {
+            "id": 2,
+            "planType": 0,
+            "floorID": 1,
+            "areaID": 1,
+            "squareMeters": 6,
+            "locationID": 1,
+            "frequency": "555",
+            "timesOfYear": null,
+            "firstCleaned": null,
+            "comment": "til venstre",
+            "floor": {
+              "id": 1,
+              "description": "Stuen",
+              "translationID": null
+            },
+            "area": {
+              "id": 1,
+              "description": "Toilet",
+              "translationID": null
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

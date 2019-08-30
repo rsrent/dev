@@ -1,0 +1,126 @@
+import 'package:bms_dart/models.dart';
+import 'package:bms_dart/query_result.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http show Client;
+import 'dart:convert';
+import 'dart:async';
+import 'package:bms_dart/repositories.dart';
+
+import 'client_faker.dart';
+
+class WorkFakeApi extends WorkSource {
+  ClientFaker _faker = ClientFaker<Work>(
+    generator: (i) => Work(
+      note: 'Test',
+      date: DateTime.now().add(Duration(hours: ((i) * 14) - 100)),
+      startTimeMins: 8 * 60,
+      endTimeMins: 12 * 60,
+      breakMins: 30,
+      isVisible: true,
+      // contractId: i,
+      // workReplacementId: i % 4 == 0 ? i : null,
+      // workRegistrationId: i == 0 ? 0 : null,
+    )
+      ..id = i
+      ..contract = (Contract()
+        ..user = User(
+          firstName: 'Tobias',
+          lastName: 'Bang',
+        ))
+      ..workReplacement = null
+      ..workRegistration = i == 0
+          ? WorkRegistration(
+              startTimeMins: 8 * 60,
+              endTimeMins: 12 * 60,
+            )
+          : null,
+    updateId: (val, i) => val.id = i,
+    valueToUpdate: (other, t) => other.id == t.id,
+  );
+
+  @override
+  void dispose() {}
+
+  @override
+  Future<int> createWork(Work contract, int locationId) => _faker.add(contract);
+
+  @override
+  Future<bool> updateWork(Work contract) => _faker.update(contract);
+
+  @override
+  Future<List<Work>> fetchWorks({DateTime from, DateTime to}) =>
+      _faker.getMany();
+
+  @override
+  Future<List<Work>> fetchWorksOfProjectItem(
+          {int projectItemId, DateTime from, DateTime to}) =>
+      _faker.getMany();
+
+  @override
+  Future<List<Work>> fetchWorksOfUser(
+          {int userId, DateTime from, DateTime to}) =>
+      _faker.getMany();
+
+  Future<bool> addContract(int workId, int contractId) async {
+    await _faker.delayer();
+    return true;
+  }
+
+  Future<bool> register(int workId,
+      {int startTimeMins, int endTimeMins}) async {
+    await _faker.delayer();
+    return true;
+  }
+
+  Future<bool> replace(int workId, int contractId) async {
+    await _faker.delayer();
+    return true;
+  }
+
+  Future<bool> removeContract(int workId) async {
+    await _faker.delayer();
+    return true;
+  }
+
+  Future<bool> removeReplacer(int workId) async {
+    await _faker.delayer();
+    return true;
+  }
+
+  @override
+  Future<List<Work>> fetchWorksOfSignedInUser() => _faker.getMany();
+
+  @override
+  Future<bool> replyToWorkInvite(int workId, bool answer) {
+    // TODO: implement replyToWorkInvite
+    return null;
+  }
+
+  @override
+  Future<QueryResult<bool>> inviteContractToWork(int workId, int contractId) {
+    // TODO: implement inviteContractToWork
+    return null;
+  }
+
+  // @override
+  // Future<List<Absence>> fetchAbsencesOfUser(int userId) => _faker.getMany();
+
+  // @override
+  // Future<int> createAbsence(Absence absence, bool isRequest) async {
+  //   absence.canRespondToApprovalState = true;
+  //   absence.approvalState =
+  //       isRequest ? ApprovalState.Pending : ApprovalState.Approved;
+  //   absence.description = 'Lort hihi';
+  //   await _faker.add(absence);
+  //   return absence.id;
+  // }
+
+  // @override
+  // Future<bool> updateAbsence(Absence absence) => _faker.update(absence);
+
+  // @override
+  // Future<bool> replyToAbsence(int absenceId, bool isApproved) async {
+  //   await _faker.delayer();
+  //   return true;
+  // }
+}

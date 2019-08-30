@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+class AnimatedTransition extends StatefulWidget {
+  final TransitionWidget child;
+
+  const AnimatedTransition({Key key, @required this.child}) : super(key: key);
+  @override
+  _AnimatedTransitionState createState() => _AnimatedTransitionState();
+}
+
+class _AnimatedTransitionState extends State<AnimatedTransition> {
+  CrossFadeState _crossFadeState = CrossFadeState.showFirst;
+  TransitionWidget _first = TransitionWidget(
+      child: Container(), name: 'AnimatedTransitionFirstChildPlaceholder');
+  TransitionWidget _second = TransitionWidget(
+      child: Container(), name: 'AnimatedTransitionSecondChildPlaceholder');
+
+  @override
+  Widget build(BuildContext context) {
+    var current =
+        _crossFadeState == CrossFadeState.showFirst ? _first : _second;
+    if (widget.child.name != current.name) {
+      if (_crossFadeState == CrossFadeState.showFirst) {
+        _second = widget.child;
+        _crossFadeState = CrossFadeState.showSecond;
+      } else if (_crossFadeState == CrossFadeState.showSecond) {
+        _first = widget.child;
+        _crossFadeState = CrossFadeState.showFirst;
+      }
+    } else {
+      current = widget.child;
+    }
+
+    return AnimatedCrossFade(
+      firstChild: _first.child,
+      secondChild: _second.child,
+      crossFadeState: _crossFadeState,
+      duration: Duration(milliseconds: 200),
+    );
+  }
+}
+
+class TransitionWidget {
+  final String name;
+  final Widget child;
+
+  TransitionWidget({@required this.name, @required this.child});
+}

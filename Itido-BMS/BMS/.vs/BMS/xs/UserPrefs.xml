@@ -1,0 +1,57 @@
+﻿<Properties StartupConfiguration="{862BCB34-EA41-4BB3-8012-190FA1A9C94B}|Default">
+  <MonoDevelop.Ide.ItemProperties.API-Test PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/ValuesController.cs">
+    <Files>
+      <File FileName="API/Startup.cs" Line="1" Column="1" />
+      <File FileName="API/Program.cs" Line="1" Column="1" />
+      <File FileName="API/Resources/ServiceAccountKeyJson.cs" Line="1" Column="1" />
+      <File FileName="API/Repositories/UserRepository.cs" Line="1" Column="1" />
+      <File FileName="API/Repositories/UnitUserRepository.cs" Line="1" Column="1" />
+      <File FileName="API/Repositories/RoleRespository.cs" Line="1" Column="1" />
+      <File FileName="API/Repositories/ProjectRepository.cs" Line="1" Column="1" />
+      <File FileName="API/Repositories/OrganizationRepository.cs" Line="1" Column="1" />
+      <File FileName="API/Repositories/LocationRepository.cs" Line="1" Column="1" />
+      <File FileName="API/Repositories/IUserRepository.cs" Line="1" Column="1" />
+      <File FileName="API/Repositories/ClientRepository.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/ClientController.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/ControllerExecutor.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/LocationController.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/OrganizationController.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/ProjectController.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/UnitUserController.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/UserController.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/ValuesController.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BMS" expanded="True">
+            <Node name="API" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Controllers" expanded="True">
+                <Node name="ValuesController.cs" selected="True" />
+              </Node>
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Repositories" expanded="True" />
+              <Node name="Resources" expanded="True" />
+            </Node>
+            <Node name="API-Test" expanded="True">
+              <Node name="RepositoriesTest" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.API PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

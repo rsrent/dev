@@ -1,0 +1,131 @@
+import 'package:bms_dart/blocs.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_flutter/translations.dart';
+import 'package:bms_flutter/widgets.dart';
+import 'package:bms_flutter_admin/src/widgets/user_list_admin.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class LocationInspectScreen extends StatefulWidget {
+  static void showLocationInspectScreen(BuildContext context, int locationId) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return LocationInspectScreen(locationId: locationId);
+        },
+      ),
+    );
+  }
+
+  final int locationId;
+
+  const LocationInspectScreen({
+    Key key,
+    @required this.locationId,
+  }) : super(key: key);
+  @override
+  _LocationInspectScreenState createState() => _LocationInspectScreenState();
+}
+
+class _LocationInspectScreenState extends State<LocationInspectScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      builder: (context) => LocationInspectBloc(widget.locationId)
+        ..dispatch(LocationInspectEventFetch()),
+      child: Builder(
+        builder: (context) {
+          var bloc = BlocProvider.of<LocationInspectBloc>(context);
+          return AnimatedBlocBuilder(
+            bloc: bloc,
+            builder: (context, state) {
+              if (state is LoadedLocationInspectState) {
+                return _build(context, state.location);
+              } else if (state is ErrorLocationInspectState) {
+                return ErrorLoadingScreen(
+                  info: Translations.of(context).infoErrorLoading,
+                  onRetre: () => bloc.dispatch(LocationInspectEventFetch()),
+                );
+              } else {
+                return LoadingScreen();
+              }
+            },
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _build(BuildContext context, Location location) {
+    return Scaffold(
+      body: NestedScrollView(
+        headerSliverBuilder: (context, boxIsScrolled) => [
+          SliverAppBar(
+            pinned: true,
+            expandedHeight: 320,
+            flexibleSpace: FlexibleSpaceBar(
+              title: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.6,
+                height: 60,
+                child: Center(
+                  child: Text(
+                    location.displayName,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ),
+              centerTitle: true,
+              titlePadding: EdgeInsets.only(top: 10),
+              //collapseMode: CollapseMode.parallax,
+              background: Center(
+                child: ListTileTheme(
+                  iconColor: Colors.white,
+                  textColor: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ListTile(
+                        leading: Icon(Icons.place),
+                        title: Text(location.address),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () {},
+              )
+            ],
+          ),
+        ],
+        body: ListView(
+          children: <Widget>[
+            ListTile(
+              title: Center(child: Text(Translations.of(context).buttonWork)),
+              onTap: () =>
+                  UserListAdmin.showListOfLocationUserss(context, location.id),
+            ),
+            ListTile(
+              title: Center(child: Text(Translations.of(context).buttonUsers)),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Center(
+                  child: Text(Translations.of(context).buttonWorkContracts)),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Center(child: Text(Translations.of(context).buttonLogs)),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

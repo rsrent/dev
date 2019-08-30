@@ -1,0 +1,107 @@
+import 'package:bms_dart/blocs.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_flutter/widgets.dart';
+import 'package:bms_flutter_admin/src/screens/user_create_update_screen.dart';
+import 'package:bms_flutter_admin/src/screens/user_inspect_screen.dart';
+import 'package:flutter/material.dart';
+
+class UserListAdmin extends StatelessWidget {
+  final UserListBloc Function(BuildContext) blocBuilder;
+  final Function(User) onSelect;
+  final Function(UserListBloc, List<User>) onManySelected;
+  final FloatingActionButton floatingActionButton;
+
+  final bool searchableAppBarIsPrimary;
+  final bool showSearchableAppBar;
+
+  UserListAdmin({
+    Key key,
+    this.onManySelected,
+    this.onSelect,
+    this.floatingActionButton,
+    this.blocBuilder,
+    this.showSearchableAppBar,
+    this.searchableAppBarIsPrimary,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListHalfScreen<UserListBloc, UserListEvent, ListState<User>,
+        User>(
+      blocBuilder: blocBuilder,
+      builder: (context, bloc, state) {
+        return UserList(
+          onLongPress: onManySelected != null
+              ? (user) {
+                  bloc.dispatch(UserLongPressed(user: user));
+                }
+              : null,
+          onSelect: (user) {
+            var _state = bloc.currentState;
+            if (_state is Loaded<User> && _state.selectable) {
+              bloc.dispatch(UserLongPressed(user: user));
+            } else {
+              onSelect(user);
+            }
+          },
+        );
+      },
+      floatingActionButton: floatingActionButton,
+      onSelectMany: onManySelected,
+      searchableAppBarIsPrimary: searchableAppBarIsPrimary,
+      showSearchableAppBar: showSearchableAppBar,
+    );
+  }
+
+  static Widget getScreenOfAll(BuildContext context) {
+    return Scaffold(
+      body: UserListAdmin(
+        showSearchableAppBar: true,
+        blocBuilder: (context) => UserListBloc(() => FetchAll()),
+        onSelect: (user) {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => UserInspectScreen(
+              userId: user.id,
+            ),
+          ));
+        },
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => UserCreateUpdateScreen(),
+            ));
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class UserListOfLocation extends StatefulWidget {
+  final int locationId;
+
+  const UserListOfLocation({Key key, this.locationId}) : super(key: key);
+  @override
+  _UserListOfLocationState createState() => _UserListOfLocationState();
+}
+
+class _UserListOfLocationState extends State<UserListOfLocation>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return UserListAdmin(
+      blocBuilder: (context) =>
+          UserListBloc(() => FetchAllOfLocation(locationId: widget.locationId)),
+      showSearchableAppBar: true,
+      searchableAppBarIsPrimary: false,
+      onSelect: (user) {
+        UserInspectScreen.showUserInspectScreen(context, user.id);
+      },
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+}

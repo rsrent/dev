@@ -1,0 +1,53 @@
+import 'package:bms_dart/models.dart';
+import 'package:http/http.dart' as http show Client;
+import 'dart:convert';
+import 'dart:async';
+import 'package:bms_dart/repositories.dart';
+
+import 'client_faker.dart';
+
+class AbsenceApi extends AbsenceSource {
+  ClientFaker _faker = ClientFaker<Absence>(
+    generator: (i) => Absence(
+      id: i,
+      from: DateTime.now(),
+      to: DateTime.now(),
+    )..request = Request(
+        approvalState: ApprovalState.Pending,
+      ),
+    updateId: (val, i) => val.id = i,
+    valueToUpdate: (other, t) => other.id == t.id,
+  );
+
+  @override
+  void dispose() {}
+
+  @override
+  Future<List<Absence>> fetchAllAbsences() => _faker.getMany();
+
+  @override
+  Future<List<Absence>> fetchAbsencesOfUser(int userId) => _faker.getMany();
+
+  @override
+  Future<int> createAbsence(
+      Absence absence, int userId, int absenceReasonId, bool isRequest) async {
+    absence.absenceReason = AbsenceReason(description: 'Lort hihi');
+    await _faker.add(absence);
+    return absence.id;
+  }
+
+  @override
+  Future<bool> updateAbsence(Absence absence) => _faker.update(absence);
+
+  @override
+  Future<bool> replyToAbsence(int absenceId, bool isApproved) async {
+    await _faker.delayer();
+    return true;
+  }
+
+  @override
+  Future<Absence> fetch(int absenceId) {
+    // TODO: implement fetch
+    return null;
+  }
+}

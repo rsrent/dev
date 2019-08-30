@@ -1,0 +1,50 @@
+import 'package:bms_dart/models.dart';
+import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
+
+@immutable
+abstract class ContractCreateUpdateState extends Equatable {
+  ContractCreateUpdateState([List props = const []]) : super(props);
+}
+
+class Initial extends ContractCreateUpdateState {
+  @override
+  String toString() => 'Initial';
+}
+
+class PreparingUpdate extends ContractCreateUpdateState {
+  final Contract contract;
+  PreparingUpdate({@required this.contract}) : super([contract]);
+  @override
+  String toString() => 'PreparingUpdate { contract: $contract }';
+}
+
+class PreparingCreate extends ContractCreateUpdateState {
+  @override
+  String toString() => 'PreparingCreate';
+}
+
+class Loading extends ContractCreateUpdateState {
+  @override
+  String toString() => 'Loading';
+}
+
+class CreateFailure extends ContractCreateUpdateState {
+  @override
+  String toString() => 'CreateFailure';
+}
+
+class UpdateFailure extends ContractCreateUpdateState {
+  @override
+  String toString() => 'UpdateFailure';
+}
+
+class CreateSuccessful extends ContractCreateUpdateState {
+  @override
+  String toString() => 'CreateSuccessful';
+}
+
+class UpdateSuccessful extends ContractCreateUpdateState {
+  @override
+  String toString() => 'UpdateSuccessful';
+}

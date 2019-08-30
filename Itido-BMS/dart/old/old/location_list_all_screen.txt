@@ -1,0 +1,40 @@
+import 'package:bms_flutter/translations.dart';
+import 'package:bms_flutter/widgets.dart';
+import 'package:bms_dart/location_list_bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:bms_flutter/src/components/searchable_app_bar.dart';
+import 'location_inspect_screen.dart';
+
+class LocationListAllScreen extends StatefulWidget {
+  @override
+  _LocationListAllScreenState createState() => _LocationListAllScreenState();
+}
+
+class _LocationListAllScreenState extends State<LocationListAllScreen> {
+  TextEditingController _searchController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListScreen(
+      blocBuilder: (context) => LocationListBloc(() => LocationListFetchAll()),
+      onRefresh: (bloc) => bloc.dispatch(LocationListFetchAll()),
+      body: LocationList(
+        onSelect: (location) {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => LocationInspectScreen(
+              location: location,
+            ),
+          ));
+        },
+      ),
+      appBarBuilder: (context, bloc) => SearchableAppBar(
+        controller: _searchController,
+        onChanged: (text) {
+          print(text);
+          bloc.dispatch(SearchTextUpdated(searchText: text));
+        },
+        hintText: Translations.of(context).hintSearchLocations,
+      ),
+    );
+  }
+}

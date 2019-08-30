@@ -1,0 +1,71 @@
+import 'package:bms_dart/create_update_state_phase.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_dart/post_create_update_bloc.dart';
+import 'package:bms_flutter/src/components/show_snack_text.dart';
+import 'package:bms_flutter/src/widgets/post/post_create_update_form.dart';
+import 'package:bms_flutter/translations.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class PostCreateUpdateScreen extends StatefulWidget {
+  static Future show(BuildContext context) {
+    return Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => PostCreateUpdateScreen(),
+    ));
+  }
+
+  const PostCreateUpdateScreen({Key key}) : super(key: key);
+
+  @override
+  _PostCreateUpdateScreenState createState() => _PostCreateUpdateScreenState();
+}
+
+class _PostCreateUpdateScreenState extends State<PostCreateUpdateScreen> {
+  bool updated = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pop(updated);
+            },
+          ),
+          title: Text(
+            Translations.of(context).titleCreatePost,
+          ),
+        ),
+        body: BlocProvider(
+          builder: (context) {
+            return PostCreateUpdateBloc()..dispatch(PrepareCreate());
+          },
+          child: Builder(
+            builder: (context) {
+              var _bloc = BlocProvider.of<PostCreateUpdateBloc>(context);
+
+              return BlocListener(
+                bloc: _bloc,
+                listener: (context, PostCreateUpdateState state) {
+                  if (state is CreateFailure) {
+                    showSnackText(
+                        context, Translations.of(context).infoCreationFailed);
+                  }
+                  if (state is CreateSuccessful) {
+                    updated = true;
+                    showSnackText(context,
+                        Translations.of(context).infoCreationSuccessful);
+                  }
+                },
+                child: PostCreateUpdateForm(),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,115 @@
+import 'package:bms_dart/create_update_state_phase.dart';
+import 'package:bms_flutter/src/components/primary_button.dart';
+import 'package:bms_flutter/src/components/primary_button.dart';
+import 'package:bms_flutter/src/widgets/loading_overlay.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_flutter/translations.dart';
+import 'package:dart_packages/streamer.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bms_flutter/src/widgets/accident_report_create_update_form.dart';
+import 'package:bms_dart/accident_report_create_update_bloc.dart';
+import 'package:rxdart/rxdart.dart';
+
+class AccidentReportCreateScreen extends StatelessWidget {
+  final int userId;
+  final AccidentReportType accidentReportType;
+
+  const AccidentReportCreateScreen({
+    Key key,
+    @required this.accidentReportType,
+    @required this.userId,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(accidentReportType == AccidentReportType.Accident
+            ? Translations.of(context).titleCreateAccidentReport
+            : Translations.of(context).titleCreateAlmostAccidentReport),
+      ),
+      body: BlocProvider(
+        builder: (context) {
+          return AccidentReportCreateUpdateBloc(accidentReportType, this.userId)
+            ..dispatch(PrepareCreate());
+        },
+        child: Builder(
+          builder: (context) {
+            var _bloc =
+                BlocProvider.of<AccidentReportCreateUpdateBloc>(context);
+            return BlocListener(
+              bloc: _bloc,
+              listener: (context, AccidentReportCreateUpdateState state) {
+                if (state.createUpdateStatePhase ==
+                    CreateUpdateStatePhase.Failed) {
+                  Scaffold.of(context)
+                    ..removeCurrentSnackBar()
+                    ..showSnackBar(SnackBar(
+                      content:
+                          Text(Translations.of(context).infoCreationFailed),
+                    ));
+                }
+                if (state.createUpdateStatePhase ==
+                    CreateUpdateStatePhase.Successful) {
+                  Scaffold.of(context)
+                    ..removeCurrentSnackBar()
+                    ..showSnackBar(SnackBar(
+                      content:
+                          Text(Translations.of(context).infoCreationSuccessful),
+                    ));
+                  _bloc.dispatch(PrepareCreate());
+                }
+              },
+              child: AccidentReportCreateUpdateForm(),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  static void showAccidenReportCreateModule(BuildContext context, int userId) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 200,
+          child: ListView(
+            children: <Widget>[
+              ListTile(
+                title: Text(Translations.of(context).titleCreateAccidentReport),
+                leading: Icon(Icons.add),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => AccidentReportCreateScreen(
+                        userId: userId,
+                        accidentReportType: AccidentReportType.Accident,
+                      ),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: Text(
+                    Translations.of(context).titleCreateAlmostAccidentReport),
+                leading: Icon(Icons.add),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => AccidentReportCreateScreen(
+                        userId: userId,
+                        accidentReportType: AccidentReportType.AlmostAccident,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}

@@ -1,0 +1,85 @@
+import 'package:bms_flutter/src/components/date_time_picker.dart';
+import 'package:bms_flutter/src/components/streamer_drop_down_button.dart';
+import 'package:bms_flutter/src/components/streamer_text_field.dart';
+import 'package:bms_flutter/translations.dart';
+import 'package:bms_dart/models.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bms_dart/absence_create_update_bloc.dart';
+import 'package:rxdart/rxdart.dart';
+
+class AbsenceCreateUpdateForm extends StatefulWidget {
+  final bool isCreate;
+
+  const AbsenceCreateUpdateForm({Key key, @required this.isCreate})
+      : super(key: key);
+  @override
+  _AbsenceCreateUpdateFormState createState() =>
+      _AbsenceCreateUpdateFormState();
+}
+
+class _AbsenceCreateUpdateFormState extends State<AbsenceCreateUpdateForm> {
+  TextEditingController _commentController;
+
+  @override
+  Widget build(BuildContext context) {
+    var bloc = BlocProvider.of<AbsenceCreateUpdateBloc>(context);
+
+    return BlocListener(
+      bloc: bloc,
+      listener: (context, AbsenceCreateUpdateState state) {
+        if (state is PreparingUpdate) {
+          _commentController = (_commentController ?? TextEditingController())
+            ..text = '${state.absence.comment}';
+        }
+        if (state is PreparingCreate) {
+          _commentController = (_commentController ?? TextEditingController());
+          _commentController.clear();
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            StreamerDropDownButton<AbsenceReason>(
+              labelText: Translations.of(context).buttonAbsense,
+              hintText: Translations.of(context).hintSelectAbsenceReason,
+              allValuesStreamer: bloc.allAbsenceReasons,
+              selectedValueStreamer: bloc.selectedAbsenceReason,
+              valueToString: (v) => v.description,
+            ),
+            StreamBuilder(
+              stream: Observable.combineLatest2(
+                  bloc.from.stream, bloc.to.stream, (f, t) => [f, t]),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      DateTimePicker(
+                        labelText: Translations.of(context).labelFrom,
+                        selectedDate: bloc.from.value,
+                        selectDate: bloc.from.update,
+                        lastDate: bloc.to.value,
+                      ),
+                      DateTimePicker(
+                        labelText: Translations.of(context).labelTo,
+                        selectedDate: bloc.to.value,
+                        selectDate: bloc.to.update,
+                        firstDate: bloc.from.value,
+                      ),
+                    ]);
+              },
+            ),
+            StreamerTextField(
+              labelText: Translations.of(context).labelComment,
+              controller: _commentController,
+              streamer: bloc.comment,
+              maxLines: 3,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

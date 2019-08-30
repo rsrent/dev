@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xh6-Hx-Qrq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Date Picker View Controller-->
+        <scene sceneID="l7p-W2-gv7">
+            <objects>
+                <viewController storyboardIdentifier="DatePickerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xh6-Hx-Qrq" customClass="DatePickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tiS-kG-yEm"/>
+                        <viewControllerLayoutGuide type="bottom" id="gqd-wC-hXF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OsS-Ye-dtC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="wOa-jJ-ZC8" misplaced="YES">
+                                <rect key="frame" x="0.0" y="166" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="526752728.46334499">
+                                    <!--2017-09-10 16:12:08 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxO-F2-y4t" misplaced="YES">
+                                <rect key="frame" x="16" y="97" width="343" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.4851717083" green="0.66437957849999996" blue="0.78063531090000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EhI-U7-kZy">
+                                <rect key="frame" x="16" y="420" width="288" height="30"/>
+                                <color key="backgroundColor" red="0.4851717083" green="0.66437957849999996" blue="0.78063531090000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wOa-jJ-ZC8" firstAttribute="top" secondItem="bxO-F2-y4t" secondAttribute="bottom" constant="40" id="21Y-jg-sei"/>
+                            <constraint firstAttribute="trailing" secondItem="wOa-jJ-ZC8" secondAttribute="trailing" id="CLU-hk-k3u"/>
+                            <constraint firstItem="wOa-jJ-ZC8" firstAttribute="leading" secondItem="OsS-Ye-dtC" secondAttribute="leading" id="Lpb-gp-2g3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EhI-U7-kZy" secondAttribute="trailing" id="OaW-Bj-UhB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bxO-F2-y4t" secondAttribute="trailing" id="fl2-PX-5A8"/>
+                            <constraint firstItem="bxO-F2-y4t" firstAttribute="centerY" secondItem="OsS-Ye-dtC" secondAttribute="centerY" multiplier="1:3" id="oFj-fR-GaQ"/>
+                            <constraint firstItem="bxO-F2-y4t" firstAttribute="leading" secondItem="OsS-Ye-dtC" secondAttribute="leadingMargin" id="ul1-yp-hks"/>
+                            <constraint firstItem="EhI-U7-kZy" firstAttribute="leading" secondItem="OsS-Ye-dtC" secondAttribute="leadingMargin" id="vEo-Fv-jSm"/>
+                            <constraint firstItem="EhI-U7-kZy" firstAttribute="top" secondItem="wOa-jJ-ZC8" secondAttribute="bottom" constant="40" id="wp4-MG-GFR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DatePicker" destination="wOa-jJ-ZC8" id="name-outlet-wOa-jJ-ZC8"/>
+                        <outlet property="DoneButton" destination="EhI-U7-kZy" id="name-outlet-EhI-U7-kZy"/>
+                        <outlet property="TitleLabel" destination="bxO-F2-y4t" id="name-outlet-bxO-F2-y4t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7xk-6i-o3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="58" y="146"/>
+        </scene>
+        <!--Picker View Controller-->
+        <scene sceneID="VMs-Jr-CYV">
+            <objects>
+                <viewController storyboardIdentifier="PickerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="siR-Th-WGL" customClass="PickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3PG-LR-dcp"/>
+                        <viewControllerLayoutGuide type="bottom" id="mkp-5q-o0y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L2J-wo-Ukl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xos-3I-aCa" misplaced="YES">
+                                <rect key="frame" x="16" y="97" width="343" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.4851717083" green="0.66437957849999996" blue="0.78063531090000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KEd-Pf-jIB" misplaced="YES">
+                                <rect key="frame" x="0.0" y="166" width="375" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjd-Nb-Ajh" misplaced="YES">
+                                <rect key="frame" x="16" y="422" width="343" height="41"/>
+                                <color key="backgroundColor" red="0.4851717083" green="0.66437957849999996" blue="0.78063531090000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="KEd-Pf-jIB" secondAttribute="trailing" id="Aih-tY-T0K"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tjd-Nb-Ajh" secondAttribute="trailing" id="D0B-Ie-Awg"/>
+                            <constraint firstItem="xos-3I-aCa" firstAttribute="leading" secondItem="L2J-wo-Ukl" secondAttribute="leadingMargin" id="TZb-uc-hNO"/>
+                            <constraint firstItem="tjd-Nb-Ajh" firstAttribute="leading" secondItem="L2J-wo-Ukl" secondAttribute="leadingMargin" id="Yx7-r8-f1Y"/>
+                            <constraint firstItem="tjd-Nb-Ajh" firstAttribute="top" secondItem="KEd-Pf-jIB" secondAttribute="bottom" constant="40" id="ejV-6f-Uyo"/>
+                            <constraint firstItem="KEd-Pf-jIB" firstAttribute="leading" secondItem="L2J-wo-Ukl" secondAttribute="leading" id="fKV-4m-Zf9"/>
+                            <constraint firstItem="xos-3I-aCa" firstAttribute="centerY" secondItem="L2J-wo-Ukl" secondAttribute="centerY" multiplier="1:3" id="hEH-6I-02Z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xos-3I-aCa" secondAttribute="trailing" id="jya-Rb-Mh7"/>
+                            <constraint firstItem="KEd-Pf-jIB" firstAttribute="top" secondItem="xos-3I-aCa" secondAttribute="bottom" constant="40" id="sBe-mz-MVN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DoneButton" destination="tjd-Nb-Ajh" id="name-outlet-tjd-Nb-Ajh"/>
+                        <outlet property="Picker" destination="KEd-Pf-jIB" id="name-outlet-KEd-Pf-jIB"/>
+                        <outlet property="TitleLabel" destination="xos-3I-aCa" id="name-outlet-xos-3I-aCa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1ET-gX-Zfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="796"/>
+        </scene>
+        <!--Text Input View Controller-->
+        <scene sceneID="DTU-RV-9Yv">
+            <objects>
+                <viewController storyboardIdentifier="TextInputViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E2P-Mu-1Ii" customClass="TextInputViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qTg-WB-547"/>
+                        <viewControllerLayoutGuide type="bottom" id="17l-uM-4AU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V29-Uf-fGK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sah-H7-rdF">
+                                <rect key="frame" x="16" y="80" width="288" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idC-Zp-HO9">
+                                <rect key="frame" x="16" y="36" width="288" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.4851717083" green="0.66437957849999996" blue="0.78063531090000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fmj-Jn-gJb">
+                                <rect key="frame" x="16" y="130" width="288" height="30"/>
+                                <color key="backgroundColor" red="0.48627450980392156" green="0.66274509803921566" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Sah-H7-rdF" secondAttribute="trailing" id="7fM-iD-sjf"/>
+                            <constraint firstItem="Sah-H7-rdF" firstAttribute="leading" secondItem="V29-Uf-fGK" secondAttribute="leadingMargin" id="K1W-7W-tBB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fmj-Jn-gJb" secondAttribute="trailing" id="Ndj-Ma-7rC"/>
+                            <constraint firstItem="idC-Zp-HO9" firstAttribute="centerY" secondItem="V29-Uf-fGK" secondAttribute="centerY" multiplier="1:3" id="U8Z-e1-Hhy"/>
+                            <constraint firstItem="Fmj-Jn-gJb" firstAttribute="top" secondItem="Sah-H7-rdF" secondAttribute="bottom" constant="40" id="ZHN-Az-MUi"/>
+                            <constraint firstItem="Fmj-Jn-gJb" firstAttribute="leading" secondItem="V29-Uf-fGK" secondAttribute="leadingMargin" id="f0g-UG-9DF"/>
+                            <constraint firstItem="idC-Zp-HO9" firstAttribute="leading" secondItem="V29-Uf-fGK" secondAttribute="leadingMargin" id="p6U-fK-NAp"/>
+                            <constraint firstItem="Sah-H7-rdF" firstAttribute="top" secondItem="idC-Zp-HO9" secondAttribute="bottom" constant="40" id="uX7-zP-J3x"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="idC-Zp-HO9" secondAttribute="trailing" id="x86-Nv-Cgx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DoneButton" destination="Fmj-Jn-gJb" id="name-outlet-Fmj-Jn-gJb"/>
+                        <outlet property="TextField" destination="Sah-H7-rdF" id="name-outlet-Sah-H7-rdF"/>
+                        <outlet property="TitleLabel" destination="idC-Zp-HO9" id="name-outlet-idC-Zp-HO9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IeK-Jy-k4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="724" y="147"/>
+        </scene>
+        <!--Picture Input View Controller-->
+        <scene sceneID="koh-rZ-B1w">
+            <objects>
+                <viewController storyboardIdentifier="PictureInputViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Te4-6F-kx8" customClass="PictureInputViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kMQ-Y1-2ka"/>
+                        <viewControllerLayoutGuide type="bottom" id="Aus-ig-Ks3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wb0-n5-dgg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7p-S7-wzx" misplaced="YES">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rw5-JV-Hwb" misplaced="YES">
+                                <rect key="frame" x="157" y="587" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="XyR-Nv-JGf"/>
+                                    <constraint firstAttribute="width" constant="60" id="xT9-1g-W8U"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h7p-S7-wzx" firstAttribute="top" secondItem="Wb0-n5-dgg" secondAttribute="top" id="1PI-8J-zxc"/>
+                            <constraint firstItem="rw5-JV-Hwb" firstAttribute="centerX" secondItem="Wb0-n5-dgg" secondAttribute="centerX" id="AB4-3Z-Lbq"/>
+                            <constraint firstItem="Aus-ig-Ks3" firstAttribute="top" secondItem="rw5-JV-Hwb" secondAttribute="bottom" constant="20" id="JAg-tG-NFY"/>
+                            <constraint firstItem="Aus-ig-Ks3" firstAttribute="top" secondItem="h7p-S7-wzx" secondAttribute="bottom" id="QD6-3f-rwn"/>
+                            <constraint firstAttribute="trailing" secondItem="h7p-S7-wzx" secondAttribute="trailing" id="tEj-Ip-u2z"/>
+                            <constraint firstItem="h7p-S7-wzx" firstAttribute="leading" secondItem="Wb0-n5-dgg" secondAttribute="leading" id="tzc-ku-n8M"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="CameraContainer" destination="h7p-S7-wzx" id="name-outlet-h7p-S7-wzx"/>
+                        <outlet property="PictureButton" destination="rw5-JV-Hwb" id="name-outlet-rw5-JV-Hwb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7pj-HN-v9r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1368.8" y="143.4783"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="faceTest.jpg" width="570" height="720"/>
+    </resources>
+</document>

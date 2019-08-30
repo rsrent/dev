@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="MessageMediaView" id="1" customClass="MessageMediaView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iax-HQ-AHk">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdm-VQ-kGS">
+                    <rect key="frame" x="147" y="293" width="80" height="80"/>
+                    <color key="backgroundColor" red="0.25709866749999999" green="0.25709866749999999" blue="0.25709866749999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="4Oh-di-9uI"/>
+                        <constraint firstAttribute="width" constant="80" id="oFG-rY-3gE"/>
+                    </constraints>
+                    <state key="normal" title="Play">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w69-8r-r55">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="667" id="0NI-Fe-wHe"/>
+                    </constraints>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="w69-8r-r55" firstAttribute="top" secondItem="1" secondAttribute="top" id="644-Dg-GVw"/>
+                <constraint firstAttribute="trailing" secondItem="w69-8r-r55" secondAttribute="trailing" id="6xg-7O-3P8"/>
+                <constraint firstItem="Zdm-VQ-kGS" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="DVp-pO-Nq7"/>
+                <constraint firstAttribute="bottom" secondItem="Iax-HQ-AHk" secondAttribute="bottom" id="Hkk-od-KxC"/>
+                <constraint firstAttribute="bottom" secondItem="w69-8r-r55" secondAttribute="bottom" id="Hos-zS-gb4"/>
+                <constraint firstItem="Iax-HQ-AHk" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="T1m-0R-mFd"/>
+                <constraint firstItem="Zdm-VQ-kGS" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="etS-HD-F8H"/>
+                <constraint firstAttribute="trailing" secondItem="Iax-HQ-AHk" secondAttribute="trailing" id="uRM-rw-fnX"/>
+                <constraint firstItem="w69-8r-r55" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="ubs-5V-kKC"/>
+                <constraint firstItem="Iax-HQ-AHk" firstAttribute="top" secondItem="1" secondAttribute="top" id="wAk-Xj-ekR"/>
+            </constraints>
+            <connections>
+                <outlet property="HeightConstraint" destination="0NI-Fe-wHe" id="name-outlet-0NI-Fe-wHe"/>
+                <outlet property="ImageView" destination="Iax-HQ-AHk" id="name-outlet-Iax-HQ-AHk"/>
+                <outlet property="InspectElementButton" destination="w69-8r-r55" id="name-outlet-w69-8r-r55"/>
+                <outlet property="VideoButton" destination="Zdm-VQ-kGS" id="name-outlet-Zdm-VQ-kGS"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

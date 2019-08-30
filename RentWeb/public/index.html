@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <!-- Sets character encoding -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Web App name / website title -->
+    <meta name="application-name" content="SIMP">
+    <title>SIMP WEB APP</title>
+
+    <!-- Stops the SIMP Web App from being indexed by search engines -->
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
+
+    <!-- Sets Favicon to show in browsers and when saved -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="%PUBLIC_URL%/img/fav/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/img/fav/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="%PUBLIC_URL%/img/fav/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="%PUBLIC_URL%/img/fav/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="%PUBLIC_URL%/img/fav/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="%PUBLIC_URL%/img/fav/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="%PUBLIC_URL%/img/fav/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/img/fav/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/img/fav/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/img/fav/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/img/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="%PUBLIC_URL%/img/fav/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/img/fav/favicon-16x16.png">
+    <link rel="manifest" href="%PUBLIC_URL%/img/fav/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/fav/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Styling -->
+    <link href="%PUBLIC_URL%/css/bootstrap.min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,fetch,findIndex,includes"></script>
+<script>
+    if (!Array.prototype.find) {
+        Object.defineProperty(Array.prototype, 'find', {
+            value: function (predicate) {
+                // 1. Let O be ? ToObject(this value).
+                if (this == null) {
+                    throw new TypeError('"this" is null or not defined');
+                }
+
+                var o = Object(this);
+
+                // 2. Let len be ? ToLength(? Get(O, "length")).
+                var len = o.length >>> 0;
+
+                // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+                if (typeof predicate !== 'function') {
+                    throw new TypeError('predicate must be a function');
+                }
+
+                // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+                var thisArg = arguments[1];
+
+                // 5. Let k be 0.
+                var k = 0;
+
+                // 6. Repeat, while k < len
+                while (k < len) {
+                    // a. Let Pk be ! ToString(k).
+                    // b. Let kValue be ? Get(O, Pk).
+                    // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+                    // d. If testResult is true, return kValue.
+                    var kValue = o[k];
+                    if (predicate.call(thisArg, kValue, k, o)) {
+                        return kValue;
+                    }
+                    // e. Increase k by 1.
+                    k++;
+                }
+
+                // 7. Return undefined.
+                return undefined;
+            },
+            configurable: true,
+            writable: true
+        });
+    }
+</script>
+<script>
+    //Polyfill for edge. Because edge doesn't support finally.
+    Promise.prototype.finally = function (callback) {
+        return this.then(
+            value => this.constructor.resolve(callback()).then(() => value),
+            reason => this.constructor.resolve(callback()).then(() => {
+                throw reason
+            })
+        )
+    }</script>
+<script>
+    if (typeof Object.assign != 'function') {
+        // Must be writable: true, enumerable: false, configurable: true
+        Object.defineProperty(Object, "assign", {
+            value: function assign(target, varArgs) { // .length of function is 2
+                'use strict';
+                if (target == null) { // TypeError if undefined or null
+                    throw new TypeError('Cannot convert undefined or null to object');
+                }
+
+                var to = Object(target);
+
+                for (var index = 1; index < arguments.length; index++) {
+                    var nextSource = arguments[index];
+
+                    if (nextSource != null) { // Skip over if undefined or null
+                        for (var nextKey in nextSource) {
+                            // Avoid bugs when hasOwnProperty is shadowed
+                            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                                to[nextKey] = nextSource[nextKey];
+                            }
+                        }
+                    }
+                }
+                return to;
+            },
+            writable: true,
+            configurable: true
+        });
+    }
+    if (!String.prototype.includes) {
+        String.prototype.includes = function(search, start) {
+            if (typeof start !== 'number') {
+                start = 0;
+            }
+
+            if (start + search.length > this.length) {
+                return false;
+            } else {
+                return this.indexOf(search, start) !== -1;
+            }
+        };
+    }
+</script>
+<script>
+    if (!Array.prototype.findIndex) {
+        Object.defineProperty(Array.prototype, 'findIndex', {
+            value: function(predicate) {
+                // 1. Let O be ? ToObject(this value).
+                if (this == null) {
+                    throw new TypeError('"this" is null or not defined');
+                }
+
+                var o = Object(this);
+
+                // 2. Let len be ? ToLength(? Get(O, "length")).
+                var len = o.length >>> 0;
+
+                // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+                if (typeof predicate !== 'function') {
+                    throw new TypeError('predicate must be a function');
+                }
+
+                // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+                var thisArg = arguments[1];
+
+                // 5. Let k be 0.
+                var k = 0;
+
+                // 6. Repeat, while k < len
+                while (k < len) {
+                    // a. Let Pk be ! ToString(k).
+                    // b. Let kValue be ? Get(O, Pk).
+                    // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+                    // d. If testResult is true, return k.
+                    var kValue = o[k];
+                    if (predicate.call(thisArg, kValue, k, o)) {
+                        return k;
+                    }
+                    // e. Increase k by 1.
+                    k++;
+                }
+
+                // 7. Return -1.
+                return -1;
+            },
+            configurable: true,
+            writable: true
+        });
+    }
+</script>
+<script type="javascript/text" src="../src/azure-storage.common.js"></script>
+<script type="javascript/text" src="../src/azure-storage.blob.js"></script>
+</body>
+</html>

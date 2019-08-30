@@ -1,0 +1,225 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:map_view/figure_joint_type.dart';
+import 'package:map_view/map_view.dart';
+import 'package:map_view/polygon.dart';
+import 'package:map_view/polyline.dart';
+
+import '../../models/data.dart';
+
+class MapWidget extends StatelessWidget {
+  CompleteData data;
+
+  List<Marker> _markers;
+
+  CompositeSubscription compositeSubscription = new CompositeSubscription();
+  MapView mapView = new MapView();
+  CameraPosition cameraPosition;
+
+  /*
+  var staticMapProvider =
+      new StaticMapProvider("AIzaSyDnsQZayjsOg0vs_uR383PicymfGyjygqI");
+  static Uri staticMapUri;
+  */
+
+  Location location;
+
+  MapWidget(this.data) {
+    List<Marker> markers = List();
+
+    List<Color> colors = [
+      Colors.red,
+      Colors.blue,
+      Colors.yellow,
+      Colors.green,
+      Colors.purple,
+      Colors.brown,
+      Colors.orange,
+      Colors.teal,
+      Colors.pink
+    ];
+
+    Map<int, Color> colormap = Map();
+    int colorCounter = 0;
+    data.serviceLeaderGeoLocations.forEach((gp) {
+      if (gp.lat != null && gp.lon != null) {
+        Color color;
+        if (colormap.containsKey(gp.serviceLeaderId)) {
+          color = colormap[gp.serviceLeaderId];
+        } else if (gp.serviceLeaderId == null) {
+          color = Colors.grey;
+        } else {
+          colormap[gp.serviceLeaderId] =
+              colors[colorCounter % (colors.length - 1)];
+          colorCounter++;
+          //colors.removeAt();
+          color = colormap[gp.serviceLeaderId];
+        }
+
+        markers.add(Marker(
+            "lat:${gp.lat},lon:${gp.lon},sl:${gp.serviceLeaderId}",
+            gp.name,
+            gp.lat,
+            gp.lon,
+            color: color));
+      }
+    });
+
+    _markers = markers;
+
+    location = Location(56.076897, 10.338111);
+
+    cameraPosition = new CameraPosition(location, 2.0);
+
+    //staticMapUri = staticMapProvider.getStaticUri(location, 6,
+    //    width: 900, height: 400, mapType: StaticMapViewType.roadmap);
+
+    /*
+    if (staticMapUri == null) {
+      staticMapUri = staticMapProvider.getStaticUriWithMarkersAndZoom(
+        _markers,
+        center: location,
+        zoomLevel: 6,
+        width: 500,
+        height: 500,
+      );
+    }
+    */
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      //child: Image.network(staticMapUri.toString()),
+
+      child: FlatButton(
+          padding: EdgeInsets.all(0.0),
+          child: AspectRatio(
+            aspectRatio: 1.0,
+            child: Image.asset("assets/dk_map.png", fit: BoxFit.cover,), /*Image.network(
+              staticMapUri.toString(),
+              fit: BoxFit.cover,
+            ),*/
+          ),
+          onPressed: () {
+            showMap();
+          }),
+    );
+  }
+
+  showMap() {
+    mapView.show(
+        new MapOptions(
+            mapViewType: MapViewType.normal,
+            //showUserLocation: true,
+            //showMyLocationButton: true,
+            showCompassButton: true,
+            initialCameraPosition: new CameraPosition(location, 6.75),
+            hideToolbar: false,
+            title: "Lokationer"),
+        toolbarActions: [new ToolbarAction("Close", 1)]);
+    StreamSubscription sub = mapView.onMapReady.listen((_) {
+      mapView.setMarkers(_markers);
+      //mapView.setPolylines(_lines);
+      //mapView.setPolygons(_polygons);
+    });
+    compositeSubscription.add(sub);
+    sub = mapView.onLocationUpdated.listen((location) {
+      print("Location updated $location");
+    });
+    compositeSubscription.add(sub);
+    sub = mapView.onTouchAnnotation
+        .listen((annotation) => print("annotation ${annotation.id} tapped"));
+    compositeSubscription.add(sub);
+    sub = mapView.onTouchPolyline
+        .listen((polyline) => print("polyline ${polyline.id} tapped"));
+    compositeSubscription.add(sub);
+    sub = mapView.onTouchPolygon
+        .listen((polygon) => print("polygon ${polygon.id} tapped"));
+    compositeSubscription.add(sub);
+    sub = mapView.onMapTapped
+        .listen((location) => print("Touched location $location"));
+    compositeSubscription.add(sub);
+    //sub = mapView.onCameraChanged.listen((cameraPosition) =>
+    //    this.setState(() => this.cameraPosition = cameraPosition));
+    compositeSubscription.add(sub);
+    sub = mapView.onAnnotationDragStart.listen((markerMap) {
+      var marker = markerMap.keys.first;
+      print("Annotation ${marker.id} dragging started");
+    });
+    sub = mapView.onAnnotationDragEnd.listen((markerMap) {
+      var marker = markerMap.keys.first;
+      print("Annotation ${marker.id} dragging ended");
+    });
+    sub = mapView.onAnnotationDrag.listen((markerMap) {
+      var marker = markerMap.keys.first;
+      var location = markerMap[marker];
+      print("Annotation ${marker.id} moved to ${location.latitude} , ${location
+          .longitude}");
+    });
+    compositeSubscription.add(sub);
+    sub = mapView.onToolbarAction.listen((id) {
+      print("Toolbar button id = $id");
+      if (id == 1) {
+        _handleDismiss();
+      }
+    });
+    compositeSubscription.add(sub);
+    sub = mapView.onInfoWindowTapped.listen((marker) {
+      print("Info Window Tapped for ${marker.title}");
+    });
+    compositeSubscription.add(sub);
+  }
+
+  _handleDismiss() async {
+    double zoomLevel = await mapView.zoomLevel;
+    Location centerLocation = await mapView.centerLocation;
+    List<Marker> visibleAnnotations = await mapView.visibleAnnotations;
+    List<Polyline> visibleLines = await mapView.visiblePolyLines;
+    List<Polygon> visiblePolygons = await mapView.visiblePolygons;
+    print("Zoom Level: $zoomLevel");
+    print("Center: $centerLocation");
+    print("Visible Annotation Count: ${visibleAnnotations.length}");
+    print("Visible Polylines Count: ${visibleLines.length}");
+    print("Visible Polygons Count: ${visiblePolygons.length}");
+    /*
+    var uri = await staticMapProvider.getImageUriFromMap(mapView,
+        width: 900, height: 400); */
+        
+    //setState(() => staticMapUri = uri);
+    mapView.dismiss();
+    compositeSubscription.cancel();
+  }
+}
+
+class CompositeSubscription {
+  Set<StreamSubscription> _subscriptions = new Set();
+
+  void cancel() {
+    for (var n in this._subscriptions) {
+      n.cancel();
+    }
+    this._subscriptions = new Set();
+  }
+
+  void add(StreamSubscription subscription) {
+    this._subscriptions.add(subscription);
+  }
+
+  void addAll(Iterable<StreamSubscription> subs) {
+    _subscriptions.addAll(subs);
+  }
+
+  bool remove(StreamSubscription subscription) {
+    return this._subscriptions.remove(subscription);
+  }
+
+  bool contains(StreamSubscription subscription) {
+    return this._subscriptions.contains(subscription);
+  }
+
+  List<StreamSubscription> toList() {
+    return this._subscriptions.toList();
+  }
+}

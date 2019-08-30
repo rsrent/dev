@@ -1,0 +1,12 @@
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/bin/Debug/netstandard2.0/Rent.Shared.deps.json
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/bin/Debug/netstandard2.0/Rent.Shared.dll
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/bin/Debug/netstandard2.0/Rent.Shared.pdb
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/bin/Debug/netstandard2.0/ModuleLibrary.Shared.dll
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/bin/Debug/netstandard2.0/ModuleLibrary.Shared.pdb
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/obj/Debug/netstandard2.0/Rent.Shared.csproj.CoreCompileInputs.cache
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/obj/Debug/netstandard2.0/Rent.Shared.AssemblyInfoInputs.cache
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/obj/Debug/netstandard2.0/Rent.Shared.AssemblyInfo.cs
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/obj/Debug/netstandard2.0/Rent.Shared.dll
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/obj/Debug/netstandard2.0/Rent.Shared.pdb
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/obj/Debug/netstandard2.0/Rent.Shared.csprojAssemblyReference.cache
+/Users/tobiasbang/Projects/RentAppProject/Rent.Shared/obj/Debug/netstandard2.0/Rent.Shared.csproj.CopyComplete

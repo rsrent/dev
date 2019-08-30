@@ -1,0 +1,311 @@
+import 'package:bms_dart/blocs.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_dart/project_list_bloc.dart';
+import 'package:bms_dart/work_contract_list_bloc.dart';
+import 'package:bms_dart/work_list_bloc.dart';
+import 'package:bms_flutter/widgets.dart';
+import 'package:bms_flutter_admin/src/screens/user_inspect_screen.dart';
+import 'package:bms_flutter_admin/src/widgets/work_contract_drawer.dart';
+import 'package:bms_flutter_admin/src/widgets/work_drawer.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bms_flutter/translations.dart';
+
+import 'package:bms_flutter/src/widgets/location/widgets.dart';
+import 'package:bms_flutter/src/widgets/user/widgets.dart';
+import 'package:bms_flutter/src/widgets/log/widgets.dart';
+import 'package:bms_flutter/src/widgets/work/widgets.dart';
+import 'package:bms_flutter/src/widgets/work_contract/widgets.dart';
+import 'package:bms_flutter/src/widgets/project/widgets.dart';
+
+import 'project_inspect_screen.dart';
+
+class LocationInspectScreen extends StatefulWidget {
+  static void show(BuildContext context, int locationId, {int startIndex}) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return LocationInspectScreen(
+              locationId: locationId, startIndex: startIndex);
+        },
+      ),
+    );
+  }
+
+  final int locationId;
+  final int startIndex;
+
+  const LocationInspectScreen({
+    Key key,
+    @required this.locationId,
+    this.startIndex,
+  }) : super(key: key);
+
+  @override
+  _LocationInspectScreenState createState() => _LocationInspectScreenState();
+}
+
+class _LocationInspectScreenState extends State<LocationInspectScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      builder: (context) => LocationInspectBloc(widget.locationId)
+        ..dispatch(LocationInspectEventFetch()),
+      child: Builder(
+        builder: (context) {
+          var bloc = BlocProvider.of<LocationInspectBloc>(context);
+          return AnimatedBlocBuilder(
+            bloc: bloc,
+            builder: (context, state) {
+              if (state is LoadedLocationInspectState &&
+                  state.location != null) {
+                return _build(context, state.location, state.loading);
+              } else if (state is ErrorLocationInspectState) {
+                return ErrorLoadingScreen(
+                  info: Translations.of(context).infoErrorLoading,
+                  onRetre: () => bloc.dispatch(LocationInspectEventFetch()),
+                );
+              } else {
+                return LoadingScreen();
+              }
+            },
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _build(BuildContext context, Location location, bool loading) {
+    return InspectScreen(
+      backgroundColor: Colors.white,
+      startIndex: widget.startIndex,
+      title: location.displayName,
+      child: _Background(
+        location: location,
+      ),
+      items: [
+        // InspectScreenItem(
+        //   icon: Icon(Icons.work),
+        //   child: WorkListScreen(
+        //     blocBuilder: (context) => WorkListBloc(
+        //       () =>
+        //           WorkListFetchOfProjectItem(projectItemId: widget.locationId),
+        //     ),
+        //     showLocation: false,
+        //     floatingActionButton: FloatingActionButton(
+        //       heroTag: null,
+        //       child: Icon(Icons.add),
+        //       onPressed: () {
+        //         Navigator.of(context).push(
+        //           MaterialPageRoute(
+        //             builder: (context) => WorkCreateUpdateScreen(
+        //               proejctItemId: location.id,
+        //             ),
+        //           ),
+        //         );
+        //       },
+        //     ),
+        //     onSelect: (work, bloc) => WorkDrawer.show(context, work, bloc),
+        //     onSelectTime: (work, bloc) => registerWork(context, work, bloc),
+        //   ),
+        // ),
+        // InspectScreenItem(
+        //   icon: Icon(Icons.contact_mail),
+        //   child: WorkContractListScreen(
+        //     blocBuilder: (context) => WorkContractListBloc(
+        //       () => WorkContractListFetchOfProjectItem(
+        //           proejctItemId: widget.locationId),
+        //     ),
+        //     showLocation: false,
+        //     floatingActionButton: FloatingActionButton(
+        //       heroTag: null,
+        //       child: Icon(Icons.add),
+        //       onPressed: () {
+        //         Navigator.of(context).push(
+        //           MaterialPageRoute(
+        //             builder: (context) => WorkContractCreateUpdateScreen(
+        //               locationId: location.id,
+        //             ),
+        //           ),
+        //         );
+        //       },
+        //     ),
+        //     onSelect: (workContract) =>
+        //         WorkContractDrawer.show(context, workContract),
+        //   ),
+        // ),
+        InspectScreenItem(
+          icon: Icon(Icons.group),
+          child: UserListScreen(
+            blocBuilder: (context) => UserListBloc(
+              () => FetchAllOfLocation(locationId: widget.locationId),
+            ),
+            onSelect: (user) => UserInspectScreen.show(context, user.id),
+          ),
+        ),
+        InspectScreenItem(
+          icon: Icon(Icons.assignment),
+          child: LogListScreen(
+            blocBuilder: (context) => LogListBloc(
+              () => LogListFetchOfProjectItem(projectItemId: widget.locationId),
+            ),
+            floatingActionButton: Builder(
+              builder: (context) {
+                return FloatingActionButton(
+                  heroTag: null,
+                  child: Icon(Icons.add),
+                  onPressed: () {
+                    BlocProvider.of<LogListBloc>(context).dispatch(
+                        LogListAddNew(projectItemId: widget.locationId));
+                  },
+                );
+              },
+            ),
+            onSelect: (log) => LogCreateUpdateScreen.show(context, log: log),
+          ),
+        ),
+        InspectScreenItem(
+          icon: Icon(Icons.folder_shared),
+          child: ProjectListScreen(
+            blocBuilder: (context) => ProjectListBloc(
+              () => ProjectListFetchOfProject(projectId: widget.locationId),
+            ),
+            floatingActionButton: Builder(
+              builder: (context) {
+                return FloatingActionButton(
+                  heroTag: null,
+                  child: Icon(Icons.add),
+                  onPressed: () async {
+                    var _textFieldController = TextEditingController();
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text('TextField in Dialog'),
+                            content: TextField(
+                              controller: _textFieldController,
+                              decoration: InputDecoration(
+                                  hintText: "TextField in Dialog"),
+                            ),
+                            actions: <Widget>[
+                              FlatButton(
+                                child: Text('CANCEL'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              FlatButton(
+                                child: Text('CREATE'),
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pop(_textFieldController.text);
+                                },
+                              ),
+                            ],
+                          );
+                        }).then((text) {
+                      if (text != null) {
+                        BlocProvider.of<ProjectListBloc>(context).dispatch(
+                            ProjectListAddNew(
+                                projectId: widget.locationId, name: text));
+                      }
+                    });
+                  },
+                );
+              },
+            ),
+            onSelect: (project) =>
+                ProjectInspectScreen.show(context, project.id),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _Background extends StatefulWidget {
+  final Location location;
+
+  const _Background({Key key, @required this.location}) : super(key: key);
+
+  @override
+  __BackgroundState createState() => __BackgroundState();
+}
+
+class __BackgroundState extends State<_Background> {
+  @override
+  Widget build(BuildContext context) {
+    var location = widget.location;
+    var bloc = BlocProvider.of<LocationInspectBloc>(context);
+    return ListView(
+      padding: EdgeInsets.only(bottom: 200, left: 24, right: 24, top: 24),
+      children: <Widget>[
+        CircleAvatar(
+          radius: 60,
+        ),
+        ListTile(
+          leading: Icon(Icons.edit),
+          title: Text('Rediger'),
+          onTap: () {
+            LocationCreateUpdateScreen.show(context, location: location)
+                .then((updated) {
+              if (updated) {
+                bloc.dispatch(LocationInspectEventFetch());
+              }
+            });
+          },
+        ),
+        Divider(),
+        if (location.disabled)
+          ListTile(
+            leading: Icon(Icons.clear),
+            title: Text('Ikke aktiv'),
+            subtitle: Text('Tryk for at aktivere'),
+            onTap: () => bloc.dispatch(EnableDisableLocation()),
+          ),
+        if (!location.disabled)
+          ListTile(
+            leading: Icon(Icons.check),
+            title: Text('Aktiv'),
+            subtitle: Text('Tryk for at deaktivere'),
+            onTap: () => bloc.dispatch(EnableDisableLocation()),
+          ),
+        Divider(color: Colors.white),
+        ListTile(
+          title: Text('Navn'),
+          subtitle: Text(location.name ?? ''),
+        ),
+        ListTile(
+          title: Text('Kunde'),
+          subtitle: Text(location.customerName),
+        ),
+        ListTile(
+          title: Text('Projektnummer'),
+          subtitle: Text('#${location.projectNumber}'),
+        ),
+        ListTile(
+          title: Text('Adresse'),
+          subtitle: Text(location.address ?? ''),
+        ),
+        ListTile(
+          title: Text('Kommentar'),
+          subtitle: Text(location.comment ?? ''),
+        ),
+        ListTile(
+          title: Text('Telefon'),
+          subtitle: Text(location.phone ?? ''),
+        ),
+        if (location.serviceLeader != null)
+          ListTile(
+            title: Text('Serviceleder'),
+            subtitle: Text(location.serviceLeader.displayName),
+            onTap: () {
+              UserInspectScreen.show(context, location.serviceLeader.id);
+            },
+          ),
+      ],
+    );
+  }
+}

@@ -1,0 +1,71 @@
+import 'package:bms_dart/blocs.dart';
+import 'package:bms_dart/contract_list_bloc.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_dart/work_contract_list_bloc.dart';
+import 'package:bms_flutter_admin/src/screens/work_contract_create_update_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bms_flutter/widgets.dart';
+import 'work_contract_drawer.dart';
+
+class WorkContractListAdmin extends StatelessWidget {
+  static Widget getWorkContractListOfLocation(
+    BuildContext context,
+    int locationId,
+  ) {
+    return WorkContractListAdmin(
+      showLocation: false,
+      floatingActionButton: FloatingActionButton(
+        heroTag: null,
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => WorkContractCreateUpdateScreen(
+                locationId: locationId,
+              ),
+            ),
+          );
+        },
+      ),
+      onSelect: (workContract) =>
+          WorkContractDrawer.show(context, workContract),
+    );
+  }
+
+  static Widget getWorkContractListOfUser(
+    BuildContext context,
+  ) {
+    return WorkContractListAdmin(
+      showUser: false,
+      onSelect: (workContract) =>
+          WorkContractDrawer.show(context, workContract),
+    );
+  }
+
+  final Function(WorkContract) onSelect;
+  final Widget floatingActionButton;
+  final bool showUser;
+  final bool showLocation;
+
+  const WorkContractListAdmin({
+    Key key,
+    this.onSelect,
+    this.floatingActionButton,
+    this.showUser = true,
+    this.showLocation = true,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListHalfScreen<WorkContractListBloc, WorkContractListEvent,
+        ListState<WorkContract>, WorkContract>(
+      floatingActionButton: this.floatingActionButton,
+      child: WorkContractList(
+        showUser: showUser,
+        showLocation: showLocation,
+        onSelect: onSelect,
+      ),
+    );
+  }
+}

@@ -1,0 +1,101 @@
+import 'package:bms_dart/blocs.dart';
+import 'package:bms_dart/contract_list_bloc.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_dart/work_list_bloc.dart';
+import 'package:bms_flutter/translations.dart';
+import 'package:bms_flutter_admin/src/screens/work_create_update_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:bms_flutter/widgets.dart';
+import 'package:flutter_packages/calendar_2.dart' as calendar;
+import 'work_drawer.dart';
+
+class WorkListAdmin extends StatefulWidget {
+  static Widget getListOfLocationWorks(BuildContext context, int locationId) {
+    return WorkListAdmin(
+      showLocation: false,
+      floatingActionButton: FloatingActionButton(
+        heroTag: null,
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => WorkCreateUpdateScreen(
+                locationId: locationId,
+              ),
+            ),
+          );
+        },
+      ),
+      onSelect: (work) => WorkDrawer.show(context, work),
+    );
+  }
+
+  static Widget getListOfUserWorks(BuildContext context, int userId) {
+    return WorkListAdmin(
+      showUser: false,
+      onSelect: (work) => WorkDrawer.show(context, work),
+    );
+  }
+
+  final Function(Work) onSelect;
+  final bool showUser;
+  final bool showLocation;
+  final Widget floatingActionButton;
+
+  const WorkListAdmin({
+    Key key,
+    this.showUser = true,
+    this.showLocation = true,
+    this.floatingActionButton,
+    this.onSelect,
+  }) : super(key: key);
+
+  @override
+  _WorkListAdminState createState() => _WorkListAdminState();
+}
+
+class _WorkListAdminState extends State<WorkListAdmin> {
+  @override
+  Widget build(BuildContext context) {
+    return BlocListHalfScreen<WorkListBloc, WorkListEvent, ListState<Work>,
+        Work>(
+      builder: (context, bloc, state) {
+        return WorkList(
+          showUser: widget.showUser,
+          showLocation: widget.showLocation,
+          onSelect: widget.onSelect,
+          onSelectTime: (work) => registerWork(context, work),
+          headerBuilder: (context) {
+            return InkWell(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  '${Translations.of(context).dateString(bloc.from)} - ${Translations.of(context).dateString(bloc.to)}',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              onTap: () async {
+                var dates = await calendar.pushCalendarScreenAsRangePicker(
+                    context,
+                    firstSelected: bloc.from,
+                    lastSelected: bloc.from);
+                if (dates != null) {
+                  bloc.from = dates.first;
+                  bloc.from = dates.second;
+                  bloc.refresh();
+                }
+              },
+            );
+          },
+        );
+      },
+      floatingActionButton: widget.floatingActionButton,
+    );
+  }
+}

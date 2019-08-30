@@ -1,0 +1,25 @@
+﻿using System;
+
+namespace Rent.Models.TimePlanning
+{
+    public class PostCondition
+    {
+        public int PostId { get; set; }
+        public PostConditionType PostConditionType { get; set; }
+        public string PostConditionValue { get; set; }
+        public virtual Post Post { get; set; }
+
+        public int? LocationID { get; set; }
+        public virtual Location Location { get; set; }
+
+        public int? CustomerID { get; set; }
+        public virtual Customer Customer { get; set; }
+    }
+
+    public enum PostConditionType
+    {
+        HasRole,
+        AtLocation,
+        AtAnyLocationUnderCustomer,
+    }
+}

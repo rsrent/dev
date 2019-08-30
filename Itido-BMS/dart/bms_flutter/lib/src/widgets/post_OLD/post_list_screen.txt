@@ -1,0 +1,60 @@
+import 'package:bms_dart/post_list_bloc.dart';
+import 'package:bms_flutter/src/widgets/bloc_list_half_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:bms_dart/models.dart';
+import 'post_list.dart';
+
+class PostListScreen extends StatefulWidget {
+  static Future show(
+    BuildContext context, {
+    @required PostListBloc Function(BuildContext) blocBuilder,
+    Function(Post) onSelect,
+    FloatingActionButton floatingActionButton,
+  }) {
+    return Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => Scaffold(
+        appBar: AppBar(),
+        body: PostListScreen(
+          onSelect: onSelect,
+          floatingActionButton: floatingActionButton,
+          blocBuilder: blocBuilder,
+        ),
+      ),
+    ));
+  }
+
+  final PostListBloc Function(BuildContext) blocBuilder;
+  final Function(Post) onSelect;
+  final FloatingActionButton floatingActionButton;
+
+  PostListScreen({
+    Key key,
+    @required this.blocBuilder,
+    this.onSelect,
+    this.floatingActionButton,
+  }) : super(key: key);
+
+  @override
+  _PostListScreenState createState() => _PostListScreenState();
+}
+
+class _PostListScreenState extends State<PostListScreen>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return BlocListHalfScreen<PostListBloc, PostListEvent, ListState<Post>,
+        Post>(
+      blocBuilder: widget.blocBuilder,
+      builder: (context, bloc, state) {
+        return PostList(
+          onSelect: widget.onSelect,
+        );
+      },
+      floatingActionButton: widget.floatingActionButton,
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+}

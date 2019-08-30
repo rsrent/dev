@@ -1,0 +1,12 @@
+﻿<Properties StartupConfiguration="{464BA2D9-12FA-419D-B4A1-E93B57E479AC}|Default">
+  <MonoDevelop.Ide.ItemProperties.RentApp.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2816D6BF-B224-4EE1-A326-EEF4CC8B3E5A" />
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../Documents/Projects/KlipWorksApp/KlipWorksApp/Models/PhotoAssetsHandler.cs" line="122" offsetX="703" offsetY="1815" expression="assetPlaceholder" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MultiItemStartupConfigurations />
+</Properties>

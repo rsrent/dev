@@ -1,0 +1,258 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationInsightsResourceId>/subscriptions/02856ffb-e798-4386-a1d3-56fd71f45cd1/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/Rent</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/02856ffb-e798-4386-a1d3-56fd71f45cd1/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/Rent</ApplicationInsightsAnnotationResourceId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="wwwroot\images\**" />
+    <Content Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
+    <None Remove="wwwroot\images\**" />
+    <Compile Remove="DTOs\NotificationTokenDTO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ConfigurablePasswordHasher.cs" />
+    <Compile Remove="Migrations\20180305125934_AddedDocuments.cs" />
+    <Compile Remove="Migrations\20180305125934_AddedDocuments.Designer.cs" />
+    <Compile Remove="Migrations\20180306154028_addVirtualCustomerToUser.cs" />
+    <Compile Remove="Migrations\20180306154028_addVirtualCustomerToUser.Designer.cs" />
+    <Compile Remove="Migrations\20180714152833_AddDiscriminator.cs" />
+    <Compile Remove="Migrations\20180714152833_AddDiscriminator.Designer.cs" />
+    <Compile Remove="Migrations\20180714140351_AddedLocationCleaingPlanDocument.cs" />
+    <Compile Remove="Migrations\20180714140351_AddedLocationCleaingPlanDocument.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Properties\PublishProfiles\Rent20170925033728 - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\Rent20170925034615 - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\Rent20170925040945 - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\Rent20170925043224 - Web Deploy.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Unused\" />
+    <Folder Include="Models\Event\" />
+    <Folder Include="Scheduler\" />
+    <Folder Include="Scheduler\" />
+    <Folder Include="PushNotifications\" />
+    <Folder Include="ContextPoint\" />
+    <Folder Include="ContextPoint\Exceptions\" />
+    <Folder Include="Models\Important\" />
+    <Folder Include="Models\General\" />
+    <Folder Include="Models\Enums\" />
+    <Folder Include="Models\Message\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="Microsoft.Azure.NotificationHubs" Version="2.0.0-preview2" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="1.1.0-preview" />
+    <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Owin.Security.Cookies" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Owin.Security.OpenIdConnect" Version="4.0.0" />
+    <PackageReference Include="CaptchaGen.NetCore" Version="1.0.2" />
+    <PackageReference Include="Sendgrid" Version="9.9.0" />
+    <PackageReference Include="Microsoft.AspNetCore.WebSockets" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Graph" Version="1.10.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.5.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.2.4" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.4.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.3" />
+    <PackageReference Include="MimeKit" Version="2.0.6" />
+    <PackageReference Include="MailKit" Version="2.0.6" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.1" />
+    <PackageReference Include="Nager.Date" Version="1.21.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\img\delete.svg" />
+    <None Include="wwwroot\img\file_icon.svg" />
+    <None Include="wwwroot\img\folder_icon.svg" />
+    <None Include="wwwroot\img\search.svg" />
+    <None Include="wwwroot\img\simp-logo.svg" />
+    <None Include="wwwroot\js\bootstrap.min.js" />
+    <None Include="wwwroot\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\js\popper.min.js" />
+    <None Include="wwwroot\static\css\main.71bf080e.css.map" />
+    <None Include="wwwroot\static\css\main.827c1c26.css.map" />
+    <None Include="wwwroot\static\css\main.a5c9b446.css.map" />
+    <None Include="wwwroot\static\css\main.c17080f1.css.map" />
+    <None Include="wwwroot\static\js\main.055a9109.js" />
+    <None Include="wwwroot\static\js\main.055a9109.js.map" />
+    <None Include="wwwroot\static\js\main.143b1d57.js" />
+    <None Include="wwwroot\static\js\main.143b1d57.js.map" />
+    <None Include="wwwroot\static\js\main.15b13fbf.js" />
+    <None Include="wwwroot\static\js\main.15b13fbf.js.map" />
+    <None Include="wwwroot\static\js\main.1757b5c8.js" />
+    <None Include="wwwroot\static\js\main.1757b5c8.js.map" />
+    <None Include="wwwroot\static\js\main.182f8d59.js" />
+    <None Include="wwwroot\static\js\main.182f8d59.js.map" />
+    <None Include="wwwroot\static\js\main.18c87feb.js" />
+    <None Include="wwwroot\static\js\main.18c87feb.js.map" />
+    <None Include="wwwroot\static\js\main.19931351.js" />
+    <None Include="wwwroot\static\js\main.19931351.js.map" />
+    <None Include="wwwroot\static\js\main.1e47fb39.js" />
+    <None Include="wwwroot\static\js\main.1e47fb39.js.map" />
+    <None Include="wwwroot\static\js\main.207b8d72.js" />
+    <None Include="wwwroot\static\js\main.207b8d72.js.map" />
+    <None Include="wwwroot\static\js\main.208ba786.js" />
+    <None Include="wwwroot\static\js\main.208ba786.js.map" />
+    <None Include="wwwroot\static\js\main.23948cc1.js" />
+    <None Include="wwwroot\static\js\main.23948cc1.js.map" />
+    <None Include="wwwroot\static\js\main.24c25d6f.js" />
+    <None Include="wwwroot\static\js\main.24c25d6f.js.map" />
+    <None Include="wwwroot\static\js\main.25d653ae.js" />
+    <None Include="wwwroot\static\js\main.25d653ae.js.map" />
+    <None Include="wwwroot\static\js\main.2a51356c.js" />
+    <None Include="wwwroot\static\js\main.2a51356c.js.map" />
+    <None Include="wwwroot\static\js\main.2c138ba8.js" />
+    <None Include="wwwroot\static\js\main.2c138ba8.js.map" />
+    <None Include="wwwroot\static\js\main.30f88cd2.js" />
+    <None Include="wwwroot\static\js\main.30f88cd2.js.map" />
+    <None Include="wwwroot\static\js\main.316f1715.js" />
+    <None Include="wwwroot\static\js\main.316f1715.js.map" />
+    <None Include="wwwroot\static\js\main.31af9e06.js" />
+    <None Include="wwwroot\static\js\main.31af9e06.js.map" />
+    <None Include="wwwroot\static\js\main.3a357287.js" />
+    <None Include="wwwroot\static\js\main.3a357287.js.map" />
+    <None Include="wwwroot\static\js\main.40d97a7b.js" />
+    <None Include="wwwroot\static\js\main.40d97a7b.js.map" />
+    <None Include="wwwroot\static\js\main.41207241.js" />
+    <None Include="wwwroot\static\js\main.41207241.js.map" />
+    <None Include="wwwroot\static\js\main.424b276f.js" />
+    <None Include="wwwroot\static\js\main.424b276f.js.map" />
+    <None Include="wwwroot\static\js\main.42d8968f.js" />
+    <None Include="wwwroot\static\js\main.42d8968f.js.map" />
+    <None Include="wwwroot\static\js\main.4732a015.js" />
+    <None Include="wwwroot\static\js\main.4732a015.js.map" />
+    <None Include="wwwroot\static\js\main.48bbc91b.js" />
+    <None Include="wwwroot\static\js\main.48bbc91b.js.map" />
+    <None Include="wwwroot\static\js\main.4d7fabc8.js" />
+    <None Include="wwwroot\static\js\main.4d7fabc8.js.map" />
+    <None Include="wwwroot\static\js\main.507b31e8.js" />
+    <None Include="wwwroot\static\js\main.507b31e8.js.map" />
+    <None Include="wwwroot\static\js\main.511611cc.js" />
+    <None Include="wwwroot\static\js\main.511611cc.js.map" />
+    <None Include="wwwroot\static\js\main.53578d8a.js" />
+    <None Include="wwwroot\static\js\main.53578d8a.js.map" />
+    <None Include="wwwroot\static\js\main.567fe0d3.js" />
+    <None Include="wwwroot\static\js\main.567fe0d3.js.map" />
+    <None Include="wwwroot\static\js\main.5a6b981a.js" />
+    <None Include="wwwroot\static\js\main.5a6b981a.js.map" />
+    <None Include="wwwroot\static\js\main.5b74af1a.js" />
+    <None Include="wwwroot\static\js\main.5b74af1a.js.map" />
+    <None Include="wwwroot\static\js\main.5dced352.js" />
+    <None Include="wwwroot\static\js\main.5dced352.js.map" />
+    <None Include="wwwroot\static\js\main.5e590edc.js" />
+    <None Include="wwwroot\static\js\main.5e590edc.js.map" />
+    <None Include="wwwroot\static\js\main.5efc041c.js" />
+    <None Include="wwwroot\static\js\main.5efc041c.js.map" />
+    <None Include="wwwroot\static\js\main.60fb906c.js" />
+    <None Include="wwwroot\static\js\main.60fb906c.js.map" />
+    <None Include="wwwroot\static\js\main.662014d9.js" />
+    <None Include="wwwroot\static\js\main.662014d9.js.map" />
+    <None Include="wwwroot\static\js\main.68bf74d8.js" />
+    <None Include="wwwroot\static\js\main.68bf74d8.js.map" />
+    <None Include="wwwroot\static\js\main.76c74cbc.js" />
+    <None Include="wwwroot\static\js\main.76c74cbc.js.map" />
+    <None Include="wwwroot\static\js\main.78886f5c.js" />
+    <None Include="wwwroot\static\js\main.78886f5c.js.map" />
+    <None Include="wwwroot\static\js\main.7989c166.js" />
+    <None Include="wwwroot\static\js\main.7989c166.js.map" />
+    <None Include="wwwroot\static\js\main.7b9327bf.js" />
+    <None Include="wwwroot\static\js\main.7b9327bf.js.map" />
+    <None Include="wwwroot\static\js\main.80d8a421.js" />
+    <None Include="wwwroot\static\js\main.80d8a421.js.map" />
+    <None Include="wwwroot\static\js\main.829016d6.js" />
+    <None Include="wwwroot\static\js\main.829016d6.js.map" />
+    <None Include="wwwroot\static\js\main.871b4f0f.js" />
+    <None Include="wwwroot\static\js\main.871b4f0f.js.map" />
+    <None Include="wwwroot\static\js\main.88fd292f.js" />
+    <None Include="wwwroot\static\js\main.88fd292f.js.map" />
+    <None Include="wwwroot\static\js\main.8de757ae.js" />
+    <None Include="wwwroot\static\js\main.8de757ae.js.map" />
+    <None Include="wwwroot\static\js\main.8fdd98f5.js" />
+    <None Include="wwwroot\static\js\main.8fdd98f5.js.map" />
+    <None Include="wwwroot\static\js\main.938a81cb.js" />
+    <None Include="wwwroot\static\js\main.938a81cb.js.map" />
+    <None Include="wwwroot\static\js\main.a25ce0c4.js" />
+    <None Include="wwwroot\static\js\main.a25ce0c4.js.map" />
+    <None Include="wwwroot\static\js\main.a41c91e4.js" />
+    <None Include="wwwroot\static\js\main.a41c91e4.js.map" />
+    <None Include="wwwroot\static\js\main.a52320b6.js" />
+    <None Include="wwwroot\static\js\main.a52320b6.js.map" />
+    <None Include="wwwroot\static\js\main.a8ccb38d.js" />
+    <None Include="wwwroot\static\js\main.a8ccb38d.js.map" />
+    <None Include="wwwroot\static\js\main.ad709d8f.js" />
+    <None Include="wwwroot\static\js\main.ad709d8f.js.map" />
+    <None Include="wwwroot\static\js\main.ae04af49.js" />
+    <None Include="wwwroot\static\js\main.ae04af49.js.map" />
+    <None Include="wwwroot\static\js\main.aecfe118.js" />
+    <None Include="wwwroot\static\js\main.aecfe118.js.map" />
+    <None Include="wwwroot\static\js\main.b0b2a26e.js" />
+    <None Include="wwwroot\static\js\main.b0b2a26e.js.map" />
+    <None Include="wwwroot\static\js\main.b2502c7b.js" />
+    <None Include="wwwroot\static\js\main.b2502c7b.js.map" />
+    <None Include="wwwroot\static\js\main.b47baee2.js" />
+    <None Include="wwwroot\static\js\main.b47baee2.js.map" />
+    <None Include="wwwroot\static\js\main.b86352d5.js" />
+    <None Include="wwwroot\static\js\main.b86352d5.js.map" />
+    <None Include="wwwroot\static\js\main.c48487d7.js" />
+    <None Include="wwwroot\static\js\main.c48487d7.js.map" />
+    <None Include="wwwroot\static\js\main.c5486d13.js" />
+    <None Include="wwwroot\static\js\main.c5486d13.js.map" />
+    <None Include="wwwroot\static\js\main.caba1096.js" />
+    <None Include="wwwroot\static\js\main.caba1096.js.map" />
+    <None Include="wwwroot\static\js\main.ccedfe09.js" />
+    <None Include="wwwroot\static\js\main.ccedfe09.js.map" />
+    <None Include="wwwroot\static\js\main.d4fe4689.js" />
+    <None Include="wwwroot\static\js\main.d4fe4689.js.map" />
+    <None Include="wwwroot\static\js\main.e5d5979d.js" />
+    <None Include="wwwroot\static\js\main.e5d5979d.js.map" />
+    <None Include="wwwroot\static\js\main.e91f9878.js" />
+    <None Include="wwwroot\static\js\main.e91f9878.js.map" />
+    <None Include="wwwroot\static\js\main.ea53b25e.js" />
+    <None Include="wwwroot\static\js\main.ea53b25e.js.map" />
+    <None Include="wwwroot\static\js\main.f309a31e.js" />
+    <None Include="wwwroot\static\js\main.f309a31e.js.map" />
+    <None Include="wwwroot\static\js\main.f584dff6.js" />
+    <None Include="wwwroot\static\js\main.f584dff6.js.map" />
+    <None Include="wwwroot\static\js\main.f5e13dbb.js" />
+    <None Include="wwwroot\static\js\main.f5e13dbb.js.map" />
+    <None Include="wwwroot\static\js\main.faf2caba.js" />
+    <None Include="wwwroot\static\js\main.faf2caba.js.map" />
+    <None Include="wwwroot\static\js\main.fbdf29f9.js" />
+    <None Include="wwwroot\static\js\main.fbdf29f9.js.map" />
+    <None Include="wwwroot\static\js\main.fec5b3bb.js" />
+    <None Include="wwwroot\static\js\main.fec5b3bb.js.map" />
+    <None Include="wwwroot\static\js\main.ff7f6cb5.js" />
+    <None Include="wwwroot\static\js\main.ff7f6cb5.js.map" />
+    <None Include="wwwroot\static\media\ic_address.4de4b1cb.svg" />
+    <None Include="wwwroot\static\media\ic_address.c29ddccf.svg" />
+    <None Include="wwwroot\static\media\ic_back.6a404a76.svg" />
+    <None Include="wwwroot\static\media\ic_back.aff4463f.svg" />
+    <None Include="wwwroot\static\media\ic_customer.eec7b025.svg" />
+    <None Include="wwwroot\static\media\ic_customer.feb4d1f4.svg" />
+    <None Include="wwwroot\static\media\ic_customer_profile.b787b871.svg" />
+    <None Include="wwwroot\static\media\ic_customer_profile.fbee579f.svg" />
+    <None Include="wwwroot\static\media\ic_edit.5b0063d0.svg" />
+    <None Include="wwwroot\static\media\ic_edit.d16e6a9d.svg" />
+    <None Include="wwwroot\static\media\ic_email.243dc9db.svg" />
+    <None Include="wwwroot\static\media\ic_email.b5a6e5b3.svg" />
+    <None Include="wwwroot\static\media\ic_employee_number.1222d2c7.svg" />
+    <None Include="wwwroot\static\media\ic_employee_number.6ed72b4b.svg" />
+    <None Include="wwwroot\static\media\ic_location_profile.4b34cf23.svg" />
+    <None Include="wwwroot\static\media\ic_location_profile.5dedc1f0.svg" />
+    <None Include="wwwroot\static\media\ic_phone.4c3098a1.svg" />
+    <None Include="wwwroot\static\media\ic_phone.53faa30f.svg" />
+    <None Include="wwwroot\static\media\ic_role.17163594.svg" />
+    <None Include="wwwroot\static\media\ic_role.a9b11c9d.svg" />
+    <None Include="wwwroot\static\media\ic_title.11be11e2.svg" />
+    <None Include="wwwroot\static\media\ic_title.7fbf582c.svg" />
+    <None Include="wwwroot\static\media\ic_user_profile.475b090d.svg" />
+    <None Include="wwwroot\static\media\ic_user_profile.69fe4cef.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+</Project>

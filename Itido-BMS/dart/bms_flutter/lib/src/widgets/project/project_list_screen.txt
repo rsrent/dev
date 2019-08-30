@@ -1,0 +1,70 @@
+import 'package:bms_dart/project_list_bloc.dart';
+import 'package:bms_flutter/src/widgets/bloc_list_half_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:bms_dart/models.dart';
+
+import 'project_list.dart';
+
+class ProjectListScreen extends StatefulWidget {
+  static Future show(
+    BuildContext context, {
+    @required ProjectListBloc Function(BuildContext) blocBuilder,
+    Function(Project) onSelect,
+    Function(ProjectListBloc, List<Project>) onManySelected,
+    Function(Project) onLongPress,
+    Widget floatingActionButton,
+  }) {
+    return Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => Scaffold(
+        appBar: AppBar(),
+        body: ProjectListScreen(
+          onSelect: onSelect,
+          onLongPress: onLongPress,
+          floatingActionButton: floatingActionButton,
+          blocBuilder: blocBuilder,
+        ),
+      ),
+    ));
+  }
+
+  final ProjectListBloc Function(BuildContext) blocBuilder;
+  final Function(Project) onSelect;
+  final Function(ProjectListBloc, List<Project>) onManySelected;
+  final Function(Project) onLongPress;
+  final Widget floatingActionButton;
+
+  ProjectListScreen({
+    Key key,
+    @required this.blocBuilder,
+    this.onSelect,
+    this.onLongPress,
+    this.floatingActionButton,
+    this.onManySelected,
+  }) : super(key: key);
+
+  @override
+  _ProjectListScreenState createState() => _ProjectListScreenState();
+}
+
+class _ProjectListScreenState extends State<ProjectListScreen>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return BlocListHalfScreen<ProjectListBloc, ProjectListEvent,
+        ListState<Project>, Project>(
+      blocBuilder: widget.blocBuilder,
+      builder: (context, bloc, state) {
+        return ProjectList(
+          onSelect: widget.onSelect,
+          onLongPress: widget.onLongPress,
+        );
+      },
+      floatingActionButton: widget.floatingActionButton,
+      onSelectMany: widget.onManySelected,
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+}

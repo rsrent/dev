@@ -1,0 +1,18 @@
+{
+  "main.css": "static/css/main.827c1c26.css",
+  "main.css.map": "static/css/main.827c1c26.css.map",
+  "main.js": "static/js/main.04139e2b.js",
+  "main.js.map": "static/js/main.04139e2b.js.map",
+  "static/media/ic_address.svg": "static/media/ic_address.c29ddccf.svg",
+  "static/media/ic_back.svg": "static/media/ic_back.6a404a76.svg",
+  "static/media/ic_customer.svg": "static/media/ic_customer.eec7b025.svg",
+  "static/media/ic_customer_profile.svg": "static/media/ic_customer_profile.b787b871.svg",
+  "static/media/ic_edit.svg": "static/media/ic_edit.5b0063d0.svg",
+  "static/media/ic_email.svg": "static/media/ic_email.243dc9db.svg",
+  "static/media/ic_employee_number.svg": "static/media/ic_employee_number.1222d2c7.svg",
+  "static/media/ic_location_profile.svg": "static/media/ic_location_profile.5dedc1f0.svg",
+  "static/media/ic_phone.svg": "static/media/ic_phone.4c3098a1.svg",
+  "static/media/ic_role.svg": "static/media/ic_role.17163594.svg",
+  "static/media/ic_title.svg": "static/media/ic_title.11be11e2.svg",
+  "static/media/ic_user_profile.svg": "static/media/ic_user_profile.69fe4cef.svg"
+}

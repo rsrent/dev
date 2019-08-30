@@ -1,0 +1,11 @@
+/Users/tobiasbang/Projects/Itido-BMS/RentAPI/BMS_Test_Client/bin/Debug/netcoreapp2.2/BMS_Test_Client.deps.json
+/Users/tobiasbang/Projects/Itido-BMS/RentAPI/BMS_Test_Client/bin/Debug/netcoreapp2.2/BMS_Test_Client.runtimeconfig.json
+/Users/tobiasbang/Projects/Itido-BMS/RentAPI/BMS_Test_Client/bin/Debug/netcoreapp2.2/BMS_Test_Client.runtimeconfig.dev.json
+/Users/tobiasbang/Projects/Itido-BMS/RentAPI/BMS_Test_Client/bin/Debug/netcoreapp2.2/BMS_Test_Client.dll
+/Users/tobiasbang/Projects/Itido-BMS/RentAPI/BMS_Test_Client/bin/Debug/netcoreapp2.2/BMS_Test_Client.pdb
+/Users/tobiasbang/Projects/Itido-BMS/RentAPI/BMS_Test_Client/obj/Debug/netcoreapp2.2/BMS_Test_Client.csprojAssemblyReference.cache
+/Users/tobiasbang/Projects/Itido-BMS/RentAPI/BMS_Test_Client/obj/Debug/netcoreapp2.2/BMS_Test_Client.csproj.CoreCompileInputs.cache
+/Users/tobiasbang/Projects/Itido-BMS/RentAPI/BMS_Test_Client/obj/Debug/netcoreapp2.2/BMS_Test_Client.AssemblyInfoInputs.cache
+/Users/tobiasbang/Projects/Itido-BMS/RentAPI/BMS_Test_Client/obj/Debug/netcoreapp2.2/BMS_Test_Client.AssemblyInfo.cs
+/Users/tobiasbang/Projects/Itido-BMS/RentAPI/BMS_Test_Client/obj/Debug/netcoreapp2.2/BMS_Test_Client.dll
+/Users/tobiasbang/Projects/Itido-BMS/RentAPI/BMS_Test_Client/obj/Debug/netcoreapp2.2/BMS_Test_Client.pdb

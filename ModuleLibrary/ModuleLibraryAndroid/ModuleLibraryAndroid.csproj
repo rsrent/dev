@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A35B2799-40A9-4488-8120-8E04B381EB27}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ModuleLibraryAndroid</RootNamespace>
+    <AssemblyName>ModuleLibraryAndroid</AssemblyName>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\RentAppProject\packages\Newtonsoft.Json.12.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle">
+      <HintPath>..\..\RentAppProject\packages\MimeKit.2.2.0\lib\monoandroid\BouncyCastle.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKit">
+      <HintPath>..\..\RentAppProject\packages\MimeKit.2.2.0\lib\monoandroid\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit">
+      <HintPath>..\..\RentAppProject\packages\MailKit.2.2.0\lib\monoandroid\MailKit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Starter\IListStarter.cs" />
+    <Compile Include="Starter\IStarter.cs" />
+    <Compile Include="Table\ListAdapterController.cs" />
+    <Compile Include="Table\ListController.cs" />
+    <Compile Include="Storage\SaveLoad.cs" />
+    <Compile Include="Email\Email.cs" />
+    <Compile Include="Alert\Alert.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\layout\ListViewTemplate.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Starter\" />
+    <Folder Include="Table\" />
+    <Folder Include="Resources\layout\" />
+    <Folder Include="Storage\" />
+    <Folder Include="Email\" />
+    <Folder Include="Alert\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModuleLibrary.Shared\ModuleLibrary.Shared.csproj">
+      <Project>{1E1742FD-BC09-4F83-96BA-EE47774070BE}</Project>
+      <Name>ModuleLibrary.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ForsvaretSygemelding\SYBAPP.Shared\SYBAPP.Shared.csproj">
+      <Project>{96D82858-4000-47A2-A111-A22C0625AEDE}</Project>
+      <Name>SYBAPP.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>

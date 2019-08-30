@@ -1,0 +1,58 @@
+import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class InspectScreen<B extends Bloc<E, S>, E, S> extends StatefulWidget {
+  final B Function(BuildContext) blocBuilder;
+  final List<Widget> menuItems;
+  final List<Widget> Function(BuildContext, bool, S) headerSliverBuilder;
+
+  @override
+  _InspectScreenState createState() => _InspectScreenState();
+}
+
+class _InspectScreenState<B extends Bloc<E, S>, E, S>
+    extends State<InspectScreen> {
+  B bloc;
+
+  @override
+  void initState() {
+    Future.delayed(Duration.zero, () {
+      bloc = widget.blocBuilder(context);
+      setState(() {});
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder(
+      bloc: bloc,
+      builder: (context, state) {
+        return Scaffold(
+          body: NestedScrollView(
+            headerSliverBuilder: (BuildContext context, bool boxIsScrolled) {
+              return [
+                SliverAppBar(
+                  pinned: true,
+                  expandedHeight: 260,
+                  flexibleSpace: FlexibleSpaceBar(
+                    title: Padding(
+                      padding: const EdgeInsets.only(bottom: 46.0),
+                      child: Text(widget.customer.name),
+                    ),
+                    background: ,
+                  ),
+                  
+                ),
+              ];
+            },
+            body: ListView(
+              children: widget.menuItems,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

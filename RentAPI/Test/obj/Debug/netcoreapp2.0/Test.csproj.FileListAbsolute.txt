@@ -1,0 +1,11 @@
+/Users/tobiasbang/Projects/RentAPI/Test/bin/Debug/netcoreapp2.0/Test.deps.json
+/Users/tobiasbang/Projects/RentAPI/Test/bin/Debug/netcoreapp2.0/Test.runtimeconfig.json
+/Users/tobiasbang/Projects/RentAPI/Test/bin/Debug/netcoreapp2.0/Test.runtimeconfig.dev.json
+/Users/tobiasbang/Projects/RentAPI/Test/bin/Debug/netcoreapp2.0/Test.dll
+/Users/tobiasbang/Projects/RentAPI/Test/bin/Debug/netcoreapp2.0/Test.pdb
+/Users/tobiasbang/Projects/RentAPI/Test/obj/Debug/netcoreapp2.0/Test.csprojResolveAssemblyReference.cache
+/Users/tobiasbang/Projects/RentAPI/Test/obj/Debug/netcoreapp2.0/Test.csproj.CoreCompileInputs.cache
+/Users/tobiasbang/Projects/RentAPI/Test/obj/Debug/netcoreapp2.0/Test.AssemblyInfoInputs.cache
+/Users/tobiasbang/Projects/RentAPI/Test/obj/Debug/netcoreapp2.0/Test.AssemblyInfo.cs
+/Users/tobiasbang/Projects/RentAPI/Test/obj/Debug/netcoreapp2.0/Test.dll
+/Users/tobiasbang/Projects/RentAPI/Test/obj/Debug/netcoreapp2.0/Test.pdb

@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/Library/Caches/Rider2017.3/resharper-host/local/Transient/ReSharperHost/v11/SolutionCaches/_Rent.-1948603709.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Rent" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="Authorization" t="Include">
+          <e p="AuthRequirement.cs" t="Include" />
+          <e p="LoginAuthorizationHandler.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="bower.json" t="Include" />
+        <e p="bundleconfig.json" t="Include" />
+        <e p="Chat" t="Include">
+          <e p="ChatMessageHandler.cs" t="Include" />
+          <e p="MessageJsonConverter.cs" t="Include" />
+          <e p="WebSocketConnectionManager.cs" t="Include" />
+          <e p="WebSocketHandler.cs" t="Include" />
+          <e p="WebSocketManagerMiddleware.cs" t="Include" />
+        </e>
+        <e p="Connected Services" t="Include">
+          <e p="Application Insights" t="Include">
+            <e p="ConnectedService.json" t="Include" />
+          </e>
+        </e>
+        <e p="ContextPoint" t="Include">
+          <e p="CleaningTaskContext.cs" t="Include" />
+          <e p="Context.cs" t="Include" />
+          <e p="ContextDto.cs" t="Include" />
+          <e p="CustomerContext.cs" t="Include" />
+          <e p="Exceptions" t="Include">
+            <e p="NotFoundException.cs" t="Include" />
+            <e p="NothingUpdatedException.cs" t="Include" />
+            <e p="ProtectedObjectException.cs" t="Include" />
+            <e p="UsernameTakenException.cs" t="Include" />
+            <e p="UsernameTooShortException.cs" t="Include" />
+          </e>
+          <e p="LocationContext.cs" t="Include" />
+          <e p="LocationUserContext.cs" t="Include" />
+          <e p="LoginContext.cs" t="Include" />
+          <e p="PermissionContext.cs" t="Include" />
+          <e p="QualityReportContext.cs" t="Include" />
+          <e p="QualityReportItemContext.cs" t="Include" />
+          <e p="RoleContext.cs" t="Include" />
+          <e p="TemplatePermissionContext.cs" t="Include" />
+          <e p="UserContext.cs" t="Include" />
+          <e p="UserPermissionContext.cs" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="AdminController.cs" t="Include" />
+          <e p="BreadCrumbsController.cs" t="Include" />
+          <e p="CleaningTaskController.cs" t="Include" />
+          <e p="CompletedTaskController.cs" t="Include" />
+          <e p="ControllerExecutor.cs" t="Include" />
+          <e p="ConversationController.cs" t="Include" />
+          <e p="CustomersController.cs" t="Include" />
+          <e p="DashboardController.cs" t="Include" />
+          <e p="DocumentController.cs" t="Include" />
+          <e p="EconomyController.cs" t="Include" />
+          <e p="EmailController.cs" t="Include" />
+          <e p="HourController.cs" t="Include" />
+          <e p="ImageController.cs" t="Include" />
+          <e p="LocationController.cs" t="Include" />
+          <e p="LogController.cs" t="Include" />
+          <e p="LoginsController.cs" t="Include" />
+          <e p="MoreWorkController.cs" t="Include" />
+          <e p="NotificationController.cs" t="Include" />
+          <e p="PermissionController.cs" t="Include" />
+          <e p="PlanFloorAreaController.cs" t="Include" />
+          <e p="QualityReportsController.cs" t="Include" />
+          <e p="RatingController.cs" t="Include" />
+          <e p="RoleController.cs" t="Include" />
+          <e p="TermsController.cs" t="Include" />
+          <e p="TranslationEntriesController.cs" t="Include" />
+          <e p="UsersController.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="DbInitializer.cs" t="Include" />
+          <e p="RentContext.cs" t="Include" />
+        </e>
+        <e p="DTOs" t="Include">
+          <e p="CleaningPlanAreaDTO.cs" t="Include" />
+          <e p="CleaningPlanDTO.cs" t="Include" />
+          <e p="CleaningPlanFloorDTO.cs" t="Include" />
+          <e p="CleaningTaskDTO.cs" t="Include" />
+          <e p="ConversationConnectDTO.cs" t="Include" />
+          <e p="ConversationConnectedSuccessDTO.cs" t="Include" />
+          <e p="ConversationConnectFailureDTO.cs" t="Include" />
+          <e p="ConversationDTO.cs" t="Include" />
+          <e p="ConversationUserDTO.cs" t="Include" />
+          <e p="CustomerDTO.cs" t="Include" />
+          <e p="DocumentDTO.cs" t="Include" />
+          <e p="EmailToOfficeDTO.cs" t="Include" />
+          <e p="LocationDTO.cs" t="Include" />
+          <e p="LocationUserDTO.cs" t="Include" />
+          <e p="LoginDTO.cs" t="Include" />
+          <e p="Message.cs" t="Include" />
+          <e p="MessageDTO.cs" t="Include" />
+          <e p="MessageDTOFactory.cs" t="Include" />
+          <e p="MessageImageDTO.cs" t="Include" />
+          <e p="MessageTextDTO.cs" t="Include" />
+          <e p="NewConversationDTO.cs" t="Include" />
+          <e p="NewCustomerDetails.cs" t="Include" />
+          <e p="NewLocationDetails.cs" t="Include" />
+          <e p="OutlookDTO.cs" t="Include" />
+          <e p="OutlookEmailSendDTO.cs" t="Include" />
+          <e p="OutlookEventDTO.cs" t="Include" />
+          <e p="PermissionAddDTO.cs" t="Include" />
+          <e p="PermissionGetDTO.cs" t="Include" />
+          <e p="PermissionTemplateDTO.cs" t="Include" />
+          <e p="PlanTypesWithFloorsWithAreasWithTasksDTO.cs" t="Include" />
+          <e p="QualityReportAreaWithTasks.cs" t="Include" />
+          <e p="QualityReportDTO.cs" t="Include" />
+          <e p="QualityReportItemDTO.cs" t="Include" />
+          <e p="QualityReportWithFloorsDTO.cs" t="Include" />
+          <e p="QualityReportWithFloorsWithItems.cs" t="Include" />
+          <e p="TranslationEntryDTO.cs" t="Include" />
+          <e p="UpdateLogin.cs" t="Include" />
+          <e p="UserDTO.cs" t="Include" />
+          <e p="UserLoginCreateDTO.cs" t="Include" />
+          <e p="UserPermissionsDTO.cs" t="Include" />
+          <e p="UserTokenDTO.cs" t="Include" />
+          <e p="UserUpdateDTO.cs" t="Include" />
+        </e>
+        <e p="EmailTemplates" t="Include">
+          <e p="CreateInviteEmail.cs" t="Include" />
+          <e p="CreateNormalNotificationEmail.cs" t="Include" />
+          <e p="CreateQualityReportCompletedTemplate.cs" t="Include" />
+        </e>
+        <e p="Extensions" t="Include">
+          <e p="AzureAdB2CAuthenticationBuilderExtensions.cs" t="Include" />
+          <e p="AzureAdB2COptions.cs" t="Include" />
+        </e>
+        <e p="Helpers" t="Include">
+          <e p="AzureCredentials.cs" t="Include" />
+          <e p="AzureDevCredentials.cs" t="Include" />
+          <e p="ContainerType.cs" t="Include" />
+          <e p="DevPhoneNotificationSettings.cs" t="Include" />
+          <e p="EmailNotificationChannel.cs" t="Include" />
+          <e p="HttpCall.cs" t="Include" />
+          <e p="IEmailNotificationChannelSettings.cs" t="Include" />
+          <e p="INotificationChannel.cs" t="Include" />
+          <e p="IPhoneNotificationSettings.cs" t="Include" />
+          <e p="LivePhoneNotificationSettings.cs" t="Include" />
+          <e p="MyAzureCredentials.cs" t="Include" />
+          <e p="MyEmailNotificationChannelSettings.cs" t="Include" />
+          <e p="PhoneNotificationChannel.cs" t="Include" />
+          <e p="SendGridEmail.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20180302103129_Initial.cs" t="Include" />
+          <e p="20180302103129_Initial.Designer.cs" t="Include" />
+          <e p="20180302144424_AddedProjectNumberToLocation.cs" t="Include" />
+          <e p="20180302144424_AddedProjectNumberToLocation.Designer.cs" t="Include" />
+          <e p="20180318153136_LiveUpdate1.cs" t="Include" />
+          <e p="20180318153136_LiveUpdate1.Designer.cs" t="Include" />
+          <e p="20180318163930_LiveUpdate1_2.cs" t="Include" />
+          <e p="20180318163930_LiveUpdate1_2.Designer.cs" t="Include" />
+          <e p="20180319151225_AddedRemovableBoolToFolders.cs" t="Include" />
+          <e p="20180319151225_AddedRemovableBoolToFolders.Designer.cs" t="Include" />
+          <e p="20180319182407_AddedIntervalOfServiceLeaderMeetingToLocation.cs" t="Include" />
+          <e p="20180319182407_AddedIntervalOfServiceLeaderMeetingToLocation.Designer.cs" t="Include" />
+          <e p="20180320165903_renameOfConversationBoolOpen.cs" t="Include" />
+          <e p="20180320165903_renameOfConversationBoolOpen.Designer.cs" t="Include" />
+          <e p="20180410075935_morework.cs" t="Include" />
+          <e p="20180410075935_morework.Designer.cs" t="Include" />
+          <e p="20180410102825_locationUserUpdated.cs" t="Include" />
+          <e p="20180410102825_locationUserUpdated.Designer.cs" t="Include" />
+          <e p="20180410103947_logTitle.cs" t="Include" />
+          <e p="20180410103947_logTitle.Designer.cs" t="Include" />
+          <e p="20180410153428_employeeNumberAndTitle.cs" t="Include" />
+          <e p="20180410153428_employeeNumberAndTitle.Designer.cs" t="Include" />
+          <e p="20180411082714_AddedPrivateDocumentFolderToCustomer.cs" t="Include" />
+          <e p="20180411082714_AddedPrivateDocumentFolderToCustomer.Designer.cs" t="Include" />
+          <e p="20180411112104_TinyMigration.cs" t="Include" />
+          <e p="20180411112104_TinyMigration.Designer.cs" t="Include" />
+          <e p="20180412122601_economy.cs" t="Include" />
+          <e p="20180412122601_economy.Designer.cs" t="Include" />
+          <e p="20180413124136_documentfix.cs" t="Include" />
+          <e p="20180413124136_documentfix.Designer.cs" t="Include" />
+          <e p="20180413205852_permissionSecurity.cs" t="Include" />
+          <e p="20180413205852_permissionSecurity.Designer.cs" t="Include" />
+          <e p="20180413215013_economyUpdate.cs" t="Include" />
+          <e p="20180413215013_economyUpdate.Designer.cs" t="Include" />
+          <e p="20180420113325_UpdateToLocationHour.cs" t="Include" />
+          <e p="20180420113325_UpdateToLocationHour.Designer.cs" t="Include" />
+          <e p="20180610075027_login-migration.cs" t="Include" />
+          <e p="20180610075027_login-migration.Designer.cs" t="Include" />
+          <e p="20180614115013_SecurityUpdate.cs" t="Include" />
+          <e p="20180614115013_SecurityUpdate.Designer.cs" t="Include" />
+          <e p="20180614134030_smul_changi.cs" t="Include" />
+          <e p="20180614134030_smul_changi.Designer.cs" t="Include" />
+          <e p="20180709124550_new_location_documents.cs" t="Include" />
+          <e p="20180709124550_new_location_documents.Designer.cs" t="Include" />
+          <e p="20180714141024_AddedLocationCleaingPlanDocument.cs" t="Include" />
+          <e p="20180714141024_AddedLocationCleaingPlanDocument.Designer.cs" t="Include" />
+          <e p="20180715153813_AddDiscriminator.cs" t="Include" />
+          <e p="20180715153813_AddDiscriminator.Designer.cs" t="Include" />
+          <e p="20180723165719_locationHour.cs" t="Include" />
+          <e p="20180723165719_locationHour.Designer.cs" t="Include" />
+          <e p="20180730213434_cleaningTask_lastCleaned.cs" t="Include" />
+          <e p="20180730213434_cleaningTask_lastCleaned.Designer.cs" t="Include" />
+          <e p="20180801132851_latestQRP_added_to_location.cs" t="Include" />
+          <e p="20180801132851_latestQRP_added_to_location.Designer.cs" t="Include" />
+          <e p="20180808155716_morework_update.cs" t="Include" />
+          <e p="20180808155716_morework_update.Designer.cs" t="Include" />
+          <e p="20180808160514_next_quality_report.cs" t="Include" />
+          <e p="20180808160514_next_quality_report.Designer.cs" t="Include" />
+          <e p="20180809093845_location_first_quality_report_time.cs" t="Include" />
+          <e p="20180809093845_location_first_quality_report_time.Designer.cs" t="Include" />
+          <e p="20180809110711_locationuser_locationindex.cs" t="Include" />
+          <e p="20180809110711_locationuser_locationindex.Designer.cs" t="Include" />
+          <e p="RentContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="Migrations.zip" t="Include" />
+        <e p="Models" t="Include">
+          <e p="Enums" t="Include">
+            <e p="CRUDD.cs" t="Include" />
+            <e p="PricePerHourCategory.cs" t="Include" />
+          </e>
+          <e p="Event" t="Include">
+            <e p="Event.cs" t="Include" />
+            <e p="EventParticipant.cs" t="Include" />
+            <e p="EventParticipationStatus.cs" t="Include" />
+            <e p="Meeting.cs" t="Include" />
+            <e p="Work.cs" t="Include" />
+          </e>
+          <e p="Filter.cs" t="Include" />
+          <e p="General" t="Include">
+            <e p="Area.cs" t="Include" />
+            <e p="BlackListedToken.cs" t="Include" />
+            <e p="BreadCrumb.cs" t="Include" />
+            <e p="CleaningPlan.cs" t="Include" />
+            <e p="DocumentFolder.cs" t="Include" />
+            <e p="Floor.cs" t="Include" />
+            <e p="FolderPermission.cs" t="Include" />
+            <e p="GeoPosition.cs" t="Include" />
+            <e p="Permission.cs" t="Include" />
+            <e p="PermissionsTemplate.cs" t="Include" />
+            <e p="Rating.cs" t="Include" />
+            <e p="RatingItem.cs" t="Include" />
+            <e p="Role.cs" t="Include" />
+            <e p="Term.cs" t="Include" />
+            <e p="Translation.cs" t="Include" />
+            <e p="TranslationEntry.cs" t="Include" />
+            <e p="UserAcceptedTerm.cs" t="Include" />
+          </e>
+          <e p="IDto.cs" t="Include" />
+          <e p="Important" t="Include">
+            <e p="CleaningTask.cs" t="Include" />
+            <e p="CleaningTaskCompleted.cs" t="Include" />
+            <e p="Customer.cs" t="Include" />
+            <e p="Location.cs" t="Include" />
+            <e p="LocationEconomy.cs" t="Include" />
+            <e p="LocationHour.cs" t="Include" />
+            <e p="LocationLog.cs" t="Include" />
+            <e p="LocationUser.cs" t="Include" />
+            <e p="Login.cs" t="Include" />
+            <e p="MoreWork.cs" t="Include" />
+            <e p="QualityReport.cs" t="Include" />
+            <e p="QualityReportItem.cs" t="Include" />
+            <e p="User.cs" t="Include" />
+            <e p="UserPermissions.cs" t="Include" />
+          </e>
+          <e p="Merger.cs" t="Include" />
+          <e p="Message" t="Include">
+            <e p="Conversation.cs" t="Include" />
+            <e p="ConversationUsers.cs" t="Include" />
+            <e p="Message.cs" t="Include" />
+            <e p="MessageComplaint.cs" t="Include" />
+            <e p="MessageImage.cs" t="Include" />
+            <e p="MessageMeeting.cs" t="Include" />
+            <e p="MessageMoreWork.cs" t="Include" />
+            <e p="MessageVideo.cs" t="Include" />
+            <e p="SpecialMessage.cs" t="Include" />
+          </e>
+          <e p="ProtectedObject.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.1" t="Include">
+              <e p="Rent.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Outlook" t="Include">
+          <e p="CreateMeeting.cs" t="Include" />
+          <e p="SendEmail.cs" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+          <e p="PublishProfiles" t="Include">
+            <e p="RentApp - Web Deploy.pubxml" t="Include" />
+            <e p="RentTesting - Web Deploy.pubxml" t="Include" />
+          </e>
+        </e>
+        <e p="PushNotifications" t="Include">
+          <e p="NotificationTokenDTO.cs" t="Include" />
+          <e p="PushNotificationController.cs" t="Include" />
+        </e>
+        <e p="Rent.csproj" t="IncludeRecursive" />
+        <e p="Repositories" t="Include">
+          <e p="AzureStorageReporTobyTest.cs" t="Include" />
+          <e p="AzureStorageRepository.cs" t="Include" />
+          <e p="ChatRepository.cs" t="Include" />
+          <e p="CleaningTaskRepository.cs" t="Include" />
+          <e p="CustomerRepository.cs" t="Include" />
+          <e p="DashboardRepository.cs" t="Include" />
+          <e p="DocumentRepository.cs" t="Include" />
+          <e p="INotificationRepository.cs" t="Include" />
+          <e p="IPermissionRepository.cs" t="Include" />
+          <e p="IStorage.cs" t="Include" />
+          <e p="ITokenRepository.cs" t="Include" />
+          <e p="LocationRepository.cs" t="Include" />
+          <e p="LoginRepository.cs" t="Include" />
+          <e p="NotificationRepository.cs" t="Include" />
+          <e p="PermissionRepository.cs" t="Include" />
+          <e p="PropCondition.cs" t="Include" />
+          <e p="QualityReportRepository.cs" t="Include" />
+          <e p="RatingRepository.cs" t="Include" />
+          <e p="TokenRepository.cs" t="Include" />
+          <e p="UserRepository.cs" t="Include" />
+          <e p="WorkRepository.cs" t="Include" />
+        </e>
+        <e p="ScaffoldingReadMe.txt" t="Include" />
+        <e p="Scheduler" t="Include">
+          <e p="Cron" t="Include">
+            <e p="CrontabField.cs" t="Include" />
+            <e p="CrontabFieldAccumulator.cs" t="Include" />
+            <e p="CrontabFieldImpl.cs" t="Include" />
+            <e p="CrontabFieldKind.cs" t="Include" />
+            <e p="CrontabSchedule.cs" t="Include" />
+          </e>
+          <e p="HostedService.cs" t="Include" />
+          <e p="IScheduledTask.cs" t="Include" />
+          <e p="SchedulerExtensions.cs" t="Include" />
+          <e p="SchedulerHostedService.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="SymmetricKey.cs" t="Include" />
+        <e p="Unused" t="Include">
+          <e p="AnnouncementController.cs" t="Include" />
+          <e p="AreasController.cs" t="Include" />
+          <e p="CleaningDescriptionsController.cs" t="Include" />
+          <e p="CleaningPlansController.cs" t="Include" />
+          <e p="FloorsController.cs" t="Include" />
+          <e p="PermissionsController.cs" t="Include" />
+          <e p="QualityReportItemsController.cs" t="Include" />
+          <e p="RegisterController.cs" t="Include" />
+          <e p="RolesController.cs" t="Include" />
+        </e>
+        <e p="UpdatePasswordsSchedule.cs" t="Include" />
+        <e p="Views" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Shared" t="Include">
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="Error.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="wwwroot" t="Include">
+          <e p="asset-manifest.json" t="Include" />
+          <e p="CleanJSON.json" t="Include" />
+          <e p="css" t="Include">
+            <e p="bootstrap.min.css" t="Include" />
+            <e p="styles.css" t="Include" />
+          </e>
+          <e p="favicon.ico" t="Include" />
+          <e p="Floors.json" t="Include" />
+          <e p="FloorsWithTasks.json" t="Include" />
+          <e p="FloorWithTasks.json" t="Include" />
+          <e p="img" t="Include">
+            <e p="delete.svg" t="Include" />
+            <e p="fav" t="Include">
+              <e p="android-icon-144x144.png" t="Include" />
+              <e p="android-icon-192x192.png" t="Include" />
+              <e p="android-icon-36x36.png" t="Include" />
+              <e p="android-icon-48x48.png" t="Include" />
+              <e p="android-icon-72x72.png" t="Include" />
+              <e p="android-icon-96x96.png" t="Include" />
+              <e p="apple-icon-114x114.png" t="Include" />
+              <e p="apple-icon-120x120.png" t="Include" />
+              <e p="apple-icon-144x144.png" t="Include" />
+              <e p="apple-icon-152x152.png" t="Include" />
+              <e p="apple-icon-180x180.png" t="Include" />
+              <e p="apple-icon-57x57.png" t="Include" />
+              <e p="apple-icon-60x60.png" t="Include" />
+              <e p="apple-icon-72x72.png" t="Include" />
+              <e p="apple-icon-76x76.png" t="Include" />
+              <e p="apple-icon-precomposed.png" t="Include" />
+              <e p="apple-icon.png" t="Include" />
+              <e p="browserconfig.xml" t="Include" />
+              <e p="favicon-16x16.png" t="Include" />
+              <e p="favicon-32x32.png" t="Include" />
+              <e p="favicon-96x96.png" t="Include" />
+              <e p="favicon.ico" t="Include" />
+              <e p="manifest.json" t="Include" />
+              <e p="ms-icon-144x144.png" t="Include" />
+              <e p="ms-icon-150x150.png" t="Include" />
+              <e p="ms-icon-310x310.png" t="Include" />
+              <e p="ms-icon-70x70.png" t="Include" />
+            </e>
+            <e p="file_icon.svg" t="Include" />
+            <e p="folder_icon.svg" t="Include" />
+            <e p="search.svg" t="Include" />
+            <e p="simp-logo.svg" t="Include" />
+          </e>
+          <e p="index.html" t="Include" />
+          <e p="js" t="Include">
+            <e p="bootstrap.min.js" t="Include" />
+            <e p="jquery-3.2.1.min.js" t="Include" />
+            <e p="popper.min.js" t="Include" />
+          </e>
+          <e p="manifest.json" t="Include" />
+          <e p="service-worker.js" t="Include" />
+          <e p="static" t="Include">
+            <e p="css" t="Include">
+              <e p="main.71bf080e.css.map" t="Include" />
+              <e p="main.827c1c26.css" t="Include" />
+              <e p="main.827c1c26.css.map" t="Include" />
+              <e p="main.a5c9b446.css.map" t="Include" />
+              <e p="main.c17080f1.css.map" t="Include" />
+            </e>
+            <e p="js" t="Include">
+              <e p="main.055a9109.js" t="Include" />
+              <e p="main.055a9109.js.map" t="Include" />
+              <e p="main.143b1d57.js" t="Include" />
+              <e p="main.143b1d57.js.map" t="Include" />
+              <e p="main.15b13fbf.js" t="Include" />
+              <e p="main.15b13fbf.js.map" t="Include" />
+              <e p="main.1757b5c8.js" t="Include" />
+              <e p="main.1757b5c8.js.map" t="Include" />
+              <e p="main.182f8d59.js" t="Include" />
+              <e p="main.182f8d59.js.map" t="Include" />
+              <e p="main.18c87feb.js" t="Include" />
+              <e p="main.18c87feb.js.map" t="Include" />
+              <e p="main.1e47fb39.js" t="Include" />
+              <e p="main.1e47fb39.js.map" t="Include" />
+              <e p="main.207b8d72.js" t="Include" />
+              <e p="main.207b8d72.js.map" t="Include" />
+              <e p="main.208ba786.js" t="Include" />
+              <e p="main.208ba786.js.map" t="Include" />
+              <e p="main.23948cc1.js" t="Include" />
+              <e p="main.23948cc1.js.map" t="Include" />
+              <e p="main.24c25d6f.js" t="Include" />
+              <e p="main.24c25d6f.js.map" t="Include" />
+              <e p="main.25d653ae.js" t="Include" />
+              <e p="main.25d653ae.js.map" t="Include" />
+              <e p="main.2a51356c.js" t="Include" />
+              <e p="main.2a51356c.js.map" t="Include" />
+              <e p="main.2c138ba8.js" t="Include" />
+              <e p="main.2c138ba8.js.map" t="Include" />
+              <e p="main.30f88cd2.js" t="Include" />
+              <e p="main.30f88cd2.js.map" t="Include" />
+              <e p="main.316f1715.js" t="Include" />
+              <e p="main.316f1715.js.map" t="Include" />
+              <e p="main.31af9e06.js" t="Include" />
+              <e p="main.31af9e06.js.map" t="Include" />
+              <e p="main.3a357287.js" t="Include" />
+              <e p="main.3a357287.js.map" t="Include" />
+              <e p="main.40d97a7b.js" t="Include" />
+              <e p="main.40d97a7b.js.map" t="Include" />
+              <e p="main.41207241.js" t="Include" />
+              <e p="main.41207241.js.map" t="Include" />
+              <e p="main.424b276f.js" t="Include" />
+              <e p="main.424b276f.js.map" t="Include" />
+              <e p="main.42d8968f.js" t="Include" />
+              <e p="main.42d8968f.js.map" t="Include" />
+              <e p="main.4732a015.js" t="Include" />
+              <e p="main.4732a015.js.map" t="Include" />
+              <e p="main.48bbc91b.js" t="Include" />
+              <e p="main.48bbc91b.js.map" t="Include" />
+              <e p="main.4d7fabc8.js" t="Include" />
+              <e p="main.4d7fabc8.js.map" t="Include" />
+              <e p="main.507b31e8.js" t="Include" />
+              <e p="main.507b31e8.js.map" t="Include" />
+              <e p="main.511611cc.js" t="Include" />
+              <e p="main.511611cc.js.map" t="Include" />
+              <e p="main.53578d8a.js" t="Include" />
+              <e p="main.53578d8a.js.map" t="Include" />
+              <e p="main.567fe0d3.js" t="Include" />
+              <e p="main.567fe0d3.js.map" t="Include" />
+              <e p="main.5a6b981a.js" t="Include" />
+              <e p="main.5a6b981a.js.map" t="Include" />
+              <e p="main.5b74af1a.js" t="Include" />
+              <e p="main.5b74af1a.js.map" t="Include" />
+              <e p="main.5dced352.js" t="Include" />
+              <e p="main.5dced352.js.map" t="Include" />
+              <e p="main.5e590edc.js" t="Include" />
+              <e p="main.5e590edc.js.map" t="Include" />
+              <e p="main.60fb906c.js" t="Include" />
+              <e p="main.60fb906c.js.map" t="Include" />
+              <e p="main.662014d9.js" t="Include" />
+              <e p="main.662014d9.js.map" t="Include" />
+              <e p="main.68bf74d8.js" t="Include" />
+              <e p="main.68bf74d8.js.map" t="Include" />
+              <e p="main.76c74cbc.js" t="Include" />
+              <e p="main.76c74cbc.js.map" t="Include" />
+              <e p="main.78886f5c.js" t="Include" />
+              <e p="main.78886f5c.js.map" t="Include" />
+              <e p="main.7989c166.js" t="Include" />
+              <e p="main.7989c166.js.map" t="Include" />
+              <e p="main.7b9327bf.js" t="Include" />
+              <e p="main.7b9327bf.js.map" t="Include" />
+              <e p="main.80d8a421.js" t="Include" />
+              <e p="main.80d8a421.js.map" t="Include" />
+              <e p="main.829016d6.js" t="Include" />
+              <e p="main.829016d6.js.map" t="Include" />
+              <e p="main.871b4f0f.js" t="Include" />
+              <e p="main.871b4f0f.js.map" t="Include" />
+              <e p="main.88fd292f.js" t="Include" />
+              <e p="main.88fd292f.js.map" t="Include" />
+              <e p="main.8af13ff8.js" t="Include" />
+              <e p="main.8af13ff8.js.map" t="Include" />
+              <e p="main.8de757ae.js" t="Include" />
+              <e p="main.8de757ae.js.map" t="Include" />
+              <e p="main.8fdd98f5.js" t="Include" />
+              <e p="main.8fdd98f5.js.map" t="Include" />
+              <e p="main.938a81cb.js" t="Include" />
+              <e p="main.938a81cb.js.map" t="Include" />
+              <e p="main.a25ce0c4.js" t="Include" />
+              <e p="main.a25ce0c4.js.map" t="Include" />
+              <e p="main.a41c91e4.js" t="Include" />
+              <e p="main.a41c91e4.js.map" t="Include" />
+              <e p="main.a52320b6.js" t="Include" />
+              <e p="main.a52320b6.js.map" t="Include" />
+              <e p="main.a8ccb38d.js" t="Include" />
+              <e p="main.a8ccb38d.js.map" t="Include" />
+              <e p="main.ad709d8f.js" t="Include" />
+              <e p="main.ad709d8f.js.map" t="Include" />
+              <e p="main.ae04af49.js" t="Include" />
+              <e p="main.ae04af49.js.map" t="Include" />
+              <e p="main.aecfe118.js" t="Include" />
+              <e p="main.aecfe118.js.map" t="Include" />
+              <e p="main.b0b2a26e.js" t="Include" />
+              <e p="main.b0b2a26e.js.map" t="Include" />
+              <e p="main.b2502c7b.js" t="Include" />
+              <e p="main.b2502c7b.js.map" t="Include" />
+              <e p="main.b47baee2.js" t="Include" />
+              <e p="main.b47baee2.js.map" t="Include" />
+              <e p="main.b86352d5.js" t="Include" />
+              <e p="main.b86352d5.js.map" t="Include" />
+              <e p="main.c48487d7.js" t="Include" />
+              <e p="main.c48487d7.js.map" t="Include" />
+              <e p="main.c5486d13.js" t="Include" />
+              <e p="main.c5486d13.js.map" t="Include" />
+              <e p="main.caba1096.js" t="Include" />
+              <e p="main.caba1096.js.map" t="Include" />
+              <e p="main.ccedfe09.js" t="Include" />
+              <e p="main.ccedfe09.js.map" t="Include" />
+              <e p="main.d4fe4689.js" t="Include" />
+              <e p="main.d4fe4689.js.map" t="Include" />
+              <e p="main.e5d5979d.js" t="Include" />
+              <e p="main.e5d5979d.js.map" t="Include" />
+              <e p="main.e91f9878.js" t="Include" />
+              <e p="main.e91f9878.js.map" t="Include" />
+              <e p="main.ea53b25e.js" t="Include" />
+              <e p="main.ea53b25e.js.map" t="Include" />
+              <e p="main.f309a31e.js" t="Include" />
+              <e p="main.f309a31e.js.map" t="Include" />
+              <e p="main.f584dff6.js" t="Include" />
+              <e p="main.f584dff6.js.map" t="Include" />
+              <e p="main.f5e13dbb.js" t="Include" />
+              <e p="main.f5e13dbb.js.map" t="Include" />
+              <e p="main.faf2caba.js" t="Include" />
+              <e p="main.faf2caba.js.map" t="Include" />
+              <e p="main.fbdf29f9.js" t="Include" />
+              <e p="main.fbdf29f9.js.map" t="Include" />
+              <e p="main.fec5b3bb.js" t="Include" />
+              <e p="main.fec5b3bb.js.map" t="Include" />
+              <e p="main.ff7f6cb5.js" t="Include" />
+              <e p="main.ff7f6cb5.js.map" t="Include" />
+            </e>
+            <e p="media" t="Include">
+              <e p="ic_address.4de4b1cb.svg" t="Include" />
+              <e p="ic_address.c29ddccf.svg" t="Include" />
+              <e p="ic_back.6a404a76.svg" t="Include" />
+              <e p="ic_back.aff4463f.svg" t="Include" />
+              <e p="ic_customer.eec7b025.svg" t="Include" />
+              <e p="ic_customer.feb4d1f4.svg" t="Include" />
+              <e p="ic_customer_profile.b787b871.svg" t="Include" />
+              <e p="ic_customer_profile.fbee579f.svg" t="Include" />
+              <e p="ic_edit.5b0063d0.svg" t="Include" />
+              <e p="ic_edit.d16e6a9d.svg" t="Include" />
+              <e p="ic_email.243dc9db.svg" t="Include" />
+              <e p="ic_email.b5a6e5b3.svg" t="Include" />
+              <e p="ic_employee_number.1222d2c7.svg" t="Include" />
+              <e p="ic_employee_number.6ed72b4b.svg" t="Include" />
+              <e p="ic_location_profile.4b34cf23.svg" t="Include" />
+              <e p="ic_location_profile.5dedc1f0.svg" t="Include" />
+              <e p="ic_phone.4c3098a1.svg" t="Include" />
+              <e p="ic_phone.53faa30f.svg" t="Include" />
+              <e p="ic_role.17163594.svg" t="Include" />
+              <e p="ic_role.a9b11c9d.svg" t="Include" />
+              <e p="ic_title.11be11e2.svg" t="Include" />
+              <e p="ic_title.7fbf582c.svg" t="Include" />
+              <e p="ic_user_profile.475b090d.svg" t="Include" />
+              <e p="ic_user_profile.69fe4cef.svg" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Rent.sln" t="IncludeFlat" />
+      <e p="Test" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.1" t="Include">
+              <e p="Test.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Test.csproj" t="IncludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>

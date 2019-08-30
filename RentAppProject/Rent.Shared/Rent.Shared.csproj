@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Models\Chat\" />
+    <Folder Include="Models\Document\" />
+    <Folder Include="ViewModels\LocationList\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ModuleLibrary\ModuleLibrary.Shared\ModuleLibrary.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\CompanyUser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Models\LocationHours.cs">
+      <Generator>LocationHourVC</Generator>
+    </Compile>
+  </ItemGroup>
+</Project>

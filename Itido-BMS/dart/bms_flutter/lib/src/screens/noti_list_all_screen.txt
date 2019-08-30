@@ -1,0 +1,57 @@
+import 'dart:async';
+import 'package:bms_flutter/src/widgets/noti_list.dart';
+import 'package:bms_dart/noti_list_bloc.dart';
+import 'package:bms_dart/models.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class NotiListAllScreen extends StatefulWidget {
+  final Function(Noti) onSelect;
+
+  const NotiListAllScreen({Key key, this.onSelect}) : super(key: key);
+  @override
+  _NotiListAllScreenState createState() => _NotiListAllScreenState();
+}
+
+class _NotiListAllScreenState extends State<NotiListAllScreen> {
+  Completer loading;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      builder: (context) {
+        return NotiListBloc()..dispatch(NotiListFetchLatest(count: 10));
+      },
+      child: Builder(
+        builder: (context) {
+          var bloc = BlocProvider.of<NotiListBloc>(context);
+
+          return BlocListener(
+            bloc: bloc,
+            listener: (context, ListState<Noti> state) {
+              if (state is Loaded || state is Failure) {
+                loading?.complete();
+              }
+            },
+            child: Scaffold(
+              appBar: AppBar(),
+              body: RefreshIndicator(
+                child: NotiList(
+                  onSelect: (noti) {
+                    bloc.dispatch(NotiSeen(noti: noti));
+                    if (widget.onSelect != null) widget.onSelect(noti);
+                  },
+                ),
+                onRefresh: () async {
+                  loading = Completer();
+                  bloc.dispatch(NotiListFetchLatest(count: 10));
+                  await loading.future;
+                },
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}

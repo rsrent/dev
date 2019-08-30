@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7A51168C-8BC5-4E4F-AB0C-B961D3A2548F}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UseMSBuildEngine>true</UseMSBuildEngine>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RentApp.Shared</RootNamespace>
+    <AssemblyName>RentApp.Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="MyClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\Area.cs" />
+    <Compile Include="Models\CleaningSchedule.cs" />
+    <Compile Include="Models\CleaningTask.cs" />
+    <Compile Include="Models\CleaningTaskCompleted.cs" />
+    <Compile Include="Models\CompanyUser.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerDocument.cs" />
+    <Compile Include="Models\CustomerUser.cs" />
+    <Compile Include="Models\EmployeeUser.cs" />
+    <Compile Include="Models\Floor.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\NotificationToken.cs" />
+    <Compile Include="Models\OutlookEvent.cs" />
+    <Compile Include="Models\OutlookEventDTO.cs" />
+    <Compile Include="Models\QualityReport.cs" />
+    <Compile Include="Models\QualityReportItem.cs" />
+    <Compile Include="Models\Quantifier.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Repositories\CompletedCleaningTasksRepository.cs" />
+    <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="Repositories\OutLookRepository.cs" />
+    <Compile Include="Repositories\QualityReportRepository.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="Repositories\LocationRepository.cs" />
+    <Compile Include="Models\NewLocationDetails.cs" />
+    <Compile Include="Models\NewCustomerDetails.cs" />
+    <Compile Include="Repositories\CleaningTasksRepository.cs" />
+    <Compile Include="Models\UserPermission.cs" />
+    <Compile Include="Models\LoginToken.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Repositories\ServiceProvider.cs" />
+    <Compile Include="Repositories\Settings.cs" />
+    <Compile Include="Models\UserLoginInfo.cs" />
+    <Compile Include="Models\Permission.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Repositories\HttpClientProvider.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\IErrorMessageHandler.cs" />
+    <Compile Include="Interfaces\IUserVM.cs" />
+    <Compile Include="Repositories\ConversationRepository.cs" />
+    <Compile Include="Repositories\ChatRepository.cs" />
+    <Compile Include="Models\Chat\Conversation.cs" />
+    <Compile Include="Models\Chat\Message.cs" />
+    <Compile Include="Models\UpdateLogin.cs" />
+    <Compile Include="Repositories\PermissionRepository.cs" />
+    <Compile Include="Repositories\LoginRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Models\PermissionTemplate.cs" />
+    <Compile Include="Repositories\ImageRepository.cs" />
+    <Compile Include="Models\Document\DocumentItem.cs" />
+    <Compile Include="Models\Document\DocumentFolder.cs" />
+    <Compile Include="Models\Document\Document.cs" />
+    <Compile Include="Repositories\DocumentRepository.cs" />
+    <Compile Include="Repositories\FloorAreaRepository.cs" />
+    <Compile Include="Models\CleaningPlan.cs" />
+    <Compile Include="Repositories\MyAzureCredentials.cs" />
+    <Compile Include="Models\ExtraWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Models\Chat\" />
+    <Folder Include="Models\Document\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>

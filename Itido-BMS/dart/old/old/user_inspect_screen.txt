@@ -1,0 +1,187 @@
+import 'package:bms_dart/accident_report_list_bloc.dart';
+import 'package:bms_dart/blocs.dart';
+import 'package:bms_dart/contract_list_bloc.dart';
+import 'package:bms_dart/absence_list_bloc.dart';
+import 'package:bms_dart/location_list_bloc.dart';
+import 'package:bms_dart/models.dart';
+import 'package:bms_dart/work_list_bloc.dart';
+import 'package:bms_flutter_admin/src/widgets/absence_list_admin.dart';
+import 'package:bms_flutter_admin/src/widgets/accident_report_list_admin.dart';
+import 'package:bms_flutter_admin/src/widgets/contract_list_admin.dart';
+import 'package:bms_flutter_admin/src/widgets/location_list_admin.dart';
+import 'package:dart_packages/streamer.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'absence_update_screen.dart';
+import 'contract_create_screen.dart';
+import 'contract_update_screen.dart';
+import '../widgets/work_list.dart';
+import 'package:bms_flutter/widgets.dart';
+import 'package:bms_flutter/translations.dart';
+
+import 'package:bms_flutter/src/components/animated_stream_builder.dart';
+
+class UserInspectScreen extends StatefulWidget {
+  static void showUserInspectScreen(BuildContext context, int userId,
+      {int startIndex}) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return UserInspectScreen(userId: userId, startIndex: startIndex);
+        },
+      ),
+    );
+  }
+
+  final int userId;
+  final int startIndex;
+
+  const UserInspectScreen({Key key, @required this.userId, this.startIndex})
+      : super(key: key);
+
+  @override
+  _UserInspectScreenState createState() =>
+      _UserInspectScreenState(this.startIndex);
+}
+
+class _UserInspectScreenState extends State<UserInspectScreen> {
+  final Streamer<int> currentTab;
+  final PageStorageBucket bucket = PageStorageBucket();
+
+  _UserInspectScreenState(int startIndex)
+      : this.currentTab = Streamer(seedValue: startIndex ?? 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      builder: (context) =>
+          UserInspectBloc(widget.userId)..dispatch(UserInspectEventFetch()),
+      child: Builder(
+        builder: (context) {
+          var bloc = BlocProvider.of<UserInspectBloc>(context);
+          return AnimatedBlocBuilder(
+            bloc: bloc,
+            builder: (context, state) {
+              if (state is LoadedUserInspectState) {
+                return _build(context, state.user);
+              } else if (state is ErrorUserInspectState) {
+                return InfoScreen(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 24),
+                        child: Text(
+                          Translations.of(context).infoErrorLoading,
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                      RaisedButton(
+                        child: Text(Translations.of(context).optionTryAgain),
+                        onPressed: () {
+                          bloc.dispatch(UserInspectEventFetch());
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              } else {
+                return LoadingScreen();
+              }
+            },
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _build(BuildContext context, User user) {
+    return BlocProviderTree(
+      blocProviders: [
+        BlocProvider<WorkListBloc>(
+          builder: (context) => WorkListBloc()
+            ..dispatch(
+              WorkListFetchOfUser(
+                userId: user.id,
+                from: DateTime.now().subtract(Duration(days: 2)),
+                to: DateTime.now().add(Duration(days: 30)),
+              ),
+            ),
+        ),
+        BlocProvider<AbsenceListBloc>(
+            builder: (context) =>
+                AbsenceListBloc(() => AbsenceListFetchOfUser(userId: user.id))),
+        BlocProvider<ContractListBloc>(
+            builder: (context) => ContractListBloc(
+                () => ContractListFetchOfUser(userId: user.id))),
+        BlocProvider<AccidentReportListBloc>(
+            builder: (context) => AccidentReportListBloc(
+                () => AccidentReportListFetchOfUser(userId: user.id))),
+        BlocProvider<LocationListBloc>(
+            builder: (context) => LocationListBloc(
+                () => LocationListFetchOfUser(userId: user.id))),
+      ],
+      child: Scaffold(
+        body: DefaultTabController(
+          initialIndex: currentTab.value,
+          length: 5,
+          child: NestedScrollView(
+            headerSliverBuilder: (BuildContext context, bool boxIsScrolled) {
+              return [
+                SliverAppBar(
+                  pinned: true,
+                  expandedHeight: 260,
+                  flexibleSpace: FlexibleSpaceBar(
+                    title: Padding(
+                      padding: const EdgeInsets.only(bottom: 46.0),
+                      child: Text(user.firstName),
+                    ),
+                    centerTitle: true,
+                  ),
+                  bottom: TabBar(
+                    tabs: <Widget>[
+                      Tab(text: Translations.of(context).buttonWork),
+                      Tab(text: Translations.of(context).buttonAbsense),
+                      Tab(text: Translations.of(context).buttonContracts),
+                      Tab(text: Translations.of(context).buttonAccidentReports),
+                      Tab(text: Translations.of(context).buttonLocations),
+                    ],
+                    onTap: currentTab.update,
+                  ),
+                  actions: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.refresh),
+                      onPressed: () {
+                        BlocProvider.of<UserInspectBloc>(context)
+                            .dispatch(UserInspectEventFetch());
+                      },
+                    )
+                  ],
+                ),
+              ];
+            },
+            body: PageStorage(
+              bucket: bucket,
+              child: TabBarView(
+                children: [
+                  BlocListHalfScreen<WorkListBloc, WorkListEvent,
+                      ListState<Work>, Work>(
+                    child: AdminWorkList(showUser: false),
+                  ),
+                  AbsenceListAdmin.getAbsenceListOfUser(context, user),
+                  ContractListAdmin.getContractListOfUser(context, user),
+                  AccidentReportListAdmin.getAccidentReportListOfUser(
+                      context, user),
+                  LocationListAdmin.getListOfUserLocations(context, user.id),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
